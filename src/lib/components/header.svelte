@@ -4,6 +4,10 @@
 </script>
 
 <div>
+    <a href="/">
+        Logo
+    </a>
+    
     {#each data.data.navigation as item}
         <nav>
             <PrismicLink field={item.link}>
