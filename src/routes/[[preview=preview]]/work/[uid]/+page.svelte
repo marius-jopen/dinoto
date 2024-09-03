@@ -7,10 +7,12 @@
 	import NextProject from '$lib/components/next-project.svelte';
 
 	export let data;
+
+	console.log(data)
 </script>
 
-<Header />
+<Header data={data.navigation_top} />
 <SliceZone slices={data.page.data.slices} {components} />
 <RelatedProjects />
 <NextProject />
-<Footer />
+<Footer data={data.navigation_bottom} />

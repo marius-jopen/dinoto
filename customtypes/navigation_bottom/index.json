@@ -18,6 +18,15 @@
 								"label": "Text",
 								"placeholder": ""
 							}
+						},
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "Link",
+								"placeholder": "",
+								"allowTargetBlank": false,
+								"select": null
+							}
 						}
 					}
 				}

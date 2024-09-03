@@ -5,8 +5,10 @@
 	import Footer from '$lib/components/footer.svelte';
 
 	export let data;
+
+	console.log(data)
 </script>
 
-<Header />
+<Header data={data.navigation_top} />
 <SliceZone slices={data.page.data.slices} {components} />
-<Footer />
+<Footer data={data.navigation_bottom} />

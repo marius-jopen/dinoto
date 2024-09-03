@@ -17,6 +17,16 @@ export interface NavigationBottomDocumentDataNavigationItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Navigation Bottom → Navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_bottom.navigation[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
@@ -64,6 +74,16 @@ export interface NavigationTopDocumentDataNavigationItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Navigation Top → Navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_top.navigation[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
