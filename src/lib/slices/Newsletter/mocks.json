@@ -2,7 +2,24 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"headline": {
+				"__TYPE__": "FieldContent",
+				"value": "parts",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore reprehenderit aliqua ea excepteur laborum non ullamco aliquip est deserunt qui et. Officia Lorem ex culpa ullamco excepteur sit Lorem sint consectetur non nulla amet elit. Et veniam aute ipsum voluptate ex nulla commodo ipsum nostrud officia."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]

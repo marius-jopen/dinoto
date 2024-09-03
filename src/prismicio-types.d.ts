@@ -197,6 +197,51 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
+/**
+ * Item in *Work → Items*
+ */
+export interface WorkDocumentDataItemsItem {
+	/**
+	 * Text field in *Work → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Image field in *Work → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video Url field in *Work → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Work → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+}
+
 type WorkDocumentDataSlicesSlice =
 	| VideoGallerySlice
 	| BoxSingleSlice
@@ -238,6 +283,17 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	title: prismic.TitleField;
+
+	/**
+	 * Items field in *Work*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
 
 	/**
 	 * Slice Zone field in *Work*
@@ -304,6 +360,70 @@ export type AllDocumentTypes =
 	| WorkDocument;
 
 /**
+ * Item in *Accordeon → Default → Primary → Items*
+ */
+export interface AccordeonSliceDefaultPrimaryItemsItem {
+	/**
+	 * Headline field in *Accordeon → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Number field in *Accordeon → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.items[].number
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	number: prismic.NumberField;
+
+	/**
+	 * Text field in *Accordeon → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Color field in *Accordeon → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: accordeon.default.primary.items[].color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+}
+
+/**
+ * Primary content in *Accordeon → Default → Primary*
+ */
+export interface AccordeonSliceDefaultPrimary {
+	/**
+	 * Items field in *Accordeon → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<AccordeonSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Accordeon Slice
  *
  * - **API ID**: `default`
@@ -312,7 +432,7 @@ export type AllDocumentTypes =
  */
 export type AccordeonSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<AccordeonSliceDefaultPrimary>,
 	never
 >;
 
@@ -331,6 +451,45 @@ type AccordeonSliceVariation = AccordeonSliceDefault;
 export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVariation>;
 
 /**
+ * Primary content in *BoxCenter → Default → Primary*
+ */
+export interface BoxCenterSliceDefaultPrimary {
+	/**
+	 * Text field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_center.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Emoji field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_center.default.primary.emoji
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	emoji: prismic.KeyTextField;
+
+	/**
+	 * Color field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_center.default.primary.color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+}
+
+/**
  * Default variation for BoxCenter Slice
  *
  * - **API ID**: `default`
@@ -339,7 +498,7 @@ export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVari
  */
 export type BoxCenterSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<BoxCenterSliceDefaultPrimary>,
 	never
 >;
 
@@ -358,6 +517,99 @@ type BoxCenterSliceVariation = BoxCenterSliceDefault;
 export type BoxCenterSlice = prismic.SharedSlice<'box_center', BoxCenterSliceVariation>;
 
 /**
+ * Primary content in *BoxDouble → Default → Primary*
+ */
+export interface BoxDoubleSliceDefaultPrimary {
+	/**
+	 * Color Left field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_double.default.primary.color_left
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color_left: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image Left field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.image_left
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_left: prismic.ImageField<never>;
+
+	/**
+	 * Headline Left  field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.headline_left
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline_left: prismic.KeyTextField;
+
+	/**
+	 * Text Left  field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.text_left
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_left: prismic.RichTextField;
+
+	/**
+	 * Color Right field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_double.default.primary.color_right
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color_right: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image Right field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.image_right
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_right: prismic.ImageField<never>;
+
+	/**
+	 * Headline Right  field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.headline_right
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline_right: prismic.KeyTextField;
+
+	/**
+	 * Text Right field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_double.default.primary.text_right
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_right: prismic.RichTextField;
+}
+
+/**
  * Default variation for BoxDouble Slice
  *
  * - **API ID**: `default`
@@ -366,7 +618,7 @@ export type BoxCenterSlice = prismic.SharedSlice<'box_center', BoxCenterSliceVar
  */
 export type BoxDoubleSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<BoxDoubleSliceDefaultPrimary>,
 	never
 >;
 
@@ -385,6 +637,55 @@ type BoxDoubleSliceVariation = BoxDoubleSliceDefault;
 export type BoxDoubleSlice = prismic.SharedSlice<'box_double', BoxDoubleSliceVariation>;
 
 /**
+ * Primary content in *BoxSingle → Default → Primary*
+ */
+export interface BoxSingleSliceDefaultPrimary {
+	/**
+	 * Color field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_single.default.primary.color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Headline field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_single.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Number field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_single.default.primary.number
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	number: prismic.NumberField;
+
+	/**
+	 * Text field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_single.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
  * Default variation for BoxSingle Slice
  *
  * - **API ID**: `default`
@@ -393,7 +694,7 @@ export type BoxDoubleSlice = prismic.SharedSlice<'box_double', BoxDoubleSliceVar
  */
 export type BoxSingleSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<BoxSingleSliceDefaultPrimary>,
 	never
 >;
 
@@ -412,6 +713,143 @@ type BoxSingleSliceVariation = BoxSingleSliceDefault;
 export type BoxSingleSlice = prismic.SharedSlice<'box_single', BoxSingleSliceVariation>;
 
 /**
+ * Primary content in *BoxTripple → Default → Primary*
+ */
+export interface BoxTrippleSliceDefaultPrimary {
+	/**
+	 * Color 1 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_tripple.default.primary.color_1
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color_1: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image 1 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.image_1
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_1: prismic.ImageField<never>;
+
+	/**
+	 * Headline 1 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.headline_1
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline_1: prismic.KeyTextField;
+
+	/**
+	 * Text 1 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.text_1
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_1: prismic.RichTextField;
+
+	/**
+	 * Color 2 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_tripple.default.primary.color_2
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color_2: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image 2 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.image_2
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_2: prismic.ImageField<never>;
+
+	/**
+	 * Headline 2 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.headline_2
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline_2: prismic.KeyTextField;
+
+	/**
+	 * Text 2 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.text_2
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_2: prismic.RichTextField;
+
+	/**
+	 * Color 3 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: box_tripple.default.primary.color_3
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color_3: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image 3 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.image_3
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_3: prismic.ImageField<never>;
+
+	/**
+	 * Headline 3 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.headline_3
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline_3: prismic.KeyTextField;
+
+	/**
+	 * Text 3 field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: box_tripple.default.primary.text_3
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_3: prismic.RichTextField;
+}
+
+/**
  * Default variation for BoxTripple Slice
  *
  * - **API ID**: `default`
@@ -420,7 +858,7 @@ export type BoxSingleSlice = prismic.SharedSlice<'box_single', BoxSingleSliceVar
  */
 export type BoxTrippleSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<BoxTrippleSliceDefaultPrimary>,
 	never
 >;
 
@@ -439,6 +877,121 @@ type BoxTrippleSliceVariation = BoxTrippleSliceDefault;
 export type BoxTrippleSlice = prismic.SharedSlice<'box_tripple', BoxTrippleSliceVariation>;
 
 /**
+ * Item in *Cards → Default → Primary → Items*
+ */
+export interface CardsSliceDefaultPrimaryItemsItem {
+	/**
+	 * Color field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: cards.default.primary.items[].color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Image field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video Url field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+
+	/**
+	 * Autoplay field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cards.default.primary.items[].autoplay
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	autoplay: prismic.BooleanField;
+
+	/**
+	 * Headline field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Number field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].number
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	number: prismic.NumberField;
+
+	/**
+	 * Text field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Caption field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].caption
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	caption: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Cards → Default → Primary*
+ */
+export interface CardsSliceDefaultPrimary {
+	/**
+	 * Items field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<CardsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Cards Slice
  *
  * - **API ID**: `default`
@@ -447,7 +1000,7 @@ export type BoxTrippleSlice = prismic.SharedSlice<'box_tripple', BoxTrippleSlice
  */
 export type CardsSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<CardsSliceDefaultPrimary>,
 	never
 >;
 
@@ -466,6 +1019,35 @@ type CardsSliceVariation = CardsSliceDefault;
 export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
 
 /**
+ * Primary content in *Chapter → Default → Primary*
+ */
+export interface ChapterSliceDefaultPrimary {
+	/**
+	 * Color field in *Chapter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: chapter.default.primary.color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+
+	/**
+	 * Text field in *Chapter → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chapter.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
  * Default variation for Chapter Slice
  *
  * - **API ID**: `default`
@@ -474,7 +1056,7 @@ export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
  */
 export type ChapterSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ChapterSliceDefaultPrimary>,
 	never
 >;
 
@@ -493,6 +1075,70 @@ type ChapterSliceVariation = ChapterSliceDefault;
 export type ChapterSlice = prismic.SharedSlice<'chapter', ChapterSliceVariation>;
 
 /**
+ * Item in *Chat → Default → Primary → Items*
+ */
+export interface ChatSliceDefaultPrimaryItemsItem {
+	/**
+	 * Text field in *Chat → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Chat → Default → Primary*
+ */
+export interface ChatSliceDefaultPrimary {
+	/**
+	 * Items field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<ChatSliceDefaultPrimaryItemsItem>>;
+
+	/**
+	 * Text Bottom field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.text_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_bottom: prismic.RichTextField;
+
+	/**
+	 * Emoji field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.emoji
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	emoji: prismic.KeyTextField;
+
+	/**
+	 * Color field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: chat.default.primary.color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'filled'
+	>;
+}
+
+/**
  * Default variation for Chat Slice
  *
  * - **API ID**: `default`
@@ -501,7 +1147,7 @@ export type ChapterSlice = prismic.SharedSlice<'chapter', ChapterSliceVariation>
  */
 export type ChatSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ChatSliceDefaultPrimary>,
 	never
 >;
 
@@ -520,6 +1166,56 @@ type ChatSliceVariation = ChatSliceDefault;
 export type ChatSlice = prismic.SharedSlice<'chat', ChatSliceVariation>;
 
 /**
+ * Item in *Cloud → Default → Primary → Items*
+ */
+export interface CloudSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Cloud → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cloud.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video Url field in *Cloud → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cloud.default.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Cloud → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cloud.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Cloud → Default → Primary*
+ */
+export interface CloudSliceDefaultPrimary {
+	/**
+	 * Items field in *Cloud → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cloud.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<CloudSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Cloud Slice
  *
  * - **API ID**: `default`
@@ -528,7 +1224,7 @@ export type ChatSlice = prismic.SharedSlice<'chat', ChatSliceVariation>;
  */
 export type CloudSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<CloudSliceDefaultPrimary>,
 	never
 >;
 
@@ -547,6 +1243,21 @@ type CloudSliceVariation = CloudSliceDefault;
 export type CloudSlice = prismic.SharedSlice<'cloud', CloudSliceVariation>;
 
 /**
+ * Primary content in *DogBreak → Default → Primary*
+ */
+export interface DogBreakSliceDefaultPrimary {
+	/**
+	 * Text field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dog_break.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
  * Default variation for DogBreak Slice
  *
  * - **API ID**: `default`
@@ -555,7 +1266,7 @@ export type CloudSlice = prismic.SharedSlice<'cloud', CloudSliceVariation>;
  */
 export type DogBreakSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<DogBreakSliceDefaultPrimary>,
 	never
 >;
 
@@ -574,6 +1285,46 @@ type DogBreakSliceVariation = DogBreakSliceDefault;
 export type DogBreakSlice = prismic.SharedSlice<'dog_break', DogBreakSliceVariation>;
 
 /**
+ * Item in *Expertise → Default → Primary → Items*
+ */
+export interface ExpertiseSliceDefaultPrimaryItemsItem {
+	/**
+	 * Headline field in *Expertise → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: expertise.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Expertise → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: expertise.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Expertise → Default → Primary*
+ */
+export interface ExpertiseSliceDefaultPrimary {
+	/**
+	 * Items field in *Expertise → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: expertise.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<ExpertiseSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Expertise Slice
  *
  * - **API ID**: `default`
@@ -582,7 +1333,7 @@ export type DogBreakSlice = prismic.SharedSlice<'dog_break', DogBreakSliceVariat
  */
 export type ExpertiseSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ExpertiseSliceDefaultPrimary>,
 	never
 >;
 
@@ -601,6 +1352,42 @@ type ExpertiseSliceVariation = ExpertiseSliceDefault;
 export type ExpertiseSlice = prismic.SharedSlice<'expertise', ExpertiseSliceVariation>;
 
 /**
+ * Primary content in *Headline → Default → Primary*
+ */
+export interface HeadlineSliceDefaultPrimary {
+	/**
+	 * Text 1 field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: headline.default.primary.text_1
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text_1: prismic.KeyTextField;
+
+	/**
+	 * Text 2 field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: headline.default.primary.text_2
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text_2: prismic.KeyTextField;
+
+	/**
+	 * Style field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: horizontal
+	 * - **API ID Path**: headline.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'horizontal' | 'vertical', 'filled'>;
+}
+
+/**
  * Default variation for Headline Slice
  *
  * - **API ID**: `default`
@@ -609,7 +1396,7 @@ export type ExpertiseSlice = prismic.SharedSlice<'expertise', ExpertiseSliceVari
  */
 export type HeadlineSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<HeadlineSliceDefaultPrimary>,
 	never
 >;
 
@@ -628,6 +1415,41 @@ type HeadlineSliceVariation = HeadlineSliceDefault;
 export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariation>;
 
 /**
+ * Primary content in *Image → Default → Primary*
+ */
+export interface ImageSliceDefaultPrimary {
+	/**
+	 * Image field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Emoji field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.emoji
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	emoji: prismic.KeyTextField;
+
+	/**
+	 * Caption field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.caption
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	caption: prismic.RichTextField;
+}
+
+/**
  * Default variation for Image Slice
  *
  * - **API ID**: `default`
@@ -636,7 +1458,7 @@ export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariati
  */
 export type ImageSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ImageSliceDefaultPrimary>,
 	never
 >;
 
@@ -655,6 +1477,46 @@ type ImageSliceVariation = ImageSliceDefault;
 export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
 
 /**
+ * Item in *List → Default → Primary → Items*
+ */
+export interface ListSliceDefaultPrimaryItemsItem {
+	/**
+	 * Headline field in *List → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: list.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Text field in *List → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: list.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *List → Default → Primary*
+ */
+export interface ListSliceDefaultPrimary {
+	/**
+	 * Items field in *List → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: list.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<ListSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for List Slice
  *
  * - **API ID**: `default`
@@ -663,7 +1525,7 @@ export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
  */
 export type ListSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ListSliceDefaultPrimary>,
 	never
 >;
 
@@ -682,6 +1544,46 @@ type ListSliceVariation = ListSliceDefault;
 export type ListSlice = prismic.SharedSlice<'list', ListSliceVariation>;
 
 /**
+ * Item in *Logos → Default → Primary → Items*
+ */
+export interface LogosSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Logos → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Logo field in *Logos → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.items[].logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Logos → Default → Primary*
+ */
+export interface LogosSliceDefaultPrimary {
+	/**
+	 * Items field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<LogosSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Logos Slice
  *
  * - **API ID**: `default`
@@ -690,7 +1592,7 @@ export type ListSlice = prismic.SharedSlice<'list', ListSliceVariation>;
  */
 export type LogosSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<LogosSliceDefaultPrimary>,
 	never
 >;
 
@@ -709,6 +1611,31 @@ type LogosSliceVariation = LogosSliceDefault;
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
 
 /**
+ * Primary content in *Newsletter → Default → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+	/**
+	 * Headline field in *Newsletter → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: newsletter.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Newsletter → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: newsletter.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
  * Default variation for Newsletter Slice
  *
  * - **API ID**: `default`
@@ -717,7 +1644,7 @@ export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
  */
 export type NewsletterSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<NewsletterSliceDefaultPrimary>,
 	never
 >;
 
@@ -736,6 +1663,41 @@ type NewsletterSliceVariation = NewsletterSliceDefault;
 export type NewsletterSlice = prismic.SharedSlice<'newsletter', NewsletterSliceVariation>;
 
 /**
+ * Primary content in *Opener1 → Default → Primary*
+ */
+export interface Opener1SliceDefaultPrimary {
+	/**
+	 * Headline field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opener1.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opener1.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Image field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opener1.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for Opener1 Slice
  *
  * - **API ID**: `default`
@@ -744,7 +1706,7 @@ export type NewsletterSlice = prismic.SharedSlice<'newsletter', NewsletterSliceV
  */
 export type Opener1SliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<Opener1SliceDefaultPrimary>,
 	never
 >;
 
@@ -763,6 +1725,31 @@ type Opener1SliceVariation = Opener1SliceDefault;
 export type Opener1Slice = prismic.SharedSlice<'opener1', Opener1SliceVariation>;
 
 /**
+ * Primary content in *Opener2 → Default → Primary*
+ */
+export interface Opener2SliceDefaultPrimary {
+	/**
+	 * Headline field in *Opener2 → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opener2.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Image field in *Opener2 → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opener2.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for Opener2 Slice
  *
  * - **API ID**: `default`
@@ -771,7 +1758,7 @@ export type Opener1Slice = prismic.SharedSlice<'opener1', Opener1SliceVariation>
  */
 export type Opener2SliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<Opener2SliceDefaultPrimary>,
 	never
 >;
 
@@ -790,6 +1777,67 @@ type Opener2SliceVariation = Opener2SliceDefault;
 export type Opener2Slice = prismic.SharedSlice<'opener2', Opener2SliceVariation>;
 
 /**
+ * Item in *Slider → Default → Primary → Items*
+ */
+export interface SliderSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Slider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: slider.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Autoplay field in *Slider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: slider.default.primary.items[].autoplay
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	autoplay: prismic.BooleanField;
+
+	/**
+	 * Video Url field in *Slider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: slider.default.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Slider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: slider.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Slider → Default → Primary*
+ */
+export interface SliderSliceDefaultPrimary {
+	/**
+	 * Items field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: slider.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<SliderSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Slider Slice
  *
  * - **API ID**: `default`
@@ -798,7 +1846,7 @@ export type Opener2Slice = prismic.SharedSlice<'opener2', Opener2SliceVariation>
  */
 export type SliderSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<SliderSliceDefaultPrimary>,
 	never
 >;
 
@@ -817,6 +1865,32 @@ type SliderSliceVariation = SliderSliceDefault;
 export type SliderSlice = prismic.SharedSlice<'slider', SliderSliceVariation>;
 
 /**
+ * Primary content in *Text → Default → Primary*
+ */
+export interface TextSliceDefaultPrimary {
+	/**
+	 * Text field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Style field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Inline
+	 * - **API ID Path**: text.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'Inline' | 'Full', 'filled'>;
+}
+
+/**
  * Default variation for Text Slice
  *
  * - **API ID**: `default`
@@ -825,7 +1899,7 @@ export type SliderSlice = prismic.SharedSlice<'slider', SliderSliceVariation>;
  */
 export type TextSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<TextSliceDefaultPrimary>,
 	never
 >;
 
@@ -844,6 +1918,32 @@ type TextSliceVariation = TextSliceDefault;
 export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
 
 /**
+ * Primary content in *TextBig → Default → Primary*
+ */
+export interface TextBigSliceDefaultPrimary {
+	/**
+	 * Text field in *TextBig → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_big.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Style field in *TextBig → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Left
+	 * - **API ID Path**: text_big.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'Left' | 'Center' | 'Right' | 'Inline', 'filled'>;
+}
+
+/**
  * Default variation for TextBig Slice
  *
  * - **API ID**: `default`
@@ -852,7 +1952,7 @@ export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
  */
 export type TextBigSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<TextBigSliceDefaultPrimary>,
 	never
 >;
 
@@ -871,6 +1971,63 @@ type TextBigSliceVariation = TextBigSliceDefault;
 export type TextBigSlice = prismic.SharedSlice<'text_big', TextBigSliceVariation>;
 
 /**
+ * Primary content in *Video → Default → Primary*
+ */
+export interface VideoSliceDefaultPrimary {
+	/**
+	 * Autoplay field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: video.default.primary.autoplay
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	autoplay: prismic.BooleanField;
+
+	/**
+	 * Video Url field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video.default.primary.video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video.default.primary.video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+
+	/**
+	 * Style field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Inline
+	 * - **API ID Path**: video.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'Inline' | 'Full Rounded' | 'Full Screen', 'filled'>;
+
+	/**
+	 * Caption field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video.default.primary.caption
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	caption: prismic.RichTextField;
+}
+
+/**
  * Default variation for Video Slice
  *
  * - **API ID**: `default`
@@ -879,7 +2036,7 @@ export type TextBigSlice = prismic.SharedSlice<'text_big', TextBigSliceVariation
  */
 export type VideoSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<VideoSliceDefaultPrimary>,
 	never
 >;
 
@@ -898,6 +2055,57 @@ type VideoSliceVariation = VideoSliceDefault;
 export type VideoSlice = prismic.SharedSlice<'video', VideoSliceVariation>;
 
 /**
+ * Item in *VideoGallery → Default → Primary → Items*
+ */
+export interface VideoGallerySliceDefaultPrimaryItemsItem {
+	/**
+	 * Autoplay field in *VideoGallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: video_gallery.default.primary.items[].autoplay
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	autoplay: prismic.BooleanField;
+
+	/**
+	 * Video Url field in *VideoGallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_gallery.default.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *VideoGallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_gallery.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *VideoGallery → Default → Primary*
+ */
+export interface VideoGallerySliceDefaultPrimary {
+	/**
+	 * Items field in *VideoGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video_gallery.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<VideoGallerySliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for VideoGallery Slice
  *
  * - **API ID**: `default`
@@ -906,7 +2114,7 @@ export type VideoSlice = prismic.SharedSlice<'video', VideoSliceVariation>;
  */
 export type VideoGallerySliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<VideoGallerySliceDefaultPrimary>,
 	never
 >;
 
@@ -925,55 +2133,55 @@ type VideoGallerySliceVariation = VideoGallerySliceDefault;
 export type VideoGallerySlice = prismic.SharedSlice<'video_gallery', VideoGallerySliceVariation>;
 
 /**
- * Item in *Welcome → Default → Primary → Featured*
+ * Item in *Welcome → Default → Primary → Items*
  */
-export interface WelcomeSliceDefaultPrimaryFeaturedItem {
+export interface WelcomeSliceDefaultPrimaryItemsItem {
 	/**
-	 * Project field in *Welcome → Default → Primary → Featured*
+	 * Project field in *Welcome → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Content Relationship
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[].project
+	 * - **API ID Path**: welcome.default.primary.items[].project
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	project: prismic.ContentRelationshipField<'work'>;
 
 	/**
-	 * Image field in *Welcome → Default → Primary → Featured*
+	 * Image field in *Welcome → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[].image
+	 * - **API ID Path**: welcome.default.primary.items[].image
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Video Url field in *Welcome → Default → Primary → Featured*
+	 * Video Url field in *Welcome → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[].video_url
+	 * - **API ID Path**: welcome.default.primary.items[].video_url
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	video_url: prismic.KeyTextField;
 
 	/**
-	 * Video Duration field in *Welcome → Default → Primary → Featured*
+	 * Video Duration field in *Welcome → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Number
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[].video_duration
+	 * - **API ID Path**: welcome.default.primary.items[].video_duration
 	 * - **Documentation**: https://prismic.io/docs/field#number
 	 */
 	video_duration: prismic.NumberField;
 
 	/**
-	 * Video Poster field in *Welcome → Default → Primary → Featured*
+	 * Video Poster field in *Welcome → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[].video_poster
+	 * - **API ID Path**: welcome.default.primary.items[].video_poster
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	video_poster: prismic.ImageField<never>;
@@ -984,14 +2192,14 @@ export interface WelcomeSliceDefaultPrimaryFeaturedItem {
  */
 export interface WelcomeSliceDefaultPrimary {
 	/**
-	 * Featured field in *Welcome → Default → Primary*
+	 * Items field in *Welcome → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.featured[]
+	 * - **API ID Path**: welcome.default.primary.items[]
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
-	featured: prismic.GroupField<Simplify<WelcomeSliceDefaultPrimaryFeaturedItem>>;
+	items: prismic.GroupField<Simplify<WelcomeSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -1022,6 +2230,36 @@ type WelcomeSliceVariation = WelcomeSliceDefault;
 export type WelcomeSlice = prismic.SharedSlice<'welcome', WelcomeSliceVariation>;
 
 /**
+ * Item in *Work → Default → Primary → Items*
+ */
+export interface WorkSliceDefaultPrimaryItemsItem {
+	/**
+	 * Project field in *Work → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.default.primary.items[].project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'work'>;
+}
+
+/**
+ * Primary content in *Work → Default → Primary*
+ */
+export interface WorkSliceDefaultPrimary {
+	/**
+	 * Items field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<WorkSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Work Slice
  *
  * - **API ID**: `default`
@@ -1030,7 +2268,7 @@ export type WelcomeSlice = prismic.SharedSlice<'welcome', WelcomeSliceVariation>
  */
 export type WorkSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<WorkSliceDefaultPrimary>,
 	never
 >;
 
@@ -1069,83 +2307,118 @@ declare module '@prismicio/client' {
 			PageDocumentDataSlicesSlice,
 			WorkDocument,
 			WorkDocumentData,
+			WorkDocumentDataItemsItem,
 			WorkDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			AccordeonSlice,
+			AccordeonSliceDefaultPrimaryItemsItem,
+			AccordeonSliceDefaultPrimary,
 			AccordeonSliceVariation,
 			AccordeonSliceDefault,
 			BoxCenterSlice,
+			BoxCenterSliceDefaultPrimary,
 			BoxCenterSliceVariation,
 			BoxCenterSliceDefault,
 			BoxDoubleSlice,
+			BoxDoubleSliceDefaultPrimary,
 			BoxDoubleSliceVariation,
 			BoxDoubleSliceDefault,
 			BoxSingleSlice,
+			BoxSingleSliceDefaultPrimary,
 			BoxSingleSliceVariation,
 			BoxSingleSliceDefault,
 			BoxTrippleSlice,
+			BoxTrippleSliceDefaultPrimary,
 			BoxTrippleSliceVariation,
 			BoxTrippleSliceDefault,
 			CardsSlice,
+			CardsSliceDefaultPrimaryItemsItem,
+			CardsSliceDefaultPrimary,
 			CardsSliceVariation,
 			CardsSliceDefault,
 			ChapterSlice,
+			ChapterSliceDefaultPrimary,
 			ChapterSliceVariation,
 			ChapterSliceDefault,
 			ChatSlice,
+			ChatSliceDefaultPrimaryItemsItem,
+			ChatSliceDefaultPrimary,
 			ChatSliceVariation,
 			ChatSliceDefault,
 			CloudSlice,
+			CloudSliceDefaultPrimaryItemsItem,
+			CloudSliceDefaultPrimary,
 			CloudSliceVariation,
 			CloudSliceDefault,
 			DogBreakSlice,
+			DogBreakSliceDefaultPrimary,
 			DogBreakSliceVariation,
 			DogBreakSliceDefault,
 			ExpertiseSlice,
+			ExpertiseSliceDefaultPrimaryItemsItem,
+			ExpertiseSliceDefaultPrimary,
 			ExpertiseSliceVariation,
 			ExpertiseSliceDefault,
 			HeadlineSlice,
+			HeadlineSliceDefaultPrimary,
 			HeadlineSliceVariation,
 			HeadlineSliceDefault,
 			ImageSlice,
+			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
 			ImageSliceDefault,
 			ListSlice,
+			ListSliceDefaultPrimaryItemsItem,
+			ListSliceDefaultPrimary,
 			ListSliceVariation,
 			ListSliceDefault,
 			LogosSlice,
+			LogosSliceDefaultPrimaryItemsItem,
+			LogosSliceDefaultPrimary,
 			LogosSliceVariation,
 			LogosSliceDefault,
 			NewsletterSlice,
+			NewsletterSliceDefaultPrimary,
 			NewsletterSliceVariation,
 			NewsletterSliceDefault,
 			Opener1Slice,
+			Opener1SliceDefaultPrimary,
 			Opener1SliceVariation,
 			Opener1SliceDefault,
 			Opener2Slice,
+			Opener2SliceDefaultPrimary,
 			Opener2SliceVariation,
 			Opener2SliceDefault,
 			SliderSlice,
+			SliderSliceDefaultPrimaryItemsItem,
+			SliderSliceDefaultPrimary,
 			SliderSliceVariation,
 			SliderSliceDefault,
 			TextSlice,
+			TextSliceDefaultPrimary,
 			TextSliceVariation,
 			TextSliceDefault,
 			TextBigSlice,
+			TextBigSliceDefaultPrimary,
 			TextBigSliceVariation,
 			TextBigSliceDefault,
 			VideoSlice,
+			VideoSliceDefaultPrimary,
 			VideoSliceVariation,
 			VideoSliceDefault,
 			VideoGallerySlice,
+			VideoGallerySliceDefaultPrimaryItemsItem,
+			VideoGallerySliceDefaultPrimary,
 			VideoGallerySliceVariation,
 			VideoGallerySliceDefault,
 			WelcomeSlice,
-			WelcomeSliceDefaultPrimaryFeaturedItem,
+			WelcomeSliceDefaultPrimaryItemsItem,
 			WelcomeSliceDefaultPrimary,
 			WelcomeSliceVariation,
 			WelcomeSliceDefault,
 			WorkSlice,
+			WorkSliceDefaultPrimaryItemsItem,
+			WorkSliceDefaultPrimary,
 			WorkSliceVariation,
 			WorkSliceDefault
 		};

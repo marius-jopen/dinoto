@@ -2,7 +2,24 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ex anim proident esse laborum Lorem labore exercitation reprehenderit reprehenderit consequat laborum sit duis mollit. Nisi ad eu labore anim irure commodo excepteur."
+						}
+					}
+				]
+			},
+			"style": {
+				"__TYPE__": "FieldContent",
+				"value": "Inline",
+				"type": "Select"
+			}
+		},
 		"items": []
 	}
 ]

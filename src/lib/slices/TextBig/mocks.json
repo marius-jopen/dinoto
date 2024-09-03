@@ -2,7 +2,24 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Incididunt nulla Lorem Lorem esse esse aliquip. Irure officia consectetur deserunt labore cillum do consectetur irure incididunt nostrud enim eu."
+						}
+					}
+				]
+			},
+			"style": {
+				"__TYPE__": "FieldContent",
+				"value": "Left",
+				"type": "Select"
+			}
+		},
 		"items": []
 	}
 ]

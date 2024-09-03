@@ -12,10 +12,10 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "featured": {
+        "items": {
           "type": "Group",
           "config": {
-            "label": "Featured",
+            "label": "Items",
             "repeat": true,
             "fields": {
               "project": {

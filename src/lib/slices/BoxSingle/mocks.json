@@ -2,7 +2,29 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"headline": {
+				"__TYPE__": "FieldContent",
+				"value": "whistle",
+				"type": "Text"
+			},
+			"number": {
+				"__TYPE__": "FieldContent",
+				"value": "30",
+				"type": "Number"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit adipisicing elit tempor exercitation et eu aliquip anim quis deserunt ad cillum ex. Excepteur nisi deserunt exercitation qui est id esse sint proident ea adipisicing fugiat ad eiusmod dolor. Magna irure Lorem elit eiusmod."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]

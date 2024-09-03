@@ -2,7 +2,84 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text_right": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Pariatur duis dolore incididunt commodo exercitation dolore fugiat ullamco consectetur pariatur eu. Aute qui ad voluptate sint in officia dolor nulla esse quis laborum."
+						}
+					}
+				]
+			},
+			"headline_right": {
+				"__TYPE__": "FieldContent",
+				"value": "coach",
+				"type": "Text"
+			},
+			"image_right": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+					"width": 4752,
+					"height": 3168
+				},
+				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+				"width": 4752,
+				"height": 3168,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"text_left": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aute nisi commodo enim esse nostrud. Mollit ut dolore ipsum sit Lorem ipsum veniam pariatur eiusmod nostrud commodo nulla. Ea consectetur enim ut culpa."
+						}
+					}
+				]
+			},
+			"headline_left": {
+				"__TYPE__": "FieldContent",
+				"value": "seed",
+				"type": "Text"
+			},
+			"image_left": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+				"width": 3456,
+				"height": 3456,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			}
+		},
 		"items": []
 	}
 ]

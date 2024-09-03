@@ -21,6 +21,47 @@
 					"single": "heading1"
 				}
 			},
+			"items": {
+				"type": "Group",
+				"config": {
+					"label": "Items",
+					"repeat": true,
+					"fields": {
+						"text": {
+							"type": "StructuredText",
+							"config": {
+								"label": "Text",
+								"placeholder": "",
+								"allowTargetBlank": true,
+								"multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+							}
+						},
+						"image": {
+							"type": "Image",
+							"config": {
+								"label": "Image",
+								"constraint": {},
+								"thumbnails": []
+							}
+						},
+						"video_url": {
+							"type": "Text",
+							"config": {
+								"label": "Video Url",
+								"placeholder": ""
+							}
+						},
+						"video_poster": {
+							"type": "Image",
+							"config": {
+								"label": "Video Poster",
+								"constraint": {},
+								"thumbnails": []
+							}
+						}
+					}
+				}
+			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",

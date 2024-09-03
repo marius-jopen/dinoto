@@ -2,7 +2,24 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est do ullamco cupidatat labore incididunt mollit esse laboris commodo nulla occaecat. Quis dolore duis incididunt. Sint quis aliquip in."
+						}
+					}
+				]
+			},
+			"emoji": {
+				"__TYPE__": "FieldContent",
+				"value": "appearance",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

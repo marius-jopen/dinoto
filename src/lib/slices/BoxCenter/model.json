@@ -11,7 +11,40 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {},
+      "primary": {
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "emoji": {
+          "type": "Text",
+          "config": {
+            "label": "Emoji",
+            "placeholder": ""
+          }
+        },
+        "color": {
+          "type": "Select",
+          "config": {
+            "label": "Color",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Gray Light",
+              "Gray",
+              "Green Light",
+              "Green",
+              "Black"
+            ],
+            "default_value": "White"
+          }
+        }
+      },
       "items": {}
     }
   ]

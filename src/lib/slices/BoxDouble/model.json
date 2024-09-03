@@ -11,7 +11,88 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {},
+      "primary": {
+        "color_left": {
+          "type": "Select",
+          "config": {
+            "label": "Color Left",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Gray Light",
+              "Gray",
+              "Green Light",
+              "Green",
+              "Black"
+            ],
+            "default_value": "White"
+          }
+        },
+        "image_left": {
+          "type": "Image",
+          "config": {
+            "label": "Image Left",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "headline_left": {
+          "type": "Text",
+          "config": {
+            "label": "Headline Left ",
+            "placeholder": ""
+          }
+        },
+        "text_left": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text Left ",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "color_right": {
+          "type": "Select",
+          "config": {
+            "label": "Color Right",
+            "placeholder": "",
+            "options": [
+              "White",
+              "Gray Light",
+              "Gray",
+              "Green Light",
+              "Green",
+              "Black"
+            ],
+            "default_value": "White"
+          }
+        },
+        "image_right": {
+          "type": "Image",
+          "config": {
+            "label": "Image Right",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "headline_right": {
+          "type": "Text",
+          "config": {
+            "label": "Headline Right ",
+            "placeholder": ""
+          }
+        },
+        "text_right": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text Right",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
       "items": {}
     }
   ]
