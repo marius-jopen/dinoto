@@ -1,0 +1,27 @@
+{
+	"format": "custom",
+	"id": "navigation_top",
+	"label": "Navigation Top",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"navigation": {
+				"type": "Group",
+				"config": {
+					"label": "Navigation",
+					"repeat": true,
+					"fields": {
+						"text": {
+							"type": "Text",
+							"config": {
+								"label": "Text",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

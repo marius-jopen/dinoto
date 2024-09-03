@@ -1,0 +1,18 @@
+{
+  "id": "dog_break",
+  "type": "SharedSlice",
+  "name": "DogBreak",
+  "description": "DogBreak",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

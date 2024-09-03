@@ -1,0 +1,18 @@
+{
+  "id": "chapter",
+  "type": "SharedSlice",
+  "name": "Chapter",
+  "description": "Chapter",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

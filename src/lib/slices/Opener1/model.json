@@ -1,0 +1,18 @@
+{
+  "id": "opener1",
+  "type": "SharedSlice",
+  "name": "Opener1",
+  "description": "Opener1",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

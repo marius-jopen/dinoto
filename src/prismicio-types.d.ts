@@ -4,7 +4,125 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+/**
+ * Item in *Navigation Bottom → Navigation*
+ */
+export interface NavigationBottomDocumentDataNavigationItem {
+	/**
+	 * Text field in *Navigation Bottom → Navigation*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_bottom.navigation[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Content for Navigation Bottom documents
+ */
+interface NavigationBottomDocumentData {
+	/**
+	 * Navigation field in *Navigation Bottom*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_bottom.navigation[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	navigation: prismic.GroupField<Simplify<NavigationBottomDocumentDataNavigationItem>>;
+}
+
+/**
+ * Navigation Bottom document from Prismic
+ *
+ * - **API ID**: `navigation_bottom`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationBottomDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithoutUID<
+		Simplify<NavigationBottomDocumentData>,
+		'navigation_bottom',
+		Lang
+	>;
+
+/**
+ * Item in *Navigation Top → Navigation*
+ */
+export interface NavigationTopDocumentDataNavigationItem {
+	/**
+	 * Text field in *Navigation Top → Navigation*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_top.navigation[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Content for Navigation Top documents
+ */
+interface NavigationTopDocumentData {
+	/**
+	 * Navigation field in *Navigation Top*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation_top.navigation[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	navigation: prismic.GroupField<Simplify<NavigationTopDocumentDataNavigationItem>>;
+}
+
+/**
+ * Navigation Top document from Prismic
+ *
+ * - **API ID**: `navigation_top`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationTopDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<NavigationTopDocumentData>,
+	'navigation_top',
+	Lang
+>;
+
+type PageDocumentDataSlicesSlice =
+	| VideoGallerySlice
+	| WelcomeSlice
+	| VideoSlice
+	| WorkSlice
+	| SliderSlice
+	| CloudSlice
+	| ImageSlice
+	| Opener1Slice
+	| CardsSlice
+	| Opener2Slice
+	| BoxTrippleSlice
+	| TextSlice
+	| TextBigSlice
+	| ListSlice
+	| NewsletterSlice
+	| LogosSlice
+	| DogBreakSlice
+	| HeadlineSlice
+	| ExpertiseSlice
+	| ChapterSlice
+	| ChatSlice
+	| BoxDoubleSlice
+	| BoxSingleSlice
+	| AccordeonSlice
+	| BoxCenterSlice;
 
 /**
  * Content for Page documents
@@ -79,49 +197,856 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = PageDocument;
+type WorkDocumentDataSlicesSlice =
+	| VideoGallerySlice
+	| BoxSingleSlice
+	| AccordeonSlice
+	| ChapterSlice
+	| ChatSlice
+	| BoxDoubleSlice
+	| DogBreakSlice
+	| HeadlineSlice
+	| ExpertiseSlice
+	| ListSlice
+	| TextSlice
+	| NewsletterSlice
+	| LogosSlice
+	| BoxTrippleSlice
+	| TextBigSlice
+	| Opener1Slice
+	| CardsSlice
+	| Opener2Slice
+	| SliderSlice
+	| CloudSlice
+	| ImageSlice
+	| WelcomeSlice
+	| VideoSlice
+	| WorkSlice
+	| BoxCenterSlice;
 
 /**
- * Primary content in *RichText → Default → Primary*
+ * Content for Work documents
  */
-export interface RichTextSliceDefaultPrimary {
+interface WorkDocumentData {
 	/**
-	 * Content field in *RichText → Default → Primary*
+	 * Title field in *Work*
 	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Lorem ipsum...
-	 * - **API ID Path**: rich_text.default.primary.content
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.title
+	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	content: prismic.RichTextField;
+	title: prismic.TitleField;
+
+	/**
+	 * Slice Zone field in *Work*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<WorkDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Work*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: work.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Work*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: work.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Work*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
 }
 
 /**
- * Default variation for RichText Slice
+ * Work document from Prismic
+ *
+ * - **API ID**: `work`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WorkDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<WorkDocumentData>,
+	'work',
+	Lang
+>;
+
+export type AllDocumentTypes =
+	| NavigationBottomDocument
+	| NavigationTopDocument
+	| PageDocument
+	| WorkDocument;
+
+/**
+ * Default variation for Accordeon Slice
  *
  * - **API ID**: `default`
- * - **Description**: RichText
+ * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
+export type AccordeonSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Simplify<RichTextSliceDefaultPrimary>,
+	Record<string, never>,
 	never
 >;
 
 /**
- * Slice variation for *RichText*
+ * Slice variation for *Accordeon*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+type AccordeonSliceVariation = AccordeonSliceDefault;
 
 /**
- * RichText Shared Slice
+ * Accordeon Shared Slice
  *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
+ * - **API ID**: `accordeon`
+ * - **Description**: Accordeon
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
+export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVariation>;
+
+/**
+ * Default variation for BoxCenter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxCenterSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *BoxCenter*
+ */
+type BoxCenterSliceVariation = BoxCenterSliceDefault;
+
+/**
+ * BoxCenter Shared Slice
+ *
+ * - **API ID**: `box_center`
+ * - **Description**: BoxCenter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxCenterSlice = prismic.SharedSlice<'box_center', BoxCenterSliceVariation>;
+
+/**
+ * Default variation for BoxDouble Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxDoubleSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *BoxDouble*
+ */
+type BoxDoubleSliceVariation = BoxDoubleSliceDefault;
+
+/**
+ * BoxDouble Shared Slice
+ *
+ * - **API ID**: `box_double`
+ * - **Description**: BoxDouble
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxDoubleSlice = prismic.SharedSlice<'box_double', BoxDoubleSliceVariation>;
+
+/**
+ * Default variation for BoxSingle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxSingleSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *BoxSingle*
+ */
+type BoxSingleSliceVariation = BoxSingleSliceDefault;
+
+/**
+ * BoxSingle Shared Slice
+ *
+ * - **API ID**: `box_single`
+ * - **Description**: BoxSingle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxSingleSlice = prismic.SharedSlice<'box_single', BoxSingleSliceVariation>;
+
+/**
+ * Default variation for BoxTripple Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxTrippleSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *BoxTripple*
+ */
+type BoxTrippleSliceVariation = BoxTrippleSliceDefault;
+
+/**
+ * BoxTripple Shared Slice
+ *
+ * - **API ID**: `box_tripple`
+ * - **Description**: BoxTripple
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BoxTrippleSlice = prismic.SharedSlice<'box_tripple', BoxTrippleSliceVariation>;
+
+/**
+ * Default variation for Cards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Cards*
+ */
+type CardsSliceVariation = CardsSliceDefault;
+
+/**
+ * Cards Shared Slice
+ *
+ * - **API ID**: `cards`
+ * - **Description**: Cards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
+
+/**
+ * Default variation for Chapter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChapterSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Chapter*
+ */
+type ChapterSliceVariation = ChapterSliceDefault;
+
+/**
+ * Chapter Shared Slice
+ *
+ * - **API ID**: `chapter`
+ * - **Description**: Chapter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChapterSlice = prismic.SharedSlice<'chapter', ChapterSliceVariation>;
+
+/**
+ * Default variation for Chat Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChatSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Chat*
+ */
+type ChatSliceVariation = ChatSliceDefault;
+
+/**
+ * Chat Shared Slice
+ *
+ * - **API ID**: `chat`
+ * - **Description**: Chat
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChatSlice = prismic.SharedSlice<'chat', ChatSliceVariation>;
+
+/**
+ * Default variation for Cloud Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CloudSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Cloud*
+ */
+type CloudSliceVariation = CloudSliceDefault;
+
+/**
+ * Cloud Shared Slice
+ *
+ * - **API ID**: `cloud`
+ * - **Description**: Cloud
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CloudSlice = prismic.SharedSlice<'cloud', CloudSliceVariation>;
+
+/**
+ * Default variation for DogBreak Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DogBreakSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *DogBreak*
+ */
+type DogBreakSliceVariation = DogBreakSliceDefault;
+
+/**
+ * DogBreak Shared Slice
+ *
+ * - **API ID**: `dog_break`
+ * - **Description**: DogBreak
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DogBreakSlice = prismic.SharedSlice<'dog_break', DogBreakSliceVariation>;
+
+/**
+ * Default variation for Expertise Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExpertiseSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Expertise*
+ */
+type ExpertiseSliceVariation = ExpertiseSliceDefault;
+
+/**
+ * Expertise Shared Slice
+ *
+ * - **API ID**: `expertise`
+ * - **Description**: Expertise
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExpertiseSlice = prismic.SharedSlice<'expertise', ExpertiseSliceVariation>;
+
+/**
+ * Default variation for Headline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeadlineSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Headline*
+ */
+type HeadlineSliceVariation = HeadlineSliceDefault;
+
+/**
+ * Headline Shared Slice
+ *
+ * - **API ID**: `headline`
+ * - **Description**: Headline
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariation>;
+
+/**
+ * Default variation for Image Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Image*
+ */
+type ImageSliceVariation = ImageSliceDefault;
+
+/**
+ * Image Shared Slice
+ *
+ * - **API ID**: `image`
+ * - **Description**: Image
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
+
+/**
+ * Default variation for List Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *List*
+ */
+type ListSliceVariation = ListSliceDefault;
+
+/**
+ * List Shared Slice
+ *
+ * - **API ID**: `list`
+ * - **Description**: List
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListSlice = prismic.SharedSlice<'list', ListSliceVariation>;
+
+/**
+ * Default variation for Logos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Logos*
+ */
+type LogosSliceVariation = LogosSliceDefault;
+
+/**
+ * Logos Shared Slice
+ *
+ * - **API ID**: `logos`
+ * - **Description**: Logos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
+
+/**
+ * Default variation for Newsletter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Newsletter*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * Newsletter Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<'newsletter', NewsletterSliceVariation>;
+
+/**
+ * Default variation for Opener1 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Opener1SliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Opener1*
+ */
+type Opener1SliceVariation = Opener1SliceDefault;
+
+/**
+ * Opener1 Shared Slice
+ *
+ * - **API ID**: `opener1`
+ * - **Description**: Opener1
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Opener1Slice = prismic.SharedSlice<'opener1', Opener1SliceVariation>;
+
+/**
+ * Default variation for Opener2 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Opener2SliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Opener2*
+ */
+type Opener2SliceVariation = Opener2SliceDefault;
+
+/**
+ * Opener2 Shared Slice
+ *
+ * - **API ID**: `opener2`
+ * - **Description**: Opener2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Opener2Slice = prismic.SharedSlice<'opener2', Opener2SliceVariation>;
+
+/**
+ * Default variation for Slider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Slider*
+ */
+type SliderSliceVariation = SliderSliceDefault;
+
+/**
+ * Slider Shared Slice
+ *
+ * - **API ID**: `slider`
+ * - **Description**: Slider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSlice = prismic.SharedSlice<'slider', SliderSliceVariation>;
+
+/**
+ * Default variation for Text Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Text*
+ */
+type TextSliceVariation = TextSliceDefault;
+
+/**
+ * Text Shared Slice
+ *
+ * - **API ID**: `text`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
+
+/**
+ * Default variation for TextBig Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBigSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *TextBig*
+ */
+type TextBigSliceVariation = TextBigSliceDefault;
+
+/**
+ * TextBig Shared Slice
+ *
+ * - **API ID**: `text_big`
+ * - **Description**: TextBig
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBigSlice = prismic.SharedSlice<'text_big', TextBigSliceVariation>;
+
+/**
+ * Default variation for Video Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Video*
+ */
+type VideoSliceVariation = VideoSliceDefault;
+
+/**
+ * Video Shared Slice
+ *
+ * - **API ID**: `video`
+ * - **Description**: Video
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoSlice = prismic.SharedSlice<'video', VideoSliceVariation>;
+
+/**
+ * Default variation for VideoGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoGallerySliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *VideoGallery*
+ */
+type VideoGallerySliceVariation = VideoGallerySliceDefault;
+
+/**
+ * VideoGallery Shared Slice
+ *
+ * - **API ID**: `video_gallery`
+ * - **Description**: VideoGallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoGallerySlice = prismic.SharedSlice<'video_gallery', VideoGallerySliceVariation>;
+
+/**
+ * Item in *Welcome → Default → Primary → Featured*
+ */
+export interface WelcomeSliceDefaultPrimaryFeaturedItem {
+	/**
+	 * Project field in *Welcome → Default → Primary → Featured*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[].project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'work'>;
+
+	/**
+	 * Image field in *Welcome → Default → Primary → Featured*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video Url field in *Welcome → Default → Primary → Featured*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Duration field in *Welcome → Default → Primary → Featured*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[].video_duration
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	video_duration: prismic.NumberField;
+
+	/**
+	 * Video Poster field in *Welcome → Default → Primary → Featured*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Welcome → Default → Primary*
+ */
+export interface WelcomeSliceDefaultPrimary {
+	/**
+	 * Featured field in *Welcome → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.featured[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	featured: prismic.GroupField<Simplify<WelcomeSliceDefaultPrimaryFeaturedItem>>;
+}
+
+/**
+ * Default variation for Welcome Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WelcomeSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<WelcomeSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Welcome*
+ */
+type WelcomeSliceVariation = WelcomeSliceDefault;
+
+/**
+ * Welcome Shared Slice
+ *
+ * - **API ID**: `welcome`
+ * - **Description**: Welcome
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WelcomeSlice = prismic.SharedSlice<'welcome', WelcomeSliceVariation>;
+
+/**
+ * Default variation for Work Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Work*
+ */
+type WorkSliceVariation = WorkSliceDefault;
+
+/**
+ * Work Shared Slice
+ *
+ * - **API ID**: `work`
+ * - **Description**: Work
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkSlice = prismic.SharedSlice<'work', WorkSliceVariation>;
 
 declare module '@prismicio/client' {
 	interface CreateClient {
@@ -133,14 +1058,96 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			NavigationBottomDocument,
+			NavigationBottomDocumentData,
+			NavigationBottomDocumentDataNavigationItem,
+			NavigationTopDocument,
+			NavigationTopDocumentData,
+			NavigationTopDocumentDataNavigationItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			WorkDocument,
+			WorkDocumentData,
+			WorkDocumentDataSlicesSlice,
 			AllDocumentTypes,
-			RichTextSlice,
-			RichTextSliceDefaultPrimary,
-			RichTextSliceVariation,
-			RichTextSliceDefault
+			AccordeonSlice,
+			AccordeonSliceVariation,
+			AccordeonSliceDefault,
+			BoxCenterSlice,
+			BoxCenterSliceVariation,
+			BoxCenterSliceDefault,
+			BoxDoubleSlice,
+			BoxDoubleSliceVariation,
+			BoxDoubleSliceDefault,
+			BoxSingleSlice,
+			BoxSingleSliceVariation,
+			BoxSingleSliceDefault,
+			BoxTrippleSlice,
+			BoxTrippleSliceVariation,
+			BoxTrippleSliceDefault,
+			CardsSlice,
+			CardsSliceVariation,
+			CardsSliceDefault,
+			ChapterSlice,
+			ChapterSliceVariation,
+			ChapterSliceDefault,
+			ChatSlice,
+			ChatSliceVariation,
+			ChatSliceDefault,
+			CloudSlice,
+			CloudSliceVariation,
+			CloudSliceDefault,
+			DogBreakSlice,
+			DogBreakSliceVariation,
+			DogBreakSliceDefault,
+			ExpertiseSlice,
+			ExpertiseSliceVariation,
+			ExpertiseSliceDefault,
+			HeadlineSlice,
+			HeadlineSliceVariation,
+			HeadlineSliceDefault,
+			ImageSlice,
+			ImageSliceVariation,
+			ImageSliceDefault,
+			ListSlice,
+			ListSliceVariation,
+			ListSliceDefault,
+			LogosSlice,
+			LogosSliceVariation,
+			LogosSliceDefault,
+			NewsletterSlice,
+			NewsletterSliceVariation,
+			NewsletterSliceDefault,
+			Opener1Slice,
+			Opener1SliceVariation,
+			Opener1SliceDefault,
+			Opener2Slice,
+			Opener2SliceVariation,
+			Opener2SliceDefault,
+			SliderSlice,
+			SliderSliceVariation,
+			SliderSliceDefault,
+			TextSlice,
+			TextSliceVariation,
+			TextSliceDefault,
+			TextBigSlice,
+			TextBigSliceVariation,
+			TextBigSliceDefault,
+			VideoSlice,
+			VideoSliceVariation,
+			VideoSliceDefault,
+			VideoGallerySlice,
+			VideoGallerySliceVariation,
+			VideoGallerySliceDefault,
+			WelcomeSlice,
+			WelcomeSliceDefaultPrimaryFeaturedItem,
+			WelcomeSliceDefaultPrimary,
+			WelcomeSliceVariation,
+			WelcomeSliceDefault,
+			WorkSlice,
+			WorkSliceVariation,
+			WorkSliceDefault
 		};
 	}
 }

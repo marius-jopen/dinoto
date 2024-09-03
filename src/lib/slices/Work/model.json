@@ -1,0 +1,18 @@
+{
+  "id": "work",
+  "type": "SharedSlice",
+  "name": "Work",
+  "description": "Work",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

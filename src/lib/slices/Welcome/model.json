@@ -1,0 +1,68 @@
+{
+  "id": "welcome",
+  "type": "SharedSlice",
+  "name": "Welcome",
+  "description": "Welcome",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "featured": {
+          "type": "Group",
+          "config": {
+            "label": "Featured",
+            "repeat": true,
+            "fields": {
+              "project": {
+                "type": "Link",
+                "config": {
+                  "label": "Project",
+                  "select": "document",
+                  "customtypes": [
+                    "work"
+                  ]
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video_url": {
+                "type": "Text",
+                "config": {
+                  "label": "Video Url",
+                  "placeholder": ""
+                }
+              },
+              "video_duration": {
+                "type": "Number",
+                "config": {
+                  "label": "Video Duration",
+                  "placeholder": ""
+                }
+              },
+              "video_poster": {
+                "type": "Image",
+                "config": {
+                  "label": "Video Poster",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

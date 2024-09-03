@@ -1,0 +1,18 @@
+{
+  "id": "text_big",
+  "type": "SharedSlice",
+  "name": "TextBig",
+  "description": "TextBig",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

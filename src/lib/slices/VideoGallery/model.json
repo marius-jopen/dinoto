@@ -1,0 +1,18 @@
+{
+  "id": "video_gallery",
+  "type": "SharedSlice",
+  "name": "VideoGallery",
+  "description": "VideoGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}
