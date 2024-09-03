@@ -5,8 +5,13 @@
 	import Footer from '$lib/components/footer.svelte';
 	import RelatedProjects from '$lib/components/related-projects.svelte';
 	import NextProject from '$lib/components/next-project.svelte';
+	import { workStore } from '$lib/stores'; // Import the store
 
 	export let data;
+
+	let work = data.work;
+
+	workStore.set(work);
 
 	console.log(data)
 </script>

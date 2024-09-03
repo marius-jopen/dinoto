@@ -1,3 +1,9 @@
+<script>
+    export let data
+</script>
+
 <div>
-    Project Item
+    <a href="work/{data.uid}">
+        {data.data.title[0]?.text}
+    </a>
 </div>

@@ -3,10 +3,15 @@
 	import { components } from '$lib/slices';
 	import Header from '$lib/components/header.svelte';
 	import Footer from '$lib/components/footer.svelte';
+	import { workStore } from '$lib/stores'; // Import the store
 
 	export let data;
 
-	console.log(data)
+	let work = data.work;
+
+	workStore.set(work);
+
+	console.log(data);
 </script>
 
 <Header data={data.navigation_top} />
