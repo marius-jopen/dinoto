@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --d-black: #313131;
+    --d-lightGray: #F4F4F4;
+    --d-darkGray: #C0C0C0;
+    --d-lightGreen: #9DFF3A;
+    --d-darkGreen: #54AB00;
+}
 h1 {
     font-family: "Circular Std";
     font-size: 85px;

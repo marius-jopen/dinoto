@@ -4,14 +4,14 @@
 	import Header from '$lib/components/header.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import { workStore } from '$lib/stores';
-	import { getBackgroundClass } from '../../../lib/components/background-styles';
+	import { backgroundColor } from '../../../lib/components/color-styles';
 
 	export let data;
 
 	let work = data.work;
 	let styleClass
 	
-	$: styleClass = getBackgroundClass(data.page.data.background);
+	$: styleClass = backgroundColor(data.page.data.background);
 	
 	workStore.set(work);
 

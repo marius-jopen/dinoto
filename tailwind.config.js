@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        d_black: "#313131",
-        d_lightGray: "#F4F4F4",
-        d_darkGray: "#C0C0C0",
-        d_lightGreen: "#9DFF3A",
-        d_darkGreen: "#54AB00",
+        'd_black': 'var(--d-black)',
+        'd_lightGray': 'var(--d-lightGray)',
+        'd_darkGray': 'var(--d-darkGray)',
+        'd_lightGreen': 'var(--d-lightGreen)',
+        'd_darkGreen': 'var(--d-darkGreen)',
       }
     }
   },
