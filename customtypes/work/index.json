@@ -21,6 +21,15 @@
 					"single": "heading1"
 				}
 			},
+			"background": {
+				"type": "Select",
+				"config": {
+					"label": "Background",
+					"placeholder": "",
+					"options": ["Light Gray", "Light Green", "Dark gray", "Black"],
+					"default_value": "Light Gray"
+				}
+			},
 			"items": {
 				"type": "Group",
 				"config": {

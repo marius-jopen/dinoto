@@ -5,19 +5,25 @@
 	import Footer from '$lib/components/footer.svelte';
 	import RelatedProjects from '$lib/components/related-projects.svelte';
 	import NextProject from '$lib/components/next-project.svelte';
-	import { workStore } from '$lib/stores'; // Import the store
+	import { workStore } from '$lib/stores';
+	import { getBackgroundClass } from '../../../../lib/components/background-styles';
 
 	export let data;
 
 	let work = data.work;
+	let styleClass
+	
+	$: styleClass = getBackgroundClass(data.page.data.background);
 
 	workStore.set(work);
 
 	console.log(data)
 </script>
 
-<Header data={data.navigation_top} />
-<SliceZone slices={data.page.data.slices} {components} />
-<RelatedProjects />
-<NextProject />
-<Footer data={data.navigation_bottom} />
+<div class="{styleClass}">
+	<Header data={data.navigation_top} />
+	<SliceZone slices={data.page.data.slices} {components} />
+	<RelatedProjects />
+	<NextProject />
+	<Footer data={data.navigation_bottom} />
+</div>

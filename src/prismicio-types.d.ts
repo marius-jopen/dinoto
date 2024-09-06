@@ -160,6 +160,18 @@ interface PageDocumentData {
 	title: prismic.TitleField;
 
 	/**
+	 * Background field in *Page*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: page.background
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	background: prismic.SelectField<'Light Gray' | 'Light Green' | 'Dark gray' | 'Black', 'filled'>;
+
+	/**
 	 * Slice Zone field in *Page*
 	 *
 	 * - **Field Type**: Slice Zone

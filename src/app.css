@@ -21,3 +21,19 @@ h2 {
 .box {
     @apply mx-6;
 }
+
+.style-light-gray {
+    @apply bg-d_lightGray text-d_black;
+}
+
+.style-light-green {
+    @apply bg-d_lightGreen text-d_black; 
+}
+
+.style-dark-gray {
+    @apply bg-d_darkGray text-d_black;
+}
+
+.style-black {
+    @apply bg-d_black text-d_lightGray;
+}

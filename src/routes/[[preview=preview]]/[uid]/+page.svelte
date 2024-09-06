@@ -3,17 +3,24 @@
 	import { components } from '$lib/slices';
 	import Header from '$lib/components/header.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	import { workStore } from '$lib/stores'; // Import the store
+	import { workStore } from '$lib/stores';
+	import { getBackgroundClass } from '../../../lib/components/background-styles';
 
 	export let data;
 
 	let work = data.work;
-
+	let styleClass
+	
+	$: styleClass = getBackgroundClass(data.page.data.background);
+	
 	workStore.set(work);
+
 
 	console.log(data);
 </script>
 
-<Header data={data.navigation_top} />
-<SliceZone slices={data.page.data.slices} {components} />
-<Footer data={data.navigation_bottom} />
+<div class="{styleClass}">
+	<Header data={data.navigation_top} />
+	<SliceZone slices={data.page.data.slices} {components} />
+	<Footer data={data.navigation_bottom} />
+</div>
