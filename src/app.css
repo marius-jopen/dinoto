@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    font-family: "Circular Std";
+    font-size: 85px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+}
+
+h2 {
+    font-family: "Circular Std";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+}
+
+.box {
+    @apply mx-6;
+}
