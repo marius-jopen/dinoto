@@ -20,7 +20,6 @@
 </script>
 
 <div class="{styleClass}">
-	<Header data={data.navigation_top} />
 	<SliceZone slices={data.page.data.slices} {components} />
 	<Footer style={styleTextClass} data={data.navigation_bottom} />
 </div>

@@ -17,13 +17,11 @@
         </g>
         <defs>
         <clipPath id="clip0_68_3172">
-        <rect width="1588" height="424" fill="white"/>
+        <rect width="1588" height="424" fill="{style}"/>
         </clipPath>
         </defs>
     </svg>
         
-
-
     {#each data.data.navigation as item}
         <nav>
             <PrismicLink field={item.link}>
