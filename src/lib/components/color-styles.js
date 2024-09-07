@@ -3,9 +3,11 @@ export function backgroundColor(style) {
         return 'style-light-gray';
     } else if (style === 'Light Green') {
         return 'style-light-green';
+    } else if (style === 'White') {
+        return 'style-white';
     } else if (style === 'Green') {
         return 'style-dark-green';
-    } else if (style === 'Dark gray') {
+    } else if (style === 'Dark Gray') {
         return 'style-dark-gray';
     } else if (style === 'Black') {
         return 'style-black';
@@ -14,13 +16,15 @@ export function backgroundColor(style) {
 }
 
 export function textColor(style) {
-    if (style === 'Gray') {
+    if (style === 'Dark Gray') {
         return 'var(--d-darkGray)';
     } else if (style === 'Light Green') {
         return 'var(--d-lightGreen)';
+    } else if (style === 'White') {
+        return 'var(--d-white)';
     } else if (style === 'Green') {
         return 'var(--d-darkGreen)';
-    } else if (style === 'Light gray') {
+    } else if (style === 'Light Gray') {
         return 'var(--d-lightGray)';
     } else if (style === 'Black') {
         return 'var(--d-black)';

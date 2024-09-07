@@ -6,6 +6,7 @@
     --d-black: #313131;
     --d-lightGray: #F4F4F4;
     --d-darkGray: #C0C0C0;
+    --d-white: #ffffff;
     --d-lightGreen: #9DFF3A;
     --d-darkGreen: #54AB00;
 }
@@ -35,6 +36,10 @@ p {
 
 .box {
     @apply mx-6;
+}
+
+.style-white {
+    @apply bg-d_white text-d_black;
 }
 
 .style-light-gray {

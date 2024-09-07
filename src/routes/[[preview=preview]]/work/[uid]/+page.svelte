@@ -6,7 +6,7 @@
 	import RelatedProjects from '$lib/components/related-projects.svelte';
 	import NextProject from '$lib/components/next-project.svelte';
 	import { workStore } from '$lib/stores';
-	import { backgroundColor } from '../../../../lib/components/color-styles';
+	import { backgroundColor, textColor } from '../../../../lib/components/color-styles';
 
 	export let data;
 
@@ -14,6 +14,7 @@
 	let styleClass
 	
 	$: styleClass = backgroundColor(data.page.data.background);
+	$: styleTextClass = textColor(data.page.data.logoColor);
 
 	workStore.set(work);
 
@@ -25,5 +26,5 @@
 	<SliceZone slices={data.page.data.slices} {components} />
 	<RelatedProjects />
 	<NextProject />
-	<Footer data={data.navigation_bottom} />
+	<Footer style={styleTextClass} data={data.navigation_bottom} />
 </div>

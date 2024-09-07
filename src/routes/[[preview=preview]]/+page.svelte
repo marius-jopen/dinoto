@@ -4,7 +4,7 @@
 	import Header from '$lib/components/header.svelte';
 	import Footer from '$lib/components/footer.svelte';
 	import { workStore } from '$lib/stores';
-	import { backgroundColor } from '../../lib/components/color-styles';
+	import { backgroundColor, textColor } from '../../lib/components/color-styles';
 
 	export let data;
 
@@ -12,6 +12,7 @@
 	let styleClass
 	
 	$: styleClass = backgroundColor(data.page.data.background);
+	$: styleTextClass = textColor(data.page.data.logoColor);
 	
 	workStore.set(work);
 
@@ -21,5 +22,5 @@
 <div class="{styleClass}">
 	<Header data={data.navigation_top} />
 	<SliceZone slices={data.page.data.slices} {components} />
-	<Footer data={data.navigation_bottom} />
+	<Footer style={styleTextClass} data={data.navigation_bottom} />
 </div>

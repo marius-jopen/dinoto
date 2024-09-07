@@ -26,7 +26,16 @@
 				"config": {
 					"label": "Background",
 					"placeholder": "",
-					"options": ["Light Gray", "Light Green", "Dark gray", "Black"],
+					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
+					"default_value": "Light Gray"
+				}
+			},
+			"logoColor": {
+				"type": "Select",
+				"config": {
+					"label": "Logo Color",
+					"placeholder": "",
+					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
 					"default_value": "Light Gray"
 				}
 			},
