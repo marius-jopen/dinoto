@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Circular';
+    src: url('CircularStd-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    -webkit-appearance: none;
+    font-family: "Circular Std";
+}
+
 :root {
     --d-black: #313131;
     --d-lightGray: #F4F4F4;
@@ -12,7 +25,6 @@
 }
 
 h1 {
-    font-family: "Circular Std";
     font-size: 85px;
     font-style: normal;
     font-weight: 400;
@@ -20,7 +32,6 @@ h1 {
 }
 
 h2 {
-    font-family: "Circular Std";
     font-size: 50px;
     font-style: normal;
     font-weight: 400;
