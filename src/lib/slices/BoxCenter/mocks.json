@@ -18,6 +18,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "appearance",
 				"type": "Text"
+			},
+			"color": {
+				"__TYPE__": "FieldContent",
+				"value": "White",
+				"type": "Select"
 			}
 		},
 		"items": []

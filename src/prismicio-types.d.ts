@@ -169,7 +169,25 @@ interface PageDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
-	background: prismic.SelectField<'Light Gray' | 'Light Green' | 'Dark gray' | 'Black', 'filled'>;
+	background: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
+
+	/**
+	 * Logo Color field in *Page*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: page.logoColor
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	logoColor: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
 
 	/**
 	 * Slice Zone field in *Page*
@@ -315,6 +333,36 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	title: prismic.TitleField;
+
+	/**
+	 * Background field in *Work*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: work.background
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	background: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
+
+	/**
+	 * Logo Color field in *Work*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: work.logoColor
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	logoColor: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
 
 	/**
 	 * Items field in *Work*
@@ -516,7 +564,7 @@ export interface BoxCenterSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Gray Light' | 'Dark Gray' | 'Green Light' | 'Dark Green' | 'Black',
 		'filled'
 	>;
 }
@@ -1064,7 +1112,7 @@ export interface ChapterSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Gray Light' | 'Dark Gray' | 'Green Light' | 'Green' | 'Black',
 		'filled'
 	>;
 

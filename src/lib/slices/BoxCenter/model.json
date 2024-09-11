@@ -36,9 +36,9 @@
             "options": [
               "White",
               "Gray Light",
-              "Gray",
+              "Dark Gray",
               "Green Light",
-              "Green",
+              "Dark Green",
               "Black"
             ],
             "default_value": "White"

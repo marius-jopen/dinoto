@@ -1,9 +1,23 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
+	import { PrismicRichText } from "@prismicio/svelte";
+	import { backgroundColor } from '../../components/color-styles';
 
 	export let slice: Content.BoxCenterSlice;
+
+	let styleClass
+	$: styleClass = backgroundColor(slice.primary.color);
+
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+<section class="box flex justify-center">
+	<div class="{styleClass} w-5/12 py-8 px-8 rounded-3xl relative">
+		<PrismicRichText field={slice.primary.text} />
+
+		<div class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%] mt-2">
+			{slice.primary.emoji}
+		</div>
+	</div>
+
+
 </section>
