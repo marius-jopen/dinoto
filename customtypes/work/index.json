@@ -21,15 +21,6 @@
 					"single": "heading1"
 				}
 			},
-			"background": {
-				"type": "Select",
-				"config": {
-					"label": "Background",
-					"placeholder": "",
-					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
-					"default_value": "Light Gray"
-				}
-			},
 			"logoColor": {
 				"type": "Select",
 				"config": {
@@ -78,6 +69,22 @@
 							}
 						}
 					}
+				}
+			},
+			"background": {
+				"type": "Select",
+				"config": {
+					"label": "Background",
+					"placeholder": "",
+					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
+					"default_value": "Light Gray"
+				}
+			},
+			"slide_time": {
+				"type": "Number",
+				"config": {
+					"label": "Slide Time",
+					"placeholder": ""
 				}
 			},
 			"slices": {

@@ -335,21 +335,6 @@ interface WorkDocumentData {
 	title: prismic.TitleField;
 
 	/**
-	 * Background field in *Work*
-	 *
-	 * - **Field Type**: Select
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: Light Gray
-	 * - **API ID Path**: work.background
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#select
-	 */
-	background: prismic.SelectField<
-		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
-		'filled'
-	>;
-
-	/**
 	 * Logo Color field in *Work*
 	 *
 	 * - **Field Type**: Select
@@ -374,6 +359,32 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
+
+	/**
+	 * Background field in *Work*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: work.background
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	background: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
+
+	/**
+	 * Slide Time field in *Work*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.slide_time
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	slide_time: prismic.NumberField;
 
 	/**
 	 * Slice Zone field in *Work*
@@ -2225,46 +2236,6 @@ export interface WelcomeSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	project: prismic.ContentRelationshipField<'work'>;
-
-	/**
-	 * Image field in *Welcome → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.items[].image
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	image: prismic.ImageField<never>;
-
-	/**
-	 * Video Url field in *Welcome → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.items[].video_url
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	video_url: prismic.KeyTextField;
-
-	/**
-	 * Video Duration field in *Welcome → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Number
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.items[].video_duration
-	 * - **Documentation**: https://prismic.io/docs/field#number
-	 */
-	video_duration: prismic.NumberField;
-
-	/**
-	 * Video Poster field in *Welcome → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: welcome.default.primary.items[].video_poster
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	video_poster: prismic.ImageField<never>;
 }
 
 /**

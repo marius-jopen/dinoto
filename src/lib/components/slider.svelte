@@ -1,0 +1,150 @@
+<script>
+  import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+  import '@splidejs/svelte-splide/css';
+  import { onMount, onDestroy } from 'svelte';
+  import { writable } from 'svelte/store';
+  import SlideImage from './slide-image.svelte';
+  import SlideVideo from './slide-video.svelte';
+  import SlideText from './slide-text.svelte';
+
+  export let data
+  export let type
+
+  let splideOptions = {
+    rewind: true,
+    arrows: false,
+    pagination: false,
+    pauseOnHover: false,
+    type: "fade"
+  };
+
+  let slider;
+  
+  // Dynamic array with each slide having a number and a specific time for display
+  let slides = data
+
+  let numberOfSlides = slides.length;
+  let progressBars = writable(new Array(numberOfSlides).fill(0)); // Manage progress bar widths
+  let lastSlideIndex = numberOfSlides - 1; // Index of the last slide
+  let intervalId; // Interval ID to control the timer
+  let currentSlideIndex = 0;
+
+  // Function to manually autoplay each slide according to its specific slide_time
+  const playSlide = (splide) => {
+    const slide = slides[currentSlideIndex]; // Get current slide
+
+    // Update the progress bar for the active slide
+    let progress = 0;
+    const progressInterval = 10; // Frequency to update the progress bar (in ms)
+    const progressStep = (100 / (slide.slide_time / progressInterval)); // How much the progress bar moves per update
+
+    progressBars.update(bars => {
+      bars[currentSlideIndex] = 0;
+      return [...bars];
+    });
+
+    clearInterval(intervalId); // Clear the previous timer
+    intervalId = setInterval(() => {
+      progressBars.update(bars => {
+        bars[currentSlideIndex] = progress >= 99 ? 100 : Math.min(progress, 100);
+        return [...bars];
+      });
+
+      progress += progressStep;
+      if (progress >= 100) {
+        clearInterval(intervalId);
+        // If it's the last slide, reset progress bars before going back to the first slide
+        if (currentSlideIndex === lastSlideIndex) {
+          progressBars.set(new Array(numberOfSlides).fill(0)); // Reset all progress bars
+        }
+
+        // Move to the next slide
+        currentSlideIndex = (currentSlideIndex + 1) % numberOfSlides;
+        splide.go(currentSlideIndex); // Move to the next slide
+        playSlide(splide); // Restart autoplay for the next slide
+      }
+    }, progressInterval);
+  };
+
+  // Jump to a specific slide and adjust progress bars
+  const jumpToSlide = (index) => {
+    clearInterval(intervalId); // Stop the current autoplay
+
+    // Update progress bars:
+    // - Slides before the selected one should be full (100%)
+    // - The selected slide should start animating (0%)
+    // - Slides after the selected one should be empty (0%)
+    progressBars.update(bars => {
+      return bars.map((_, i) => {
+        if (i < index) return 100; // Full for slides before
+        if (i === index) return 0; // Start animating for selected slide
+        return 0; // Empty for slides after
+      });
+    });
+
+    currentSlideIndex = index; // Set the current slide index to the clicked one
+    slider.splide.go(currentSlideIndex); // Navigate to the selected slide
+    playSlide(slider.splide); // Restart autoplay for the clicked slide
+  };
+
+  // Move to the next slide when the slideshow is clicked
+  const nextSlide = () => {
+    let nextIndex = (currentSlideIndex + 1) % numberOfSlides; // Determine the next slide
+    jumpToSlide(nextIndex); // Jump to the next slide
+  };
+
+  onMount(() => {
+    if (slider && slider.splide) {
+      playSlide(slider.splide); // Start autoplay when mounted
+    }
+  });
+
+  onDestroy(() => {
+    clearInterval(intervalId); // Clear the timer when the component is destroyed
+  });
+</script>
+
+<div class="relative h-full" on:click={nextSlide}>
+  <div class="gap-4 flex px-4 pt-4 absolute top-0 left-0 w-full z-10">
+    {#each $progressBars as barWidth, index}
+      <div class="w-full">
+        <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => jumpToSlide(index)}>
+          <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
+        </div>
+        <p class="pt-1 px-1 text-green-500">
+          {slides[index].data.title[0].text}
+        </p>
+      </div>
+    {/each}
+  </div>
+  
+  <Splide class="h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
+    <SplideTrack>
+      {#each slides as slide, i}
+        <SplideSlide>
+          <!-- {slide.uid} - {slide.slide_time}ms
+          <p>{i === currentSlideIndex ? true : false}</p> -->
+          <SlideVideo type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideText type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideImage type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+        </SplideSlide>
+      {/each}
+    </SplideTrack>
+  </Splide>
+</div>
+
+<style>
+  .my-slide-progress {
+    border: 2px solid green;
+    width: 100%;
+    height: 13px;
+    margin-top: 10px;
+    cursor: pointer; /* Add pointer cursor to indicate clickability */
+  }
+
+  .my-slide-progress-bar {
+    background-color: green;
+    height: 100%;
+    width: 0;
+  }
+</style>
