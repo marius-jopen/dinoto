@@ -119,20 +119,6 @@
   }
 </script>
 
-function mouseEnter() {
-  hover = true; // Set hover to true when mouse enters
-  if (slider && slider.splide) {
-    slider.splide.play(); // Resume slider
-  }
-}
-
-function mouseLeave() {
-  hover = false; // Set hover to false when mouse leaves
-  if (slider && slider.splide) {
-    slider.splide.pause(); // Pause slider
-  }
-}
-
 <div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
   {#if !clickable}
     <div class="gap-4 flex px-4 pt-4 absolute top-0 left-0 w-full z-10">
