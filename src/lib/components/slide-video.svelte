@@ -26,13 +26,16 @@
     }
 </script>
 
-<div>
-    <video
-        bind:this={videoElement}
-        poster=""
-        src={data.video_url}
-        muted
-        loop
-        autoplay={status}
-    />
-</div>
+{#if data.video_url}    
+    <div>
+        <video
+            bind:this={videoElement}
+            class="aspect-video object-cover w-full"
+            poster=""
+            src={data.video_url}
+            muted
+            loop
+            autoplay={status}
+        />
+    </div>
+{/if}

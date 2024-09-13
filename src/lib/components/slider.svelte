@@ -9,6 +9,13 @@
 
   export let data
   export let type
+  export let clickable
+
+  let clickableProject = (type == "preview" && clickable == false) ? true : false
+  let hover = clickableProject ? false : true
+
+  console.log(clickableProject)
+  $: console.log(hover)
 
   let splideOptions = {
     rewind: true,
@@ -102,21 +109,47 @@
   onDestroy(() => {
     clearInterval(intervalId); // Clear the timer when the component is destroyed
   });
+
+  function mouseEnter() {
+    hover = clickableProject ? true : true
+  }
+
+  function mouseLeave() {
+    hover = clickableProject ? false : true
+  }
 </script>
 
-<div class="relative h-full" on:click={nextSlide}>
-  <div class="gap-4 flex px-4 pt-4 absolute top-0 left-0 w-full z-10">
-    {#each $progressBars as barWidth, index}
-      <div class="w-full">
-        <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => jumpToSlide(index)}>
-          <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
+function mouseEnter() {
+  hover = true; // Set hover to true when mouse enters
+  if (slider && slider.splide) {
+    slider.splide.play(); // Resume slider
+  }
+}
+
+function mouseLeave() {
+  hover = false; // Set hover to false when mouse leaves
+  if (slider && slider.splide) {
+    slider.splide.pause(); // Pause slider
+  }
+}
+
+<div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
+  {#if !clickable}
+    <div class="gap-4 flex px-4 pt-4 absolute top-0 left-0 w-full z-10">
+      {#each $progressBars as barWidth, index}
+        <div class="w-full {hover ? "" : "hidden"}">
+          <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => jumpToSlide(index)}>
+            <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
+          </div>
+          {#if type == "welcome"}
+            <p class="pt-1 px-1 text-green-500">
+              {slides[index].data.title[0].text}
+            </p>
+          {/if}
         </div>
-        <p class="pt-1 px-1 text-green-500">
-          {slides[index].data.title[0].text}
-        </p>
-      </div>
-    {/each}
-  </div>
+      {/each}
+    </div>
+  {/if}
   
   <Splide class="h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
     <SplideTrack>

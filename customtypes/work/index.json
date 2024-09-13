@@ -12,6 +12,13 @@
 					"label": "UID"
 				}
 			},
+			"slide_time": {
+				"type": "Number",
+				"config": {
+					"label": "Slide Time",
+					"placeholder": ""
+				}
+			},
 			"title": {
 				"type": "StructuredText",
 				"config": {
@@ -36,6 +43,13 @@
 					"label": "Items",
 					"repeat": true,
 					"fields": {
+						"slide_time": {
+							"type": "Number",
+							"config": {
+								"label": "slide_time",
+								"placeholder": ""
+							}
+						},
 						"text": {
 							"type": "StructuredText",
 							"config": {
@@ -80,11 +94,13 @@
 					"default_value": "Light Gray"
 				}
 			},
-			"slide_time": {
-				"type": "Number",
+			"clickable": {
+				"type": "Boolean",
 				"config": {
-					"label": "Slide Time",
-					"placeholder": ""
+					"label": "clickable",
+					"placeholder_false": "false",
+					"placeholder_true": "true",
+					"default_value": true
 				}
 			},
 			"slices": {

@@ -252,6 +252,16 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
  */
 export interface WorkDocumentDataItemsItem {
 	/**
+	 * slide_time field in *Work → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.items[].slide_time
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	slide_time: prismic.NumberField;
+
+	/**
 	 * Text field in *Work → Items*
 	 *
 	 * - **Field Type**: Rich Text
@@ -324,6 +334,17 @@ type WorkDocumentDataSlicesSlice =
  */
 interface WorkDocumentData {
 	/**
+	 * Slide Time field in *Work*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.slide_time
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	slide_time: prismic.NumberField;
+
+	/**
 	 * Title field in *Work*
 	 *
 	 * - **Field Type**: Title
@@ -376,15 +397,16 @@ interface WorkDocumentData {
 	>;
 
 	/**
-	 * Slide Time field in *Work*
+	 * clickable field in *Work*
 	 *
-	 * - **Field Type**: Number
+	 * - **Field Type**: Boolean
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.slide_time
+	 * - **Default Value**: true
+	 * - **API ID Path**: work.clickable
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#number
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
 	 */
-	slide_time: prismic.NumberField;
+	clickable: prismic.BooleanField;
 
 	/**
 	 * Slice Zone field in *Work*

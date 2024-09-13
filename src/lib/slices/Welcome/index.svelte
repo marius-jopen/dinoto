@@ -30,13 +30,12 @@
 
 
 
-<section class="h-[60vw]">
+<section>
     <div class="h-full relative">
-
         <Slider type="welcome" data={matchedProjects} />
 
-        <div class="absolute w-full bototm-0">
-            <div class="box pb-4">
+        <div class="absolute w-full bottom-0 left-0">
+            <div class="box">
                 <svg class="w-full h-auto" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_68_3172)">
                     <path d="M144.354 16.3383H0V415.555H143.802C264.005 415.555 344.331 339.545 344.331 216.223C344.331 92.9006 264.005 16.3383 144.354 16.3383ZM140.428 331.652H88.7516V100.219H140.428C201.654 100.219 251.654 136.256 251.654 216.201C251.654 296.146 201.654 331.63 140.428 331.63V331.652Z" fill="white"/>

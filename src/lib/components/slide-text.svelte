@@ -12,6 +12,12 @@
     }
 </script>
 
-<div>
-    <PrismicRichText field={data.text} />
-</div>
+{#if data.text.length > 0}
+    <div class="aspect-video w-full">
+        <div class="bg-green-200 h-full w-full flex justify-center flex-col">
+            <div class="text-center">
+                <PrismicRichText field={data.text} />
+            </div>
+        </div>
+    </div>
+{/if}

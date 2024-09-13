@@ -12,6 +12,8 @@
     }
 </script>
 
-<div>
-    <PrismicImage field={data.image} />
-</div>
+{#if data.image.url}    
+    <div class="w-full h-full">
+        <PrismicImage class="aspect-video w-full object-cover" field={data.image} />
+    </div>
+{/if}
