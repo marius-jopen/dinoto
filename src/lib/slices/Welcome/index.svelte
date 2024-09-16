@@ -6,6 +6,7 @@
 
 	export let slice: Content.WelcomeSlice;
 
+    let distance = 330
 	let work = get(workStore);
 	let defaultSlideTime = 2000;
 
@@ -53,7 +54,10 @@
                     </defs>
                 </svg>
             
-                <div class="flex gap-2 text-white">
+                <div 
+                class="flex gap-3 text-white uppercase p1 pt-3 pb-4"
+                style="margin-left: {distance}px"
+                >
                     <a href="/work">
                         Work
                     </a>

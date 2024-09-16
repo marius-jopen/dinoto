@@ -13,11 +13,16 @@
 body {
     -webkit-appearance: none;
     font-family: "Circular Std";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; 
 }
 
 :root {
     --d-black: #313131;
     --d-lightGray: #F4F4F4;
+    --d-mediumGray: #e6e6e6;
     --d-darkGray: #C0C0C0;
     --d-white: #ffffff;
     --d-lightGreen: #9DFF3A;
@@ -38,11 +43,11 @@ h2 {
     line-height: 110%;
 }
 
-p {
-    font-size: 20px;
+.p1 {
+    font-size: 30px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; 
+    line-height: 110%;
 }
 
 .box {

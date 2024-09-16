@@ -4,6 +4,7 @@
     export let time;
     export let status;
     export let type;
+    export let list; // Added list flag
 
     let welcomeVideoElement;
     let previewVideoElement;
@@ -13,12 +14,13 @@
         data = data.data.items[0];
     }
 
-    // Reactively control the welcome video playback and reset it on status change
+    // Reactively control the video playback and reset it on status or list change
     $: {
-        if (status && welcomeVideoElement && type === "welcome") {
+        // For the "welcome" video
+        if ((status || list) && welcomeVideoElement && type === "welcome") {
             clearTimeout(resetTimeout); // Clear any previous reset timeout
             welcomeVideoElement.currentTime = 0; // Reset video to the beginning
-            welcomeVideoElement.play(); // Play the video when status is true
+            welcomeVideoElement.play(); // Play the video when status is true or list is true
         } else if (welcomeVideoElement && type === "welcome") {
             resetTimeout = setTimeout(() => {
                 welcomeVideoElement.pause(); // Pause the video
@@ -26,10 +28,11 @@
             }, 1000);
         }
 
-        if (status && previewVideoElement && type === "preview") {
+        // For the "preview" video
+        if ((status || list) && previewVideoElement && type === "preview") {
             clearTimeout(resetTimeout); // Clear any previous reset timeout
             previewVideoElement.currentTime = 0; // Reset video to the beginning
-            // previewVideoElement.play(); // Play the video when status is true
+            previewVideoElement.play(); // Play the video when status or list is true
         } else if (previewVideoElement && type === "preview") {
             previewVideoElement.pause(); // Pause the video
         }
@@ -65,7 +68,7 @@
     </div>
 {/if}
 
-<!-- Render the preview video controlled by mouse hover -->
+<!-- Render the preview video controlled by mouse hover or autoplay if list is true -->
 {#if type === "preview" && data.video_url}
     <div>
         <video

@@ -345,30 +345,16 @@ interface WorkDocumentData {
 	slide_time: prismic.NumberField;
 
 	/**
-	 * Title field in *Work*
+	 * clickable field in *Work*
 	 *
-	 * - **Field Type**: Title
+	 * - **Field Type**: Boolean
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.title
+	 * - **Default Value**: true
+	 * - **API ID Path**: work.clickable
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
 	 */
-	title: prismic.TitleField;
-
-	/**
-	 * Logo Color field in *Work*
-	 *
-	 * - **Field Type**: Select
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: Light Gray
-	 * - **API ID Path**: work.logoColor
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#select
-	 */
-	logoColor: prismic.SelectField<
-		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
-		'filled'
-	>;
+	clickable: prismic.BooleanField;
 
 	/**
 	 * Items field in *Work*
@@ -380,6 +366,17 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
+
+	/**
+	 * Title field in *Work*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.TitleField;
 
 	/**
 	 * Background field in *Work*
@@ -397,16 +394,30 @@ interface WorkDocumentData {
 	>;
 
 	/**
-	 * clickable field in *Work*
+	 * Logo Color field in *Work*
 	 *
-	 * - **Field Type**: Boolean
+	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
-	 * - **Default Value**: true
-	 * - **API ID Path**: work.clickable
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: work.logoColor
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
-	clickable: prismic.BooleanField;
+	logoColor: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
+
+	/**
+	 * Client field in *Work*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.client
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	client: prismic.KeyTextField;
 
 	/**
 	 * Slice Zone field in *Work*

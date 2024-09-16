@@ -19,6 +19,15 @@
 					"placeholder": ""
 				}
 			},
+			"clickable": {
+				"type": "Boolean",
+				"config": {
+					"label": "clickable",
+					"placeholder_false": "false",
+					"placeholder_true": "true",
+					"default_value": true
+				}
+			},
 			"title": {
 				"type": "StructuredText",
 				"config": {
@@ -26,6 +35,24 @@
 					"placeholder": "",
 					"allowTargetBlank": true,
 					"single": "heading1"
+				}
+			},
+			"client": {
+				"type": "StructuredText",
+				"config": {
+					"label": "Client",
+					"placeholder": "",
+					"allowTargetBlank": true,
+					"single": "heading1"
+				}
+			},
+			"background": {
+				"type": "Select",
+				"config": {
+					"label": "Background",
+					"placeholder": "",
+					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
+					"default_value": "Light Gray"
 				}
 			},
 			"logoColor": {
@@ -83,24 +110,6 @@
 							}
 						}
 					}
-				}
-			},
-			"background": {
-				"type": "Select",
-				"config": {
-					"label": "Background",
-					"placeholder": "",
-					"options": ["Light Gray", "Light Green", "Dark gray", "Dark Green", "Black", "White"],
-					"default_value": "Light Gray"
-				}
-			},
-			"clickable": {
-				"type": "Boolean",
-				"config": {
-					"label": "clickable",
-					"placeholder_false": "false",
-					"placeholder_true": "true",
-					"default_value": true
 				}
 			},
 			"slices": {

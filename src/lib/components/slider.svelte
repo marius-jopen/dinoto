@@ -10,6 +10,7 @@
   export let data;
   export let type;
   export let clickable;
+  export let list = false
 
   let clickableProject = (type == "preview" && clickable == false) ? true : false;
   let hover = clickableProject ? false : true;
@@ -102,7 +103,7 @@
 
   onMount(() => {
     if (slider && slider.splide) {
-      if (!clickableProject) {
+      if (!clickableProject || list) {
         playSlide(slider.splide); // Start autoplay when mounted
       }
     }
@@ -140,16 +141,20 @@
 </script>
 
 <div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
-  {#if !clickable}
-    <div class="gap-4 flex px-4 pt-4 absolute top-0 left-0 w-full z-10">
+  {#if !clickable }
+    <div class="gap-4 flex px-6 pt-4 absolute top-0 left-0 w-full z-10">
       {#each $progressBars as barWidth, index}
-        <div class="w-full {hover ? "" : "hidden"}">
+        <div class="w-full {hover || list ? "" : "hidden"}">
           <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => jumpToSlide(index)}>
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
-            <p class="pt-1 px-1 text-white">
-              {slides[index].data.title[0].text}
+            <p class="pt-2 px-1 text-white">
+              {slides[index].data.client[0].text}
+
+              <span class="opacity-50">
+                {slides[index].data.title[0].text}
+              </span>
             </p>
           {/if}
         </div>
@@ -161,7 +166,7 @@
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>
-          <SlideVideo type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideVideo list={list}  type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
           <SlideText type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
           <SlideImage type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
         </SplideSlide>

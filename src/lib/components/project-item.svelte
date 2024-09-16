@@ -33,7 +33,11 @@
         <Slider clickable={data.data.clickable} type="preview" data={previews} />
     </div>
 
-    <div class="bg-white rounded-b-3xl pb-3 pt-10 px-3 -mt-8">
-        {data.data.title[0]?.text}
+    <div class="bg-white rounded-b-3xl pb-4 pt-11 px-5 -mt-8">
+        {data.data.client[0]?.text}
+        
+        <span class="text-d_darkGray">
+            {data.data.title[0]?.text}
+        </span>
     </div>
 </div>
