@@ -14,8 +14,7 @@
   let clickableProject = (type == "preview" && clickable == false) ? true : false
   let hover = clickableProject ? false : true
 
-  console.log(clickableProject)
-  $: console.log(hover)
+  $: hover ? playSlider() : pauseSlider()
 
   let splideOptions = {
     rewind: true,
@@ -102,7 +101,9 @@
 
   onMount(() => {
     if (slider && slider.splide) {
-      playSlide(slider.splide); // Start autoplay when mounted
+      if (!clickableProject) {
+        playSlide(slider.splide); // Start autoplay when mounted
+      }
     }
   });
 
@@ -116,6 +117,18 @@
 
   function mouseLeave() {
     hover = clickableProject ? false : true
+  }
+
+  function pauseSlider() {
+    if (slider && slider.splide) {
+      clearInterval(intervalId);
+    }
+  }
+
+  function playSlider() {
+    if (slider && slider.splide) {
+      playSlide(slider.splide);
+    }
   }
 </script>
 
@@ -141,8 +154,6 @@
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>
-          <!-- {slide.uid} - {slide.slide_time}ms
-          <p>{i === currentSlideIndex ? true : false}</p> -->
           <SlideVideo type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
           <SlideText type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
           <SlideImage type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />

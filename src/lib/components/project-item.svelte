@@ -3,8 +3,6 @@
 
     export let data
 
-    console.log(data)
-
     let previews = data.data.items
 	let defaultSlideTime = 2000;
 
@@ -20,9 +18,6 @@
 		...item,
 		slide_time: getSlideTimes(previews)[index]
 	}));
-
-    // console.log(previews)
-
 </script>
 
 <div class="w-1/3">
@@ -36,7 +31,7 @@
         <div>
             {data.data.title[0]?.text}
 
-            <Slider clickable={false} type="preview" data={previews} />´
+            <Slider clickable={false} type="preview" data={previews} />
         </div>
     {/if}
 </div>
