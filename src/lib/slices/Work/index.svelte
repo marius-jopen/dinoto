@@ -20,12 +20,14 @@
 		.filter(Boolean);
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	{#if matchedProjects.length > 0}
-		{#each matchedProjects as project}
-			<ProjectItem data={project} />
-		{/each}
-	{:else}
-		<p>No matching projects found.</p>
-	{/if}
+<section class="box">
+	<div class="grid grid-cols-2 gap-4">
+		{#if matchedProjects.length > 0}
+			{#each matchedProjects as project}
+				<ProjectItem data={project} />
+			{/each}
+		{:else}
+			<p>No matching projects found.</p>
+		{/if}
+	</div>
 </section>

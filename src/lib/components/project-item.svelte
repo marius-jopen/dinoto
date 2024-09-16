@@ -1,37 +1,39 @@
 <script>
     import Slider from '$lib/components/slider.svelte';
 
-    export let data
+    export let data;
 
-    let previews = data.data.items
-	let defaultSlideTime = 2000;
+    let previews = data.data.items;
+    let defaultSlideTime = 2000;
 
-	// Function to get the slide times
-	function getSlideTimes(previews) {
-		return previews.map(item =>
-			item?.slide_time ?? defaultSlideTime
-		);
-	}
+    // Function to get the slide times
+    function getSlideTimes(previews) {
+        return previews.map(item =>
+            item?.slide_time ?? defaultSlideTime
+        );
+    }
 
-	// Update matched projects with their corresponding slide_time
-	previews = previews.map((item, index) => ({
-		...item,
-		slide_time: getSlideTimes(previews)[index]
-	}));
+    // Update matched projects with their corresponding slide_time
+    previews = previews.map((item, index) => ({
+        ...item,
+        slide_time: getSlideTimes(previews)[index]
+    }));
+
+    // Function to get link if clickable
+    function getLink() {
+        return data.data.clickable ? `work/${data.uid}` : null;
+    }
 </script>
 
-<div class="w-1/3">
-    {#if data.data.clickable == true}
-        <a href="work/{data.uid}">
-            {data.data.title[0]?.text}
+<div 
+    on:click={() => getLink() && window.location.assign(getLink())} 
+    style="cursor: {data.data.clickable ? 'pointer' : 'default'};"
+>
+    <div class="rounded-3xl overflow-hidden">
+        <Slider clickable={data.data.clickable} type="preview" data={previews} />
+    </div>
 
-            <Slider clickable={true} type="preview" data={previews} />´
-        </a>
-    {:else}
-        <div>
-            {data.data.title[0]?.text}
-
-            <Slider clickable={false} type="preview" data={previews} />
-        </div>
-    {/if}
+    <div class="bg-white rounded-b-3xl pb-3 pt-10 px-3 -mt-8">
+        {data.data.title[0]?.text}
+    </div>
 </div>

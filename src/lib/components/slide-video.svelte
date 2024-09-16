@@ -13,16 +13,25 @@
         data = data.data.items[0];
     }
 
-    // Reactively control the welcome video playback
+    // Reactively control the welcome video playback and reset it on status change
     $: {
         if (status && welcomeVideoElement && type === "welcome") {
             clearTimeout(resetTimeout); // Clear any previous reset timeout
+            welcomeVideoElement.currentTime = 0; // Reset video to the beginning
             welcomeVideoElement.play(); // Play the video when status is true
-        } else if (welcomeVideoElement) {
+        } else if (welcomeVideoElement && type === "welcome") {
             resetTimeout = setTimeout(() => {
                 welcomeVideoElement.pause(); // Pause the video
                 welcomeVideoElement.currentTime = 0; // Reset video to the beginning after 1 second
             }, 1000);
+        }
+
+        if (status && previewVideoElement && type === "preview") {
+            clearTimeout(resetTimeout); // Clear any previous reset timeout
+            previewVideoElement.currentTime = 0; // Reset video to the beginning
+            // previewVideoElement.play(); // Play the video when status is true
+        } else if (previewVideoElement && type === "preview") {
+            previewVideoElement.pause(); // Pause the video
         }
     }
 
@@ -37,7 +46,6 @@
     function handleMouseLeave() {
         if (type === "preview" && previewVideoElement) {
             previewVideoElement.pause(); // Pause video on mouse leave
-            previewVideoElement.currentTime = 0; // Reset video to the beginning after 1 second
         }
     }
 </script>

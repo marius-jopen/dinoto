@@ -7,14 +7,14 @@
   import SlideVideo from './slide-video.svelte';
   import SlideText from './slide-text.svelte';
 
-  export let data
-  export let type
-  export let clickable
+  export let data;
+  export let type;
+  export let clickable;
 
-  let clickableProject = (type == "preview" && clickable == false) ? true : false
-  let hover = clickableProject ? false : true
+  let clickableProject = (type == "preview" && clickable == false) ? true : false;
+  let hover = clickableProject ? false : true;
 
-  $: hover ? playSlider() : pauseSlider()
+  $: hover ? playSlider() : pauseSlider();
 
   let splideOptions = {
     rewind: true,
@@ -25,27 +25,26 @@
   };
 
   let slider;
-  
+
   // Dynamic array with each slide having a number and a specific time for display
-  let slides = data
+  let slides = data;
 
   let numberOfSlides = slides.length;
   let progressBars = writable(new Array(numberOfSlides).fill(0)); // Manage progress bar widths
   let lastSlideIndex = numberOfSlides - 1; // Index of the last slide
   let intervalId; // Interval ID to control the timer
   let currentSlideIndex = 0;
+  let progress = 0; // Store current progress for pausing/resuming
 
   // Function to manually autoplay each slide according to its specific slide_time
   const playSlide = (splide) => {
     const slide = slides[currentSlideIndex]; // Get current slide
 
-    // Update the progress bar for the active slide
-    let progress = 0;
     const progressInterval = 10; // Frequency to update the progress bar (in ms)
     const progressStep = (100 / (slide.slide_time / progressInterval)); // How much the progress bar moves per update
 
     progressBars.update(bars => {
-      bars[currentSlideIndex] = 0;
+      bars[currentSlideIndex] = progress; // Start progress where it left off
       return [...bars];
     });
 
@@ -59,7 +58,8 @@
       progress += progressStep;
       if (progress >= 100) {
         clearInterval(intervalId);
-        // If it's the last slide, reset progress bars before going back to the first slide
+        progress = 0;
+
         if (currentSlideIndex === lastSlideIndex) {
           progressBars.set(new Array(numberOfSlides).fill(0)); // Reset all progress bars
         }
@@ -75,6 +75,7 @@
   // Jump to a specific slide and adjust progress bars
   const jumpToSlide = (index) => {
     clearInterval(intervalId); // Stop the current autoplay
+    progress = 0; // Reset progress for the current slide
 
     // Update progress bars:
     // - Slides before the selected one should be full (100%)
@@ -111,23 +112,29 @@
     clearInterval(intervalId); // Clear the timer when the component is destroyed
   });
 
+  // Function for mouse enter (only for preview)
   function mouseEnter() {
-    hover = clickableProject ? true : true
+    if (type === "preview") {
+      hover = true; // Resume progress
+    }
   }
 
+  // Function for mouse leave (only for preview)
   function mouseLeave() {
-    hover = clickableProject ? false : true
+    if (type === "preview") {
+      hover = false; // Pause progress
+    }
   }
 
   function pauseSlider() {
     if (slider && slider.splide) {
-      clearInterval(intervalId);
+      clearInterval(intervalId); // Pause the progress
     }
   }
 
   function playSlider() {
     if (slider && slider.splide) {
-      playSlide(slider.splide);
+      playSlide(slider.splide); // Resume from where it was paused
     }
   }
 </script>
@@ -141,7 +148,7 @@
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
-            <p class="pt-1 px-1 text-green-500">
+            <p class="pt-1 px-1 text-white">
               {slides[index].data.title[0].text}
             </p>
           {/if}
@@ -165,15 +172,15 @@
 
 <style>
   .my-slide-progress {
-    border: 2px solid green;
+    border: 1px solid white;
     width: 100%;
-    height: 13px;
-    margin-top: 10px;
+    height: 10px;
+    margin-top: 5px;
     cursor: pointer; /* Add pointer cursor to indicate clickability */
   }
 
   .my-slide-progress-bar {
-    background-color: green;
+    background-color: white;
     height: 100%;
     width: 0;
   }
