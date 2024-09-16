@@ -22,7 +22,7 @@
         </defs>
     </svg>
     
-    <div class="flex justify-between pt-4 pb-8">
+    <div class="flex justify-between pt-8 pb-8">
         <div class="flex">
             <div>
                 © DiNoto Group 2024

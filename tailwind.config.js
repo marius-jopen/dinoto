@@ -11,6 +11,9 @@ export default {
         'd_darkGray': 'var(--d-darkGray)',
         'd_lightGreen': 'var(--d-lightGreen)',
         'd_darkGreen': 'var(--d-darkGreen)',
+      },
+      borderRadius: {
+        '3xl': '50px',
       }
     }
   },

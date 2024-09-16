@@ -10,8 +10,8 @@
 
 </script>
 
-<section class="box flex justify-center">
-	<div class="{styleClass} w-5/12 py-8 px-8 rounded-3xl relative">
+<section class="box flex justify-center mb-24 mt-8">
+	<div class="{styleClass} w-4/12 py-8 px-8 rounded-3xl relative">
 		<PrismicRichText field={slice.primary.text} />
 
 		<div class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%] mt-2">

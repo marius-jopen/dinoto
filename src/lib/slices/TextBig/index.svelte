@@ -19,7 +19,7 @@
 </script>
 
 <section class="box">
-	<div class="{styleClass} py-8">
+	<div class="{styleClass} py-8 pb-12">
 		<PrismicRichText field={slice.primary.text} />
 	</div>
 </section>

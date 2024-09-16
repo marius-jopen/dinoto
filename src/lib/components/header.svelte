@@ -24,7 +24,7 @@
         </svg>
     </a>
     
-    <div class="flex gap-2">
+    <div class="flex gap-4">
         {#each data.data.navigation as item}
             <nav>
                 <PrismicLink field={item.link}>

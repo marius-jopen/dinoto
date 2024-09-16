@@ -13,10 +13,10 @@
 body {
     -webkit-appearance: none;
     font-family: "Circular Std";
-    font-size: 20px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%; 
+    line-height: 130%; 
 }
 
 :root {
@@ -44,10 +44,10 @@ h2 {
 }
 
 .p1 {
-    font-size: 30px;
+    font-size: 35px;
     font-style: normal;
     font-weight: 400;
-    line-height: 110%;
+    line-height: 120%;
 }
 
 .box {

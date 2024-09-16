@@ -7,7 +7,7 @@
 	let styleClass = textColor(slice.primary.color);
 </script>
 
-<section class="box">
+<section class="box mb-8">
 	<div class="flex justify-between w-full border-b pb-8 mb-4" style="border-color: {styleClass}">
 		<div class="flex flex-col justify-end" style="color: {styleClass}">
 			<p>
