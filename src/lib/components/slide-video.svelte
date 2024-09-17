@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+	import { onMount } from "svelte";
+
     export let data;
     export let index;
     export let time;
@@ -13,6 +15,13 @@
     if (type === "welcome") {
         data = data.data.items[0];
     }
+
+    // Correct onMount usage to autoplay the welcome video
+    onMount(() => {
+        if (welcomeVideoElement && type === "welcome") {
+            welcomeVideoElement.play();
+        }
+    });
 
     // Reactively control the video playback and reset it on status or list change
     $: {
@@ -59,11 +68,10 @@
         <video
             bind:this={welcomeVideoElement}
             class="aspect-video object-cover w-full"
-            poster=""
+            poster={data.video_poster.url}
             src={data.video_url}
             muted
             loop
-            autoplay
         />
     </div>
 {/if}
@@ -74,7 +82,7 @@
         <video
             bind:this={previewVideoElement}
             class="aspect-video object-cover w-full"
-            poster=""
+            poster={data.video_poster.url}
             src={data.video_url}
             muted
             loop
