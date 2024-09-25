@@ -4,11 +4,14 @@
 	import { get } from 'svelte/store';
 	import ProjectItem from '$lib/components/project-item.svelte';
 	import ProjectItemList from '$lib/components/project-item-list.svelte';
+    import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 
 	export let slice: Content.WorkSlice;
 
 	let work = get(workStore);
 	let showList1 = true; // Boolean variable to toggle between lists
+	let distanceTop = getDistanceTop(slice.primary.distance_top);
+    let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 
 	console.log(work)
 
@@ -27,7 +30,7 @@
 	}
 </script>
 
-<section class="pt-24 pb-24">
+<section class="box {distanceTop} {distanceBottom}">
 	<!-- Toggle Button -->
 	<div class="w-full justify-center flex pb-16">
 		<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">
@@ -58,7 +61,6 @@
 			{/if}
 		</div>
 	{:else}
-
 		<!-- Show List 2 -->
 		<div class="flex flex-col divide-d_darkGray divide-y border-y border-d_darkGray">
 			{#if matchedProjects.length > 0}

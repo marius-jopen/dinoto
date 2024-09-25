@@ -1,11 +1,15 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicRichText, PrismicImage } from "@prismicio/svelte";
+    import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 
 	export let slice: Content.Opener1Slice;
+
+	let distanceTop = getDistanceTop(slice.primary.distance_top);
+    let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="box mt-4 mb-8">
+<section class="box {distanceTop} {distanceBottom}">
 	<div class="rounded-3xl relative w-full mb-4">
 		<div class="absolute top-0 right-0 h-full w-8/12 z-0">
 			<PrismicImage class="w-full h-full rounded-3xl object-cover" field={slice.primary.image} />

@@ -4,16 +4,64 @@
 	import CardImage from '$lib/components/card-image.svelte';
 	import CardText from '$lib/components/card-text.svelte';
 	import CardVideo from '$lib/components/card-video.svelte';
-	
+	import { getDistanceTop, getDistanceBottom } from '../../components/distances';
+
 	export let slice;
 	
 	// Change values here
+	let orderItemsReverse = slice.primary.order_top_bottom ? true : false;
+	let orderCardsTopDown = slice.primary.stacking_top_bottom ? false : true;
+
+	let cardHeightPercentage = 0.5; 
+	let align = "justify-center"
+
+	if (slice.primary.height == 's') {
+		cardHeightPercentage = 0.2; 
+	} else if (slice.primary.height == 'm') {
+		cardHeightPercentage = 0.4; 
+	} else if (slice.primary.height == 'l') {
+		cardHeightPercentage = 0.5; 
+	} else if (slice.primary.height == 'xl') {
+		cardHeightPercentage = 0.6; 
+	} else if (slice.primary.height == 'xxl') {
+		cardHeightPercentage = 0.8; 
+	}
+
 	let offsetY = 60;
-	let offsetX = -40; // -40, 0, 40
-	let cardWidthPercentage = 0.5;  // Card width is 20% of the viewport
-	let cardHeightPercentage = 0.5; // Card height is 40% of the card width
-	let orderItemsReverse = true;
-	let orderCardsTopDown = true;
+	let offsetX = -40; 
+	let cardWidthPercentage = 0.5;  
+
+	if (slice.primary.direction == 'left_big') {
+		align = "justify-start"
+		offsetY = 60;
+		offsetX = 40; 
+		cardWidthPercentage = 0.5;  
+	} else if (slice.primary.direction == 'left_small') {
+		align = "justify-center"
+		offsetY = 60;
+		offsetX = -40; 
+		cardWidthPercentage = 0.5;  
+	} else if (slice.primary.direction == 'center_big') {
+		align = "justify-center"
+		offsetY = 80;
+		offsetX = 0; 
+		cardWidthPercentage = 1;  
+	} else if (slice.primary.direction == 'center_small') {
+		align = "justify-center"
+		offsetY = 60;
+		offsetX = 0; 
+		cardWidthPercentage = 0.5;  
+	} else if (slice.primary.direction == 'right_big') {
+		align = "justify-end"
+		offsetY = 60;
+		offsetX = -40; 
+		cardWidthPercentage = 0.5;  
+	} else if (slice.primary.direction == 'right_small') {
+		align = "justify-center"
+		offsetY = 60;
+		offsetX = -40; 
+		cardWidthPercentage = 0.5;  
+	}
 
 	// Add an id to each item and reverse if necessary
 	let items = slice.primary.items.map((item, index) => ({ ...item, id: index }));
@@ -26,6 +74,9 @@
 	let cardWidth = 0;
 	let cardHeight = 0;
 	let totalHeight = 0;
+
+	let distanceTop = getDistanceTop(slice.primary.distance_top);
+    let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 
 	// Calculate dimensions only on the client side
 	onMount(() => {
@@ -56,8 +107,8 @@
 	}
 </script>
 
-<section class="box">
-	<div class="w-full flex justify-center" style="height: {totalHeight}px;">
+<section class="box {distanceTop} {distanceBottom}">
+	<div class="w-full flex {align}" style="height: {totalHeight}px;">
 		<div 
 		class="relative"
 		style="width: {cardWidth}px;"
@@ -76,9 +127,9 @@
 				"
 				class="{isCardInFront(index) ? '' : 'cursor-pointer'} left-0 top-0 absolute w-full"
 				>
-					<CardImage data={card} status={isCardInFront(index) ? 'true' : 'false'} />
-					<CardText data={card} status={isCardInFront(index) ? 'true' : 'false'} />
-					<CardVideo data={card} status={isCardInFront(index) ? 'true' : 'false'} />
+					<CardImage data={card} status={isCardInFront(index) ? true : false} />
+					<CardText data={card} status={isCardInFront(index) ? true : false} />
+					<CardVideo data={card} status={isCardInFront(index) ? true : false} />
 				</div>
 			{/each}
 		</div>

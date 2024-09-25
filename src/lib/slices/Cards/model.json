@@ -12,6 +12,87 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "distance_top": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Top",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
+        "distance_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Bottom",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
+        "direction": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "placeholder": "",
+            "options": [
+              "left_big",
+              "left_small",
+              "center_big",
+              "center_small",
+              "right_big",
+              "right_small"
+            ],
+            "default_value": "left_big"
+          }
+        },
+        "order_top_bottom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Order Top Bottom",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "stacking_top_bottom": {
+          "type": "Boolean",
+          "config": {
+            "label": "Stacking Top Bottom",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "height": {
+          "type": "Select",
+          "config": {
+            "label": "Height",
+            "placeholder": "",
+            "options": [
+              "s",
+              "m",
+              "l",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "s"
+          }
+        },
         "items": {
           "type": "Group",
           "config": {

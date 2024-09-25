@@ -114,9 +114,6 @@
 						"box_single": {
 							"type": "SharedSlice"
 						},
-						"accordeon": {
-							"type": "SharedSlice"
-						},
 						"box_center": {
 							"type": "SharedSlice"
 						}

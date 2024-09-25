@@ -1,13 +1,16 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { textColor } from '../../components/color-styles';
+    import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 
 	export let slice: Content.ChapterSlice;
 	
 	let styleClass = textColor(slice.primary.color);
+	let distanceTop = getDistanceTop(slice.primary.distance_top);
+    let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="box mb-8">
+<section class="box {distanceTop} {distanceBottom}">
 	<div class="flex justify-between w-full border-b pb-8 mb-4" style="border-color: {styleClass}">
 		<div class="flex flex-col justify-end" style="color: {styleClass}">
 			<p>

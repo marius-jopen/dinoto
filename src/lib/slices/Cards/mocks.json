@@ -123,6 +123,20 @@
 						]
 					}
 				]
+			},
+			"direction": {
+				"__TYPE__": "FieldContent",
+				"value": "center_small",
+				"type": "Select"
+			},
+			"order_top_bottom": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"height": {
+				"__TYPE__": "FieldContent",
+				"value": "s",
+				"type": "Select"
 			}
 		},
 		"items": []

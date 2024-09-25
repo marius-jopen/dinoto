@@ -18,6 +18,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "Left",
 				"type": "Select"
+			},
+			"distance_top": {
+				"__TYPE__": "FieldContent",
+				"value": "m",
+				"type": "Select"
 			}
 		},
 		"items": []

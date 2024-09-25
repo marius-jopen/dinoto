@@ -141,7 +141,6 @@ type PageDocumentDataSlicesSlice =
 	| ChatSlice
 	| BoxDoubleSlice
 	| BoxSingleSlice
-	| AccordeonSlice
 	| BoxCenterSlice;
 
 /**
@@ -305,7 +304,6 @@ export interface WorkDocumentDataItemsItem {
 type WorkDocumentDataSlicesSlice =
 	| VideoGallerySlice
 	| BoxSingleSlice
-	| AccordeonSlice
 	| ChapterSlice
 	| ChatSlice
 	| BoxDoubleSlice
@@ -357,17 +355,6 @@ interface WorkDocumentData {
 	clickable: prismic.BooleanField;
 
 	/**
-	 * Items field in *Work*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.items[]
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
-
-	/**
 	 * Title field in *Work*
 	 *
 	 * - **Field Type**: Title
@@ -377,6 +364,17 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	title: prismic.TitleField;
+
+	/**
+	 * Client field in *Work*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.client
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	client: prismic.TitleField;
 
 	/**
 	 * Background field in *Work*
@@ -409,15 +407,15 @@ interface WorkDocumentData {
 	>;
 
 	/**
-	 * Client field in *Work*
+	 * Items field in *Work*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.client
+	 * - **API ID Path**: work.items[]
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
-	client: prismic.KeyTextField;
+	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
 
 	/**
 	 * Slice Zone field in *Work*
@@ -484,100 +482,31 @@ export type AllDocumentTypes =
 	| WorkDocument;
 
 /**
- * Item in *Accordeon → Default → Primary → Items*
- */
-export interface AccordeonSliceDefaultPrimaryItemsItem {
-	/**
-	 * Headline field in *Accordeon → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: accordeon.default.primary.items[].headline
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	headline: prismic.KeyTextField;
-
-	/**
-	 * Number field in *Accordeon → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Number
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: accordeon.default.primary.items[].number
-	 * - **Documentation**: https://prismic.io/docs/field#number
-	 */
-	number: prismic.NumberField;
-
-	/**
-	 * Text field in *Accordeon → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: accordeon.default.primary.items[].text
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	text: prismic.RichTextField;
-
-	/**
-	 * Color field in *Accordeon → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Select
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: White
-	 * - **API ID Path**: accordeon.default.primary.items[].color
-	 * - **Documentation**: https://prismic.io/docs/field#select
-	 */
-	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
-		'filled'
-	>;
-}
-
-/**
- * Primary content in *Accordeon → Default → Primary*
- */
-export interface AccordeonSliceDefaultPrimary {
-	/**
-	 * Items field in *Accordeon → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: accordeon.default.primary.items[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	items: prismic.GroupField<Simplify<AccordeonSliceDefaultPrimaryItemsItem>>;
-}
-
-/**
- * Default variation for Accordeon Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AccordeonSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<AccordeonSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *Accordeon*
- */
-type AccordeonSliceVariation = AccordeonSliceDefault;
-
-/**
- * Accordeon Shared Slice
- *
- * - **API ID**: `accordeon`
- * - **Description**: Accordeon
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVariation>;
-
-/**
  * Primary content in *BoxCenter → Default → Primary*
  */
 export interface BoxCenterSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_center.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_center.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Text field in *BoxCenter → Default → Primary*
 	 *
@@ -644,6 +573,28 @@ export type BoxCenterSlice = prismic.SharedSlice<'box_center', BoxCenterSliceVar
  * Primary content in *BoxDouble → Default → Primary*
  */
 export interface BoxDoubleSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_double.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_double.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Color Left field in *BoxDouble → Default → Primary*
 	 *
@@ -765,6 +716,28 @@ export type BoxDoubleSlice = prismic.SharedSlice<'box_double', BoxDoubleSliceVar
  */
 export interface BoxSingleSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_single.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_single.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Color field in *BoxSingle → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -840,6 +813,28 @@ export type BoxSingleSlice = prismic.SharedSlice<'box_single', BoxSingleSliceVar
  * Primary content in *BoxTripple → Default → Primary*
  */
 export interface BoxTrippleSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_tripple.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: box_tripple.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Color 1 field in *BoxTripple → Default → Primary*
 	 *
@@ -1105,6 +1100,64 @@ export interface CardsSliceDefaultPrimaryItemsItem {
  */
 export interface CardsSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: cards.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: cards.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Style field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: left_big
+	 * - **API ID Path**: cards.default.primary.direction
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	direction: prismic.SelectField<
+		'left_big' | 'left_small' | 'center_big' | 'center_small' | 'right_big' | 'right_small',
+		'filled'
+	>;
+
+	/**
+	 * Order Top Bottom field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: cards.default.primary.order_top_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	order_top_bottom: prismic.BooleanField;
+
+	/**
+	 * Stacking Top Bottom field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: cards.default.primary.stacking_top_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	stacking_top_bottom: prismic.BooleanField;
+
+	/**
 	 * Items field in *Cards → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1113,6 +1166,17 @@ export interface CardsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	items: prismic.GroupField<Simplify<CardsSliceDefaultPrimaryItemsItem>>;
+
+	/**
+	 * Height field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: s
+	 * - **API ID Path**: cards.default.primary.height
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	height: prismic.SelectField<'s' | 'm' | 'l' | 'xl' | 'xxl', 'filled'>;
 }
 
 /**
@@ -1146,6 +1210,28 @@ export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
  * Primary content in *Chapter → Default → Primary*
  */
 export interface ChapterSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Chapter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: chapter.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Chapter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: chapter.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Color field in *Chapter → Default → Primary*
 	 *
@@ -1217,6 +1303,28 @@ export interface ChatSliceDefaultPrimaryItemsItem {
  * Primary content in *Chat → Default → Primary*
  */
 export interface ChatSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: chat.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: chat.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Items field in *Chat → Default → Primary*
 	 *
@@ -1329,6 +1437,28 @@ export interface CloudSliceDefaultPrimaryItemsItem {
  */
 export interface CloudSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Cloud → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: cloud.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Cloud → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: cloud.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Cloud → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1370,6 +1500,28 @@ export type CloudSlice = prismic.SharedSlice<'cloud', CloudSliceVariation>;
  * Primary content in *DogBreak → Default → Primary*
  */
 export interface DogBreakSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: dog_break.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: dog_break.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Text field in *DogBreak → Default → Primary*
 	 *
@@ -1438,6 +1590,28 @@ export interface ExpertiseSliceDefaultPrimaryItemsItem {
  */
 export interface ExpertiseSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Expertise → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: expertise.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Expertise → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: expertise.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Expertise → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1479,6 +1653,28 @@ export type ExpertiseSlice = prismic.SharedSlice<'expertise', ExpertiseSliceVari
  * Primary content in *Headline → Default → Primary*
  */
 export interface HeadlineSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: headline.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: headline.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Text 1 field in *Headline → Default → Primary*
 	 *
@@ -1542,6 +1738,28 @@ export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariati
  * Primary content in *Image → Default → Primary*
  */
 export interface ImageSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: image.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: image.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Image field in *Image → Default → Primary*
 	 *
@@ -1630,6 +1848,28 @@ export interface ListSliceDefaultPrimaryItemsItem {
  */
 export interface ListSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *List → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: list.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *List → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: list.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *List → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1697,6 +1937,28 @@ export interface LogosSliceDefaultPrimaryItemsItem {
  */
 export interface LogosSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: logos.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: logos.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Logos → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1738,6 +2000,28 @@ export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
  * Primary content in *Newsletter → Default → Primary*
  */
 export interface NewsletterSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Newsletter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: newsletter.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Newsletter → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: newsletter.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Headline field in *Newsletter → Default → Primary*
 	 *
@@ -1790,6 +2074,28 @@ export type NewsletterSlice = prismic.SharedSlice<'newsletter', NewsletterSliceV
  * Primary content in *Opener1 → Default → Primary*
  */
 export interface Opener1SliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: opener1.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: opener1.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Headline field in *Opener1 → Default → Primary*
 	 *
@@ -1852,6 +2158,28 @@ export type Opener1Slice = prismic.SharedSlice<'opener1', Opener1SliceVariation>
  * Primary content in *Opener2 → Default → Primary*
  */
 export interface Opener2SliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Opener2 → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: opener2.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Opener2 → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: opener2.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Headline field in *Opener2 → Default → Primary*
 	 *
@@ -1951,6 +2279,28 @@ export interface SliderSliceDefaultPrimaryItemsItem {
  */
 export interface SliderSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: slider.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: slider.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Slider → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1992,6 +2342,28 @@ export type SliderSlice = prismic.SharedSlice<'slider', SliderSliceVariation>;
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: text.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: text.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Text field in *Text → Default → Primary*
 	 *
@@ -2046,6 +2418,28 @@ export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
  */
 export interface TextBigSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *TextBig → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: text_big.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *TextBig → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: text_big.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Text field in *TextBig → Default → Primary*
 	 *
 	 * - **Field Type**: Rich Text
@@ -2098,6 +2492,28 @@ export type TextBigSlice = prismic.SharedSlice<'text_big', TextBigSliceVariation
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: video.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: video.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Autoplay field in *Video → Default → Primary*
 	 *
@@ -2219,6 +2635,28 @@ export interface VideoGallerySliceDefaultPrimaryItemsItem {
  */
 export interface VideoGallerySliceDefaultPrimary {
 	/**
+	 * Distance Top field in *VideoGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: video_gallery.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *VideoGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: video_gallery.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *VideoGallery → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2333,6 +2771,28 @@ export interface WorkSliceDefaultPrimaryItemsItem {
  */
 export interface WorkSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: work.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: work.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Work → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2394,11 +2854,6 @@ declare module '@prismicio/client' {
 			WorkDocumentDataItemsItem,
 			WorkDocumentDataSlicesSlice,
 			AllDocumentTypes,
-			AccordeonSlice,
-			AccordeonSliceDefaultPrimaryItemsItem,
-			AccordeonSliceDefaultPrimary,
-			AccordeonSliceVariation,
-			AccordeonSliceDefault,
 			BoxCenterSlice,
 			BoxCenterSliceDefaultPrimary,
 			BoxCenterSliceVariation,

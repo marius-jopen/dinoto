@@ -123,9 +123,6 @@
 						"box_single": {
 							"type": "SharedSlice"
 						},
-						"accordeon": {
-							"type": "SharedSlice"
-						},
 						"chapter": {
 							"type": "SharedSlice"
 						},

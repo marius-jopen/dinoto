@@ -12,6 +12,38 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "distance_top": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Top",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
+        "distance_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Bottom",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
         "headline": {
           "type": "Text",
           "config": {
