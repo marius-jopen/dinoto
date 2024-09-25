@@ -29,38 +29,38 @@
 
 	let offsetY = 60;
 	let offsetX = -40; 
-	let cardWidthPercentage = 0.5;  
+	let cardWidthPercentage = 0.6;  
 
 	if (slice.primary.direction == 'left_big') {
 		align = "justify-start"
 		offsetY = 60;
 		offsetX = 40; 
-		cardWidthPercentage = 0.5;  
+		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'left_small') {
 		align = "justify-center"
 		offsetY = 60;
 		offsetX = -40; 
-		cardWidthPercentage = 0.5;  
+		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'center_big') {
 		align = "justify-center"
-		offsetY = 80;
+		offsetY = 100;
 		offsetX = 0; 
 		cardWidthPercentage = 1;  
 	} else if (slice.primary.direction == 'center_small') {
 		align = "justify-center"
 		offsetY = 60;
 		offsetX = 0; 
-		cardWidthPercentage = 0.5;  
+		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_big') {
 		align = "justify-end"
 		offsetY = 60;
 		offsetX = -40; 
-		cardWidthPercentage = 0.5;  
+		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_small') {
 		align = "justify-center"
 		offsetY = 60;
 		offsetX = -40; 
-		cardWidthPercentage = 0.5;  
+		cardWidthPercentage = 0.6;  
 	}
 
 	// Add an id to each item and reverse if necessary

@@ -25,7 +25,7 @@
 </script>
 
 {#if data.video_url}
-    <div class="border border-black bg-white w-full h-full rounded-3xl overflow-hidden">
+    <div class="bg-white w-full h-full rounded-3xl overflow-hidden">
         <video
             bind:this={videoElement} 
             class="h-full object-cover w-full"

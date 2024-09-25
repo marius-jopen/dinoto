@@ -6,7 +6,7 @@
 </script>
 
 {#if data.image.url}
-    <div class="border border-black bg-white w-full h-full rounded-3xl overflow-hidden">
+    <div class="bg-white w-full h-full rounded-3xl overflow-hidden">
         <PrismicImage class="h-full w-full object-cover" field={data.image} />
     </div>
 {/if}

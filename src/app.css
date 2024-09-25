@@ -66,6 +66,10 @@ h2 {
     @apply bg-d_lightGreen text-d_black; 
 }
 
+.style-dark-green {
+    @apply bg-d_darkGreen text-d_black; 
+}
+
 .style-dark-gray {
     @apply bg-d_darkGray text-d_black;
 }
