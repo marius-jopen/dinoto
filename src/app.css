@@ -2,17 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
-    font-family: 'Circular';
-    src: url('/CircularStd-Medium.woff') format('woff');
+    font-family: 'Circular Pro Book';
+    src: url('/CircularPro-Book.woff2') format('woff2'),
+        url('/CircularPro-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Circular Pro';
+    src: url('/CircularPro-Medium.woff2') format('woff2'),
+        url('/CircularPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 body {
     -webkit-appearance: none;
-    font-family: "Circular Std";
+    font-family: "Circular Pro Book";
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
