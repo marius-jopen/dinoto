@@ -1009,7 +1009,7 @@ export interface CardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -1158,16 +1158,6 @@ export interface CardsSliceDefaultPrimary {
 	stacking_top_bottom: prismic.BooleanField;
 
 	/**
-	 * Items field in *Cards → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cards.default.primary.items[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	items: prismic.GroupField<Simplify<CardsSliceDefaultPrimaryItemsItem>>;
-
-	/**
 	 * Height field in *Cards → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -1177,6 +1167,16 @@ export interface CardsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	height: prismic.SelectField<'s' | 'm' | 'l' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Items field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<CardsSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -1410,26 +1410,6 @@ export interface CloudSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image: prismic.ImageField<never>;
-
-	/**
-	 * Video Url field in *Cloud → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cloud.default.primary.items[].video_url
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	video_url: prismic.KeyTextField;
-
-	/**
-	 * Video Poster field in *Cloud → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cloud.default.primary.items[].video_poster
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	video_poster: prismic.ImageField<never>;
 }
 
 /**

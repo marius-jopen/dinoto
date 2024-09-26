@@ -57,21 +57,6 @@
                   "constraint": {},
                   "thumbnails": []
                 }
-              },
-              "video_url": {
-                "type": "Text",
-                "config": {
-                  "label": "Video Url",
-                  "placeholder": ""
-                }
-              },
-              "video_poster": {
-                "type": "Image",
-                "config": {
-                  "label": "Video Poster",
-                  "constraint": {},
-                  "thumbnails": []
-                }
               }
             }
           }
