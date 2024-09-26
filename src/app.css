@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: 'Circular';
-    src: url('CircularStd-Medium.woff') format('woff');
+    src: url('/CircularStd-Medium.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -20,7 +20,7 @@ body {
 }
 
 :root {
-    --d-black: #313131;
+    --d-black: #381b1b;
     --d-lightGray: #F4F4F4;
     --d-mediumGray: #e6e6e6;
     --d-darkGray: #C0C0C0;
