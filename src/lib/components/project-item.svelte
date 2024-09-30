@@ -1,10 +1,12 @@
 <script>
     import Slider from '$lib/components/slider.svelte';
+    import { page } from '$app/stores';
 
     export let data;
 
     let previews = data.data.items;
     let defaultSlideTime = 2000;
+    let host = $page.url.origin
 
     // Function to get the slide times
     function getSlideTimes(previews) {
@@ -21,7 +23,7 @@
 
     // Function to get link if clickable
     function getLink() {
-        return data.data.clickable ? `work/${data.uid}` : null;
+        return data.data.clickable ? `${host}/work/${data.uid}` : null;
     }
 </script>
 

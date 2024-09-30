@@ -418,6 +418,28 @@ interface WorkDocumentData {
 	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
 
 	/**
+	 * Related Work 1 field in *Work*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.related_work_1
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	related_work_1: prismic.ContentRelationshipField<'work'>;
+
+	/**
+	 * Related Work 2 field in *Work*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.related_work_2
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	related_work_2: prismic.ContentRelationshipField<'work'>;
+
+	/**
 	 * Slice Zone field in *Work*
 	 *
 	 * - **Field Type**: Slice Zone

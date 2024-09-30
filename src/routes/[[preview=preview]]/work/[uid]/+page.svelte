@@ -18,13 +18,13 @@
 
 	workStore.set(work);
 
-	console.log(data)
+	// console.log(data)
 </script>
 
 <div class="{styleClass}">
 	<Header style={styleTextClass} data={data.navigation_top} />
 	<SliceZone slices={data.page.data.slices} {components} />
-	<RelatedProjects />
-	<NextProject />
+	<RelatedProjects data={data} />
+	<NextProject data={data} />
 	<Footer style={styleTextClass} data={data.navigation_bottom} />
 </div>

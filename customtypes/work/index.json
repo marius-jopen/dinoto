@@ -46,6 +46,22 @@
 					"single": "heading1"
 				}
 			},
+			"related_work_1": {
+				"type": "Link",
+				"config": {
+					"label": "Related Work 1",
+					"select": "document",
+					"customtypes": ["work"]
+				}
+			},
+			"related_work_2": {
+				"type": "Link",
+				"config": {
+					"label": "Related Work 2",
+					"select": "document",
+					"customtypes": ["work"]
+				}
+			},
 			"background": {
 				"type": "Select",
 				"config": {
