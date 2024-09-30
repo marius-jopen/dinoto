@@ -1354,20 +1354,6 @@ export interface ChatSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	emoji: prismic.KeyTextField;
-
-	/**
-	 * Color field in *Chat → Default → Primary*
-	 *
-	 * - **Field Type**: Select
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: White
-	 * - **API ID Path**: chat.default.primary.color
-	 * - **Documentation**: https://prismic.io/docs/field#select
-	 */
-	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
-		'filled'
-	>;
 }
 
 /**

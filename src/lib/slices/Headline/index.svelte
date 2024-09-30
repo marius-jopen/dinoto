@@ -9,5 +9,11 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+	<h2 class="border-d_darkGray border-t border-b py-4">
+		{slice.primary.text_1}
+
+		<span class="text-d_darkGray">
+			{slice.primary.text_2}
+		</span>
+	</h2>
 </section>
