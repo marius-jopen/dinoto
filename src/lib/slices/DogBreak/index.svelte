@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
+    import { PrismicRichText } from "@prismicio/svelte";
 
 	export let slice: Content.DogBreakSlice;
 
@@ -9,5 +10,7 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+    <div class="text-center w-[60%] mx-[20%]">
+        <PrismicRichText field={slice.primary.text} />
+    </div>
 </section>

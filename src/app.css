@@ -89,3 +89,30 @@ h2 {
 .style-black {
     @apply bg-d_black text-d_lightGray;
 }
+
+
+ul.splide__pagination.splide__pagination--ltr {
+    width: fit-content;
+    background: var(--d-lightGray);
+    margin: auto;
+    border-radius: 100px;
+    padding-bottom: 6px;
+    padding-top: 3px;
+    padding-left: 9px;
+    padding-right: 9px;
+    margin-bottom: 10px;
+}
+
+button.splide__pagination__page {
+    height: 16px;
+    width: 16px;
+}
+
+.splide__pagination li {
+    padding: 3px;
+}
+
+.splide__pagination__page.is-active {
+    background: var(--d-black) !important;
+    transform: scale(1) !important;
+}
