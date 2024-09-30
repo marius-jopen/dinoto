@@ -51,11 +51,11 @@
             "placeholder": "",
             "options": [
               "White",
-              "Gray Light",
-              "Gray",
-              "Green Light",
-              "Green",
-              "Black"
+              "Light Gray",
+              "Dark Gray",
+              "Black",
+              "Light Green",
+              "Green"
             ],
             "default_value": "White"
           }
@@ -91,11 +91,11 @@
             "placeholder": "",
             "options": [
               "White",
-              "Gray Light",
-              "Gray",
-              "Green Light",
-              "Green",
-              "Black"
+              "Light Gray",
+              "Dark Gray",
+              "Black",
+              "Light Green",
+              "Green"
             ],
             "default_value": "White"
           }
