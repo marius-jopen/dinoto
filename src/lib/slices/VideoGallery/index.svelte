@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
+    import Video from '../../components/video.svelte';
 
 	export let slice: Content.VideoGallerySlice;
 
@@ -9,5 +10,16 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+	<div class="flex gap-8">
+		{#each slice.primary.items as item}
+			<div class="rounded-3xl overflow-hidden">
+				<Video
+					videoPoster={item.video_poster.url}
+					videoUrl={item.video_url}
+					autoplay={item.autoplay}
+					status={false}
+				/>
+			</div>
+		{/each}
+	</div>
 </section>

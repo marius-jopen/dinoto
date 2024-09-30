@@ -605,7 +605,7 @@ export interface BoxDoubleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color_left: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -649,7 +649,7 @@ export interface BoxDoubleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color_right: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -747,7 +747,7 @@ export interface BoxSingleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -845,7 +845,7 @@ export interface BoxTrippleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color_1: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -889,7 +889,7 @@ export interface BoxTrippleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color_2: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -933,7 +933,7 @@ export interface BoxTrippleSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	color_3: prismic.SelectField<
-		'White' | 'Gray Light' | 'Gray' | 'Green Light' | 'Green' | 'Black',
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
 		'filled'
 	>;
 
@@ -1083,16 +1083,6 @@ export interface CardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
-
-	/**
-	 * Caption field in *Cards → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cards.default.primary.items[].caption
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	caption: prismic.RichTextField;
 }
 
 /**

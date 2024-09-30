@@ -77,20 +77,6 @@
 								}
 							],
 							[
-								"caption",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Exercitation non mollit esse mollit laborum quis ipsum ad et nulla amet incididunt. Qui in esse in duis anim sunt veniam duis nostrud labore occaecat sint enim sit."
-											}
-										}
-									]
-								}
-							],
-							[
 								"headline",
 								{
 									"__TYPE__": "FieldContent",
