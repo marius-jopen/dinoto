@@ -1,6 +1,6 @@
 <script>
 	import { flip } from 'svelte/animate';
-	import { onMount } from 'svelte'; // Import onMount to handle client-side logic
+	import { onMount } from 'svelte';
 	import CardImage from '$lib/components/card-image.svelte';
 	import CardText from '$lib/components/card-text.svelte';
 	import CardVideo from '$lib/components/card-video.svelte';
@@ -8,13 +8,14 @@
 
 	export let slice;
 	
-	// Change values here
+	// Initial settings for card layout
 	let orderItemsReverse = slice.primary.order_top_bottom ? true : false;
 	let orderCardsTopDown = slice.primary.stacking_top_bottom ? false : true;
 
-	let cardHeightPercentage = 0.5; 
-	let align = "justify-center"
+	let cardHeightPercentage = 0.5;
+	let align = "justify-center";
 
+	// Setting card height based on size
 	if (slice.primary.height == 's') {
 		cardHeightPercentage = 0.2; 
 	} else if (slice.primary.height == 'm') {
@@ -27,44 +28,45 @@
 		cardHeightPercentage = 0.8; 
 	}
 
+	// Set offset based on direction
 	let offsetY = 60;
 	let offsetX = -40; 
-	let cardWidthPercentage = 0.6;  
+	let cardWidthPercentage = 0.6;
 
 	if (slice.primary.direction == 'left_big') {
-		align = "justify-start"
+		align = "justify-start";
 		offsetY = 60;
-		offsetX = 40; 
+		offsetX = 40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'left_small') {
-		align = "justify-center"
+		align = "justify-center";
 		offsetY = 60;
-		offsetX = -40; 
+		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'center_big') {
-		align = "justify-center"
+		align = "justify-center";
 		offsetY = 100;
 		offsetX = 0; 
 		cardWidthPercentage = 1;  
 	} else if (slice.primary.direction == 'center_small') {
-		align = "justify-center"
+		align = "justify-center";
 		offsetY = 60;
-		offsetX = 0; 
+		offsetX = 0;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_big') {
-		align = "justify-end"
+		align = "justify-end";
 		offsetY = 60;
-		offsetX = -40; 
+		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_small') {
-		align = "justify-center"
+		align = "justify-center";
 		offsetY = 60;
-		offsetX = -40; 
+		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	}
 
-	// Add an id to each item and reverse if necessary
-	let items = slice.primary.items.map((item, index) => ({ ...item, id: index }));
+	// Map items and assign IDs
+	let items = slice.primary.items.map((item, index) => ({ ...item, id: index, status: false }));
 
 	// Reverse the items array if the reverse flag is set
 	if (orderItemsReverse) {
@@ -84,7 +86,6 @@
 		cardHeight = cardWidth * cardHeightPercentage;
 		totalHeight = cardHeight + (items.length) * offsetY;
 
-		// Recalculate dimensions on window resize
 		window.addEventListener('resize', () => {
 			cardWidth = (window.innerWidth * cardWidthPercentage);
 			cardHeight = cardWidth * cardHeightPercentage;
@@ -92,18 +93,23 @@
 		});
 	});
 
+	// Move the clicked card to the front and update `status`
 	function handleClick(clickedId) {
-		// Find the index of the clicked card
 		const index = items.findIndex(item => item.id === clickedId);
-		// Move the items before the clicked item to the end of the stack
-		const itemsToMove = items.slice(0, index + 1); // include clicked item
+		const itemsToMove = items.slice(0, index + 1);
 		const remainingItems = items.slice(index + 1);
-		items = [...remainingItems, ...itemsToMove]; // Reorder the items
+		items = [...remainingItems, ...itemsToMove];
+
+		// Set `status` to `true` for the front card and `false` for all others
+		items = items.map((item, idx) => ({
+			...item,
+			status: idx === items.length - 1 // Only the front card should have `status` as `true`
+		}));
 	}
 
 	// Function to check if a card is in the visual front (top of the stack)
 	function isCardInFront(index) {
-		return index === items.length - 1; // The top card has the highest z-index
+		return index === items.length - 1;
 	}
 </script>
 
@@ -127,9 +133,9 @@
 				"
 				class="{isCardInFront(index) ? '' : 'cursor-pointer'} left-0 top-0 absolute w-full"
 				>
-					<CardImage data={card} status={isCardInFront(index) ? true : false} />
-					<CardText data={card} status={isCardInFront(index) ? true : false} />
-					<CardVideo data={card} status={isCardInFront(index) ? true : false} />
+					<CardImage data={card} status={card.status} />
+					<CardText data={card} status={card.status} />
+					<CardVideo data={card} status={card.status} />
 				</div>
 			{/each}
 		</div>
