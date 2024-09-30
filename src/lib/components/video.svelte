@@ -21,13 +21,16 @@
 
   // Reactively control play/pause from outside using the status prop,
   // but only after the component is mounted and autoplay is false.
-  $: if (isMounted && videoElement && !autoplay) {
+  $: if (isMounted && videoElement ) {
       if (status) {
           videoElement.play();
+          
       } else {
           videoElement.pause();
       }
   }
+
+ 
 
   // Update isPlaying state when the video starts playing or pauses
   const updatePlayState = () => {
@@ -43,8 +46,8 @@
       if (autoplay) {
         videoElement.muted = true;
         videoElement.volume = 0;
-          videoElement.play(); // Play the video automatically if autoplay is true
-          isPlaying = true;
+        videoElement.play(); // Play the video automatically if autoplay is true
+        isPlaying = true;
       }
 
       // Attach event listeners to keep track of the play/pause state
@@ -56,6 +59,12 @@
 
 <div class="relative group h-full w-full">
   <!-- Video Element -->
+  <!-- <p>
+    status: {status}
+  </p> 
+  <p>
+    autoplay: {autoplay}
+  </p>  -->
   <video
       bind:this={videoElement}
       poster={videoPoster}

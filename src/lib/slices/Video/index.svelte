@@ -17,7 +17,7 @@
 				videoPoster={slice.primary.video_poster.url}
 				videoUrl={slice.primary.video_url}
 				autoplay={slice.primary.autoplay}
-				status={false}
+				status={slice.primary.autoplay}
 			/>
 		</div>
 

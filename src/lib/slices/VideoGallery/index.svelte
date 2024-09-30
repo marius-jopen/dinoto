@@ -17,7 +17,7 @@
 					videoPoster={item.video_poster.url}
 					videoUrl={item.video_url}
 					autoplay={item.autoplay}
-					status={false}
+					status={item.autoplay}
 				/>
 			</div>
 		{/each}
