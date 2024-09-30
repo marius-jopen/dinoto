@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"emoji": {
-				"__TYPE__": "FieldContent",
-				"value": "add",
-				"type": "Text"
-			},
 			"image": {
 				"origin": {
 					"id": "main",

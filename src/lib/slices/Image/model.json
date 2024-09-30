@@ -52,13 +52,6 @@
             "thumbnails": []
           }
         },
-        "emoji": {
-          "type": "Text",
-          "config": {
-            "label": "Emoji",
-            "placeholder": ""
-          }
-        },
         "caption": {
           "type": "StructuredText",
           "config": {
@@ -66,6 +59,19 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "placeholder": "",
+            "options": [
+              "Inline",
+              "Full Rounded",
+              "Full Screen"
+            ],
+            "default_value": "Inline"
           }
         }
       },

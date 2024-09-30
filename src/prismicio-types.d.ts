@@ -1737,16 +1737,6 @@ export interface ImageSliceDefaultPrimary {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Emoji field in *Image → Default → Primary*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: image.default.primary.emoji
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	emoji: prismic.KeyTextField;
-
-	/**
 	 * Caption field in *Image → Default → Primary*
 	 *
 	 * - **Field Type**: Rich Text
@@ -1755,6 +1745,17 @@ export interface ImageSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	caption: prismic.RichTextField;
+
+	/**
+	 * Style field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Inline
+	 * - **API ID Path**: image.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'Inline' | 'Full Rounded' | 'Full Screen', 'filled'>;
 }
 
 /**
