@@ -33,17 +33,19 @@
 
 <div class="box my-20">
     {#if nextProject}
-        <a href="{host}/work/{nextProject.uid}" class="flex gap-8 h-full block">
-            <div class="flex flex-col justify-center w-full">
-                <h2>{nextProject.data.client[0].text}</h2>
-                <h2 class="text-d_darkGray">{nextProject.data.title[0].text}</h2>
-            </div>
+        {#if nextProject.data.clickable}
+            <a href="{host}/work/{nextProject.uid}" class="flex gap-8 h-full block">
+                <div class="flex flex-col justify-center w-full">
+                    <h2>{nextProject.data.client[0].text}</h2>
+                    <h2 class="text-d_darkGray">{nextProject.data.title[0].text}</h2>
+                </div>
 
-            <div class="w-full">
-                <svg viewBox="0 0 779 641" fill="var(--d-lightGreen)" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M39.531 363.12C12.8732 364.718 -1.40218e-05 339.785 -1.49195e-05 320.5C-1.58173e-05 301.215 12.0757 277.88 38.6196 277.88L680.229 310.058C594.332 268.291 387.335 141.391 387.335 62.6509C387.335 19.2854 431.993 4.3304e-05 465.486 4.19292e-05C518.802 193.6 683.647 288.429 779 318.902L779 322.098C683.647 351.825 518.802 446.654 465.486 641C431.993 641 387.336 620.862 387.336 577.497C387.336 498.757 594.332 371.857 680.229 330.089L39.531 363.12Z" fill="#9DFF3A"/>
-                </svg>                    
-            </div>
-        </a>
+                <div class="w-full">
+                    <svg viewBox="0 0 779 641" fill="var(--d-lightGreen)" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M39.531 363.12C12.8732 364.718 -1.40218e-05 339.785 -1.49195e-05 320.5C-1.58173e-05 301.215 12.0757 277.88 38.6196 277.88L680.229 310.058C594.332 268.291 387.335 141.391 387.335 62.6509C387.335 19.2854 431.993 4.3304e-05 465.486 4.19292e-05C518.802 193.6 683.647 288.429 779 318.902L779 322.098C683.647 351.825 518.802 446.654 465.486 641C431.993 641 387.336 620.862 387.336 577.497C387.336 498.757 594.332 371.857 680.229 330.089L39.531 363.12Z" fill="#9DFF3A"/>
+                    </svg>                    
+                </div>
+            </a>
+        {/if}
     {/if}
 </div>
