@@ -6,6 +6,10 @@
   import SlideImage from './slide-image.svelte';
   import SlideVideo from './slide-video.svelte';
   import SlideText from './slide-text.svelte';
+  import { workStore } from '$lib/stores';
+  import { get } from 'svelte/store';
+  import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
 
   export let data;
   export let type;
@@ -14,6 +18,8 @@
 
   let clickableProject = (type == "preview" && clickable == false) ? true : false;
   let hover = clickableProject ? false : true;
+  let work = get(workStore);
+  let host = $page.url.origin
 
   $: hover ? playSlider() : pauseSlider();
 
@@ -138,6 +144,14 @@
       playSlide(slider.splide); // Resume from where it was paused
     }
   }
+
+  const clickTop = (index) => {
+    if (type == "welcome") {
+      goto(`${host}/work/${slides[index].uid}`);
+    } else {
+      jumpToSlide(index)
+    }
+  }
 </script>
 
 <div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
@@ -145,7 +159,7 @@
     <div class="gap-4 flex px-6 pt-4 absolute top-0 left-0 w-full z-10">
       {#each $progressBars as barWidth, index}
         <div class="w-full {hover || list ? "" : "hidden"}">
-          <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => jumpToSlide(index)}>
+          <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => clickTop(index)}>
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
