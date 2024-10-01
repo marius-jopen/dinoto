@@ -112,35 +112,37 @@
   }
 </style>
 
-<section class="box {distanceTop} {distanceBottom}">
-  <div
-    class="mt-12 mb-10 mx-24"
-    style="position: relative; width: 100%; height: 45vw;"
-    bind:this={container}
-    on:mousemove={handleMouseMove}
-  >
-    {#each images as image, index}
-		<div
-			class="image-container"
-			style="
-			--scale-value: {hoveredIndex === index ? 1.2 : 1};
-			top: {image.randomY}%;
-			left: {image.randomX}%;
-			width: {image.randomSize}%;
-			height: {image.randomSize}%;
-			transform: translate(-50%, -50%) translate3d({image.currentOffsetX}%, {image.currentOffsetY}%, 0) ;
-			transition: scale 1s ease-in-out;
-			"
-			on:mouseenter={() => (hoveredIndex = index)}
-			on:mouseleave={() => (hoveredIndex = null)}
-		>
-			<PrismicImage 
-			style="
-				transform: scale({hoveredIndex === index ? 1.2 : 1});
-				transition: transform 2s ease-in-out;
-			"
-			class="rounded-3xl" field={image.image} />
-		</div>
-    {/each}
+<section class="overflow-hidden {distanceTop} {distanceBottom}">
+  <div class="box">
+    <div
+      class="mt-12 mb-10 mx-24"
+      style="position: relative; width: 100%; height: 45vw;"
+      bind:this={container}
+      on:mousemove={handleMouseMove}
+    >
+      {#each images as image, index}
+      <div
+        class="image-container"
+        style="
+        --scale-value: {hoveredIndex === index ? 1.2 : 1};
+        top: {image.randomY}%;
+        left: {image.randomX}%;
+        width: {image.randomSize}%;
+        height: {image.randomSize}%;
+        transform: translate(-50%, -50%) translate3d({image.currentOffsetX}%, {image.currentOffsetY}%, 0) ;
+        transition: scale 1s ease-in-out;
+        "
+        on:mouseenter={() => (hoveredIndex = index)}
+        on:mouseleave={() => (hoveredIndex = null)}
+      >
+        <PrismicImage 
+        style="
+          transform: scale({hoveredIndex === index ? 1.2 : 1});
+          transition: transform 2s ease-in-out;
+        "
+        class="rounded-3xl" field={image.image} />
+      </div>
+      {/each}
+    </div>
   </div>
 </section>
