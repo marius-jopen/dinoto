@@ -147,7 +147,11 @@
 
   const clickTop = (index) => {
     if (type == "welcome") {
-      goto(`${host}/work/${slides[index].uid}`);
+      if (slides[index].data.clickable) {
+        goto(`${host}/work/${slides[index].uid}`);
+      } else {
+        jumpToSlide(index)
+      }
     } else {
       jumpToSlide(index)
     }

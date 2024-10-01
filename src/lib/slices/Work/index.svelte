@@ -51,11 +51,19 @@
 
 	<!-- Show List 1 -->
 	{#if showList1}
-		<div class="box grid grid-cols-2 gap-x-6 gap-y-6">
+		<div class="box">
 			{#if matchedProjects.length > 0}
-				{#each matchedProjects as project}
-					<ProjectItem data={project} />
-				{/each}
+				<!-- First item, full width -->
+				<div class="full-width mb-8">
+					<ProjectItem data={matchedProjects[0]} />
+				</div>
+		
+				<!-- Two-column grid for remaining items -->
+				<div class="grid grid-cols-2 gap-x-6 gap-y-6">
+					{#each matchedProjects.slice(1) as project}
+						<ProjectItem data={project} />
+					{/each}
+				</div>
 			{:else}
 				<p>No matching projects found.</p>
 			{/if}
