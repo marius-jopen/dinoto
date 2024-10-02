@@ -2,6 +2,7 @@
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 	import { PrismicImage, PrismicRichText } from "@prismicio/svelte";
+	import { isFilled } from '@prismicio/helpers';
 
 	export let slice: Content.ImageSlice;
 
@@ -15,8 +16,10 @@
 			<PrismicImage class="w-full" field={slice.primary.image} />
 		</div>
 
-		<div class="text-center pt-2 text-d_darkGray">
-			<PrismicRichText field={slice.primary.caption} />
-		</div>
+		{#if isFilled.richText(slice.primary.caption)}
+			<div class="text-center pt-2 text-d_darkGray">
+				<PrismicRichText field={slice.primary.caption} />
+			</div>
+		{/if}
 	</div>
 </section>

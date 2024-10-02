@@ -10,7 +10,7 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-    <div class="text-center w-[60%] mx-[20%]">
+    <div class="text-center md:w-[70%] mx-8 md:mx-[15%]">
         <PrismicRichText field={slice.primary.text} />
     </div>
 </section>

@@ -9,11 +9,13 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<h2 class="border-d_darkGray border-t border-b py-4">
-		{slice.primary.text_1}
+	<h2 class="text-center md:text-left border-d_darkGray border-t border-b py-4 lg:flex gap-4 md:pl-[35%] lg:pl-0 ">
+		<div>
+			{slice.primary.text_1}
+		</div>
 
-		<span class="text-d_darkGray">
+		<div class="text-d_darkGray">
 			{slice.primary.text_2}
-		</span>
+		</div>
 	</h2>
 </section>
