@@ -140,7 +140,7 @@
           transform: scale({hoveredIndex === index ? 1.2 : 1});
           transition: transform 2s ease-in-out;
         "
-        class="rounded-3xl" field={image.image} />
+        class="rounded-2xl md:rounded-3xl" field={image.image} />
       </div>
       {/each}
     </div>

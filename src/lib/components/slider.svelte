@@ -160,14 +160,14 @@
 
 <div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
   {#if !clickable }
-    <div class="gap-4 flex px-6 pt-4 absolute top-0 left-0 w-full z-10">
+    <div class="gap-4 flex px-6 pt-5 absolute top-0 left-0 w-full z-10">
       {#each $progressBars as barWidth, index}
         <div class="w-full {hover || list ? "" : "hidden"}">
           <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => clickTop(index)}>
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
-            <p class="pt-2 px-1 text-white">
+            <p class="hidden lg:block p2 pt-2 px-1 text-white">
               {slides[index].data.client[0].text}
 
               <span class="opacity-50">
