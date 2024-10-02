@@ -15,17 +15,17 @@
 
 <section class="box {distanceTop} {distanceBottom}">
 	<div class="{styleClass} rounded-3xl">
-		<div class="flex relative pt-4 pb-10">
-			<h2 class="absolute pl-8">
+		<div class="flex relative pt-6 pb-10">
+			<h3 class="md:absolute pl-8">
 				{slice.primary.number}
-			</h2>
+			</h3>
 			
-			<h2 class="ml-[35%] w-[65%]">
+			<h3 class="ml-8 md:ml-[35%] w-full md:w-[65%] text-right md:text-left mr-8 md:mr-0 ">
 				{slice.primary.headline}
-			</h2>
+			</h3>
 		</div>
 
-		<div class="ml-[35%] w-[65%] pb-10 pr-8">
+		<div class="md:ml-[35%] md:w-[65%] pb-10 pr-8 pl-8 md:pl-0">
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 	</div>

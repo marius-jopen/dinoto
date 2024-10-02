@@ -16,16 +16,16 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<div class="flex gap-8">
-		<div class="rounded-3xl overflow-hidden {styleClassLeft}">
+	<div class="lg:flex gap-8">
+		<div class="rounded-3xl overflow-hidden w-full lg:w-1/2 mb-8 lg:mb-0 {styleClassLeft}">
 			{#if slice.primary.headline_left}
-				<h2 class="pt-4 px-4">
+				<h3 class="pt-6 px-8">
 					{slice.primary.headline_left}
-				</h2>
+				</h3>
 			{/if}
 
 			{#if slice.primary.text_left && slice.primary.text_left.length > 0}
-				<div class="px-4 pt-4 pb-4">
+				<div class="px-8 pt-8 pb-8">
 					<PrismicRichText field={slice.primary.text_left} />
 				</div>
 			{/if}
@@ -33,15 +33,15 @@
 			<PrismicImage class="w-full h-full object-cover" field={slice.primary.image_left} />
 		</div>
 
-		<div class="rounded-3xl overflow-hidden {styleClassRight}">
+		<div class="rounded-3xl overflow-hidden w-full lg:w-1/2 {styleClassRight}">
 			{#if slice.primary.headline_right}
-				<h2 class="pt-4 px-4">
+				<h3 class="pt-6 px-8">
 					{slice.primary.headline_right}
-				</h2>
+				</h3>
 			{/if}
 
 			{#if slice.primary.text_right && slice.primary.text_right.length > 0}
-				<div class="px-4 pt-4 pb-4">
+				<div class="px-8 pt-8 pb-8">
 					<PrismicRichText field={slice.primary.text_right} />
 				</div>
 			{/if}

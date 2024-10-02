@@ -10,12 +10,12 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<PrismicImage class="w-full h-[40vw] object-cover rounded-3xl" field={slice.primary.image} />
+	<PrismicImage class="w-full h-[40vw] object-cover rounded-2xl md:rounded-3xl" field={slice.primary.image} />
 
-	<div class="w-full rounded-3xl bg-d_lightGreen text-d_black text-center py-8 px-8 -mt-10 z-10 relative">
-		<h1>
+	<div class="w-full rounded-2xl md:rounded-3xl bg-d_lightGreen text-d_black text-center py-8 px-8 mt-4 md:-mt-20 z-10 relative">
+		<h2>
 			{slice.primary.headline}
-		</h1>
+		</h2>
 	</div>
 
 </section>

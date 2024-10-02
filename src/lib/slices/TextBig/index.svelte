@@ -8,13 +8,13 @@
     let styleClass = '';
 
     if (style === 'Left') {
-        styleClass = 'text-left w-[65%]';
+        styleClass = 'text-left md:w-[65%]';
     } else if (style === 'Right') {
-        styleClass = 'text-right w-[65%]';
+        styleClass = 'text-right md:w-[65%]';
     } else if (style === 'Center') {
-        styleClass = 'text-center w-[60%] mx-[20%]';
+        styleClass = 'text-center md:w-[60%] mx-[20%]';
     } else if (style === 'Inline') {
-        styleClass = 'text-left ml-[35%] w-[65%]';
+        styleClass = 'text-left md:ml-[35%] md:w-[65%]';
     }
 
     let distanceTop = getDistanceTop(slice.primary.distance_top);

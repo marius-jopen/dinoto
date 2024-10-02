@@ -12,7 +12,7 @@
 <section class="box {distanceTop} {distanceBottom}">
 	<div class="flex flex-wrap">
 		{#each slice.primary.items as item}
-			<div class="w-1/2 pb-6 p1">
+			<div class="w-full sm:w-1/2 pb-8 p1 pr-2">
 				<div class="text-d_lightGreen">
 					{item.headline}
 				</div>
