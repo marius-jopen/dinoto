@@ -14,7 +14,7 @@
 </script>
 
 <section class="box flex justify-center {distanceTop} {distanceBottom}">
-	<div class="{styleClass} w-4/12 py-8 px-8 rounded-3xl relative">
+	<div class="{styleClass} w-full md:w-8/12 lg:w-4/12 py-7 px-8 rounded-2xl md:rounded-3xl relative">
 		<PrismicRichText field={slice.primary.text} />
 
 		<div class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%] mt-2">

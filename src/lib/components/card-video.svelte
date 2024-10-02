@@ -12,7 +12,7 @@
 </script>
 
 {#if data.video_url}
-    <div class="bg-white w-full h-full rounded-3xl overflow-hidden">
+    <div class="bg-white w-full h-full rounded-2xl md:rounded-3xl overflow-hidden">
         <VideoComponent
             videoPoster={data.video_poster.url}
             videoUrl={data.video_url}

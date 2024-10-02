@@ -12,7 +12,7 @@
     } else if (style === 'Right') {
         styleClass = 'text-right md:w-[65%]';
     } else if (style === 'Center') {
-        styleClass = 'text-center md:w-[60%] mx-[20%]';
+        styleClass = 'text-center md:w-[60%] mx-8 md:mx-[20%]';
     } else if (style === 'Inline') {
         styleClass = 'text-left md:ml-[35%] md:w-[65%]';
     }

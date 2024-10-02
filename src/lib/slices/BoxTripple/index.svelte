@@ -20,7 +20,7 @@
 <section class="box {distanceTop} {distanceBottom}">
 	<div class="lg:flex gap-8">
 		<div class="flex flex-col gap-8">
-			<div class="rounded-3xl overflow-hidden {styleClass}">
+			<div class="rounded-2xl md:rounded-3xl overflow-hidden {styleClass}">
 				{#if slice.primary.headline_1}
 					<h2 class="pt-6 px-8">
 						{slice.primary.headline_1}
@@ -36,7 +36,7 @@
 				<PrismicImage class="w-full h-full object-cover" field={slice.primary.image_1} />
 			</div>
 	
-			<div class="rounded-3xl overflow-hidden mb-8 lg:mb-0 {styleClass2}">
+			<div class="rounded-2xl md:rounded-3xl overflow-hidden mb-8 lg:mb-0 {styleClass2}">
 				{#if slice.primary.headline_2}
 					<h2 class="pt-6 px-8">
 						{slice.primary.headline_2}
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 
-		<div class="rounded-3xl overflow-hidden {styleClass3}">
+		<div class="rounded-2xl md:rounded-3xl overflow-hidden {styleClass3}">
 			{#if slice.primary.headline_3}
 				<h2 class="pt-6 px-8">
 					{slice.primary.headline_3}

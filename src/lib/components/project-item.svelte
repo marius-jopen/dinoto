@@ -31,7 +31,7 @@
     on:click={() => getLink() && window.location.assign(getLink())} 
     style="cursor: {data.data.clickable ? 'pointer' : 'default'};"
 >
-    <div class="rounded-3xl overflow-hidden">
+    <div class="rounded-2xl md:rounded-3xl overflow-hidden">
         <Slider clickable={data.data.clickable} type="preview" data={previews} />
     </div>
 

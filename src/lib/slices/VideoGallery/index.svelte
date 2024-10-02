@@ -10,9 +10,9 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<div class="flex gap-8">
+	<div class="flex-col md:flex-row flex gap-8">
 		{#each slice.primary.items as item}
-			<div class="rounded-3xl overflow-hidden">
+			<div class="rounded-2xl md:rounded-3xl overflow-hidden">
 				<Video
 					videoPoster={item.video_poster.url}
 					videoUrl={item.video_url}

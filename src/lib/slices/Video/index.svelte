@@ -11,8 +11,8 @@
 </script>
 
 <section class="{slice.primary.style == 'Full Screen' ? '' : 'box'} {distanceTop} {distanceBottom}">
-	<div class="{slice.primary.style == 'Inline' ? 'ml-[35%] w-[65%]' : 'w-full'} relative">
-		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-3xl overflow-hidden'}">			
+	<div class="{slice.primary.style == 'Inline' ? 'ml-[25%] w-[75%]' : 'w-full'} relative">
+		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">			
 			<Video
 				videoPoster={slice.primary.video_poster.url}
 				videoUrl={slice.primary.video_url}

@@ -32,7 +32,7 @@
 
 <section class="box {distanceTop} {distanceBottom}">
 	<!-- Toggle Button -->
-	<div class="w-full justify-center flex pb-16">
+	<div class="w-full justify-center pb-16 hidden lg:flex">
 		<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">
 			<div class="z-20">
 				Grid
@@ -59,7 +59,7 @@
 				</div>
 		
 				<!-- Two-column grid for remaining items -->
-				<div class="grid grid-cols-2 gap-x-6 gap-y-6">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6">
 					{#each matchedProjects.slice(1) as project}
 						<ProjectItem data={project} />
 					{/each}

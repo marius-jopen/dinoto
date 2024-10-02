@@ -12,14 +12,14 @@
 <section class="box {distanceTop} {distanceBottom}">
     <div class="border-t border-d_black">
         {#each slice.primary.items as item}
-            <div class="flex w-full border-b border-d_black pb-4 pt-4">
-                <div class="w-1/2">
+            <div class="flex flex-col text-center md:text-left md:flex-row w-full border-b border-d_black pb-4 pt-4">
+                <div class="md:w-1/2">
                     <p>
                         {item.headline}
                     </p>
                 </div>
     
-                <div class="w-1/2">
+                <div class="md:w-1/2">
                     <PrismicRichText field={item.text} />
                 </div>
             </div>

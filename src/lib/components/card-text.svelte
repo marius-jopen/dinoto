@@ -11,7 +11,7 @@
 </script>
 
 {#if data.text.length > 0}
-    <div class="{styleClass} w-full h-full rounded-3xl overflow-hidden py-3 px-8">
+    <div class="{styleClass} w-full h-full rounded-2xl md:rounded-3xl overflow-hidden py-3 px-8">
         {#if data.number}
             <div class="flex justify-between pb-10">
                 <h2>{data.headline}</h2>

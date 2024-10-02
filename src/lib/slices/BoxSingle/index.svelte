@@ -14,7 +14,7 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<div class="{styleClass} rounded-3xl">
+	<div class="{styleClass} rounded-2xl md:rounded-3xl">
 		<div class="flex relative pt-6 pb-10">
 			<h3 class="md:absolute pl-8">
 				{slice.primary.number}

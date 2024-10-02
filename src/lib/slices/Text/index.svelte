@@ -10,7 +10,7 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<div class="{slice.primary.style == "Inline" ? 'ml-[35%] w-[65%]' : 'w-full'}">
+	<div class="{slice.primary.style == "Inline" ? 'md:ml-[35%] md:w-[65%]' : 'w-full'}">
 		<PrismicRichText field={slice.primary.text} />
 	</div>
 </section>
