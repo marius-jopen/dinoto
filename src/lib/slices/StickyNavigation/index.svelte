@@ -14,15 +14,15 @@
 
 <IntersectionObserver {element} bind:intersecting>
 	<div bind:this={element}>
-		<Header logo={false} style={styleTextClass} items={slice.primary.items} />
+		<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
 	</div>
 </IntersectionObserver>
 
-<header class:sticky={!intersecting}>
+<div class:sticky={!intersecting}>
 	{#if !intersecting}
-		<Header style={styleTextClass} items={slice.primary.items} />
+		<Header sticky style={styleTextClass} items={slice.primary.items} />
 	{/if}
-</header>
+</div>
 
 <style>
 	.sticky {
