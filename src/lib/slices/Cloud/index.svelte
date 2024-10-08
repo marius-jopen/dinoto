@@ -42,7 +42,7 @@
       randomX = Math.max(0, Math.min(100, randomX));
       randomY = Math.max(0, Math.min(100, randomY));
 
-      let randomSize = Math.random() * 10 + 30;
+      let randomSize = Math.random() * 10 + 20;
 
       return {
         ...item,
@@ -53,7 +53,7 @@
         currentOffsetY: 0,
         targetOffsetX: 0,
         targetOffsetY: 0,
-        delayFactor: Math.random() * 0.5 + 0.5,
+        delayFactor: Math.random() * 0.5 + 1,
       };
     });
 
@@ -79,7 +79,7 @@
         dy /= distance;
       }
 
-      let movementStrength = Math.min(50 / distance, 5);
+      let movementStrength = Math.min(30 / distance, 10);
       let delay = image.delayFactor;
 
       image.targetOffsetX = dx * movementStrength * delay;
@@ -89,8 +89,8 @@
 
   function animate() {
     images = images.map((image) => {
-      image.currentOffsetX += (image.targetOffsetX - image.currentOffsetX) * 0.05;
-      image.currentOffsetY += (image.targetOffsetY - image.currentOffsetY) * 0.05;
+      image.currentOffsetX += (image.targetOffsetX - image.currentOffsetX) * 0.02;
+      image.currentOffsetY += (image.targetOffsetY - image.currentOffsetY) * 0.02;
       return image;
     });
     requestAnimationFrame(animate);
@@ -100,7 +100,7 @@
 <style>
   .image-container {
     position: absolute;
-    transition: transform s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform s;
     will-change: transform;
   }
 
@@ -112,10 +112,10 @@
   }
 </style>
 
-<section data-aos="fade-up" class="overflow-hidden {distanceTop} {distanceBottom}">
-  <div class="box">
+<section data-aos="fade-up" class="w-full {distanceTop} {distanceBottom}">
+  <div class="overflow-x-clip hidden md:block">
     <div
-      class="mt-12 mb-10 mx-24"
+      class="mt-12 mb-3 mx-24"
       style="position: relative; width: 100%; height: 45vw;"
       bind:this={container}
       on:mousemove={handleMouseMove}
@@ -124,24 +124,34 @@
       <div
         class="image-container"
         style="
-        --scale-value: {hoveredIndex === index ? 1.2 : 1};
+        --scale-value: {hoveredIndex === index ? 1.4 : 1.2};
         top: {image.randomY}%;
         left: {image.randomX}%;
         width: {image.randomSize}%;
         height: {image.randomSize}%;
         transform: translate(-50%, -50%) translate3d({image.currentOffsetX}%, {image.currentOffsetY}%, 0) ;
-        transition: scale 1s ease-in-out;
+        transition: scale 1s;
         "
         on:mouseenter={() => (hoveredIndex = index)}
         on:mouseleave={() => (hoveredIndex = null)}
       >
         <PrismicImage 
         style="
-          transform: scale({hoveredIndex === index ? 1.2 : 1});
-          transition: transform 2s ease-in-out;
+          transform: scale({hoveredIndex === index ? 1.4 : 1.2});
+          transition: transform 1s;
         "
         class="rounded-2xl md:rounded-3xl" field={image.image} />
       </div>
+      {/each}
+    </div>
+  </div>
+
+  <div class="md:hidden">
+    <div class="box">
+      {#each images as image, index}
+        <div class="">
+          <PrismicImage class="rounded-2xl mb-4" field={image.image} />
+        </div>
       {/each}
     </div>
   </div>
