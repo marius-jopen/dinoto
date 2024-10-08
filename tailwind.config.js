@@ -17,7 +17,7 @@ export default {
       },
       borderRadius: {
         '2xl': '30px',
-        '3xl': '50px',
+        '3xl': '40px',
       }
     }
   },

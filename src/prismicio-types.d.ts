@@ -378,6 +378,18 @@ interface WorkDocumentData {
 	client: prismic.TitleField;
 
 	/**
+	 * Related Visible field in *Work*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: work.related_visible
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	related_visible: prismic.BooleanField;
+
+	/**
 	 * Related Work 1 field in *Work*
 	 *
 	 * - **Field Type**: Content Relationship
@@ -2347,6 +2359,20 @@ export interface StickyNavigationSliceDefaultPrimaryItemsItem {
  * Primary content in *StickyNavigation → Default → Primary*
  */
 export interface StickyNavigationSliceDefaultPrimary {
+	/**
+	 * Logo Color field in *StickyNavigation → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Light Gray
+	 * - **API ID Path**: sticky_navigation.default.primary.logoColor
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	logoColor: prismic.SelectField<
+		'Light Gray' | 'Light Green' | 'Dark gray' | 'Dark Green' | 'Black' | 'White',
+		'filled'
+	>;
+
 	/**
 	 * items field in *StickyNavigation → Default → Primary*
 	 *

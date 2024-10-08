@@ -38,18 +38,20 @@
     }
 </script>
 
-<div class="box mt-8 mb-8">
-    <div class="flex-col lg:flex-row flex gap-8">
-        {#if relatedProject1}
-            <div class="w-full">
-                <ProjectItem data={relatedProject1} />
-            </div>
-        {/if}
-    
-        {#if relatedProject2}
-            <div class="w-full">
-                <ProjectItem data={relatedProject2} />
-            </div>
-        {/if}
+{#if data.related_visible}
+    <div class="box mt-8 mb-8">
+        <div class="flex-col lg:flex-row flex gap-8">
+            {#if relatedProject1}
+                <div class="w-full">
+                    <ProjectItem data={relatedProject1} />
+                </div>
+            {/if}
+        
+            {#if relatedProject2}
+                <div class="w-full">
+                    <ProjectItem data={relatedProject2} />
+                </div>
+            {/if}
+        </div>
     </div>
-</div>
+{/if}

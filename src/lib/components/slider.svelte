@@ -195,15 +195,15 @@
 
 <style>
   .my-slide-progress {
-    border: 1px solid white;
     width: 100%;
-    height: 10px;
+    height: 6px;
     margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer; /* Add pointer cursor to indicate clickability */
   }
 
   .my-slide-progress-bar {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 1);
     height: 100%;
     width: 0;
   }

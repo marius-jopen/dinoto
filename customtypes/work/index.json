@@ -46,6 +46,15 @@
 					"single": "heading1"
 				}
 			},
+			"related_visible": {
+				"type": "Boolean",
+				"config": {
+					"label": "Related Visible",
+					"placeholder_false": "false",
+					"placeholder_true": "true",
+					"default_value": true
+				}
+			},
 			"related_work_1": {
 				"type": "Link",
 				"config": {
