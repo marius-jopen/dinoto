@@ -22,7 +22,7 @@
 </script>
 
 <div class="{styleClass}">
-	<Header style={styleTextClass} data={data.navigation_top} />
+	<Header style={styleTextClass} items={data.navigation_top.data.navigation} />
 	<SliceZone slices={data.page.data.slices} {components} />
 	<RelatedProjects data={data} />
 	<NextProject data={data} />
