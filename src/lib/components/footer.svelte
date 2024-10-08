@@ -22,28 +22,19 @@
         </defs>
     </svg>
     
-    <div class="flex justify-between pt-8 pb-8">
-        <div class="flex">
-            <div>
-                © DiNoto Group 2024
-            </div>
-    
-            <div class="flex gap-2 ml-16">
-                {#each data.data.navigation as item}
-                    <nav>
-                        <PrismicLink field={item.link}>
-                            {item.text}
-                        </PrismicLink>
-                    </nav>
-                {/each}
-            </div>
+    <div class="flex justify-between pt-6 pb-8 p2">
+        <div>
+            © DiNoto Group 2024
         </div>
 
-        <div>
-            <a href="/privacy-policy">
-                Privacy Policy
-            </a>
+        <div class="flex gap-4 ml-16">
+            {#each data.data.navigation as item}
+                <nav>
+                    <PrismicLink field={item.link}>
+                        {item.text}
+                    </PrismicLink>
+                </nav>
+            {/each}
         </div>
-    </div>
-    
+    </div>  
 </div>

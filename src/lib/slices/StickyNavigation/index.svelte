@@ -12,7 +12,7 @@
 	$: styleTextClass = textColor(slice.primary.logoColor);
 </script>
 
-<IntersectionObserver {element} bind:intersecting>
+<IntersectionObserver rootMargin="0px" {element} bind:intersecting>
 	<div bind:this={element}>
 		<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
 	</div>
