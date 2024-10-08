@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import HeaderLogo from '$lib/components/header-logo.svelte';
     import { PrismicLink } from '@prismicio/svelte';
 	import { fade } from 'svelte/transition';
@@ -7,7 +8,37 @@
     export let style;
 
     let visible = false;
-    let distanceTop = "h-14";
+    let distanceTop = "h-[60px]";
+    let background = false;
+    let lastScrollY = 0;
+
+    // Listen to the scroll event and update the background based on scroll direction
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY === 0) {
+            // At the top of the page, set background to false
+            background = false;
+        } else if (currentScrollY < lastScrollY) {
+            // Scrolling up
+            background = true;
+        } else {
+            // Scrolling down
+            background = false;
+        }
+
+        lastScrollY = currentScrollY;
+    };
+
+    // Attach scroll event listener on mount
+    onMount(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup listener on component destroy
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    });
 
     function triggerNav() {
         visible = !visible; // Toggle visibility
@@ -18,13 +49,13 @@
     }
 </script>
 
-<div class="w-full top-0 left-0 z-50 fixed {distanceTop}">
+<div class="w-full top-0 left-0 z-50 fixed {distanceTop} {background ? 'bg-white/10 backdrop-blur-xl' : 'bg-white/0'}">
     <div class="box flex justify-between pt-2 pb-4">
         <div class="pt-2">
             <HeaderLogo style={visible ? 'black' : style} />
         </div>
     
-        <div on:click={triggerNav} class="pt-[5px] cursor-pointer transition-color duration-300 {visible ? 'text-black' : ''}">
+        <div on:click={triggerNav} class="pt-[4px] cursor-pointer transition-color duration-300 {visible ? 'text-black' : ''}">
             {visible ? 'Menu' : 'Menu'} <!-- Change the button text based on visibility -->
         </div>
     </div>

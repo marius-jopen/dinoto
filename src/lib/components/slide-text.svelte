@@ -13,8 +13,8 @@
 </script>
 
 {#if data.text.length > 0}
-    <div class="aspect-video w-full">
-        <div class="bg-d_lightGreen h-full w-full flex justify-center flex-col px-8">
+    <div class="aspect-square md:aspect-video w-full">
+        <div class="bg-d_lightGreen h-full w-full flex justify-center flex-col px-8 p2">
             <div class="text-center">
                 <PrismicRichText field={data.text} />
             </div>

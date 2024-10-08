@@ -3,8 +3,8 @@ export function getDistanceTop(distanceTop) {
         case 'xs': return 'pt-2';
         case 's': return 'pt-4';
         case 'm': return 'pt-10';
-        case 'xl': return 'pt-16';
-        case 'xxl': return 'pt-24';
+        case 'xl': return 'pt-12 md:pt-16';
+        case 'xxl': return 'pt-10 md:pt-24';
         default: return 'pt-0';
     }
 }

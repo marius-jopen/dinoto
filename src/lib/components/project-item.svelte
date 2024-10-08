@@ -35,7 +35,7 @@
         <Slider clickable={data.data.clickable} type="preview" data={previews} />
     </div>
 
-    <div class="bg-white rounded-b-3xl pb-4 pt-[45px] px-8 -mt-8 p2 text-center">
+    <div class="bg-white rounded-b-2xl md:rounded-b-3xl pb-4 pt-[45px] px-4 md:px-8 -mt-8 p2 text-center">
         {data.data.client[0]?.text}
         
         <span class="text-d_darkGray">

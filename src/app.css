@@ -57,12 +57,12 @@ h3 {
 }
 
 .p2 {
-    @apply text-[20px] leading-[120%];
+    @apply text-[18px] md:text-[20px] leading-[120%];
 }
 
 
 .box {
-    @apply mx-6;
+    @apply mx-4 md:mx-6;
 }
 
 .style-white {

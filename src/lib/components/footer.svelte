@@ -22,12 +22,12 @@
         </defs>
     </svg>
     
-    <div class="flex justify-between pt-6 pb-8 p2">
-        <div>
+    <div class="flex justify-between pt-6 pb-8 p2 flex-col-reverse md:flex-row text-center md:text-left">
+        <div class="pt-4 md:pt-0 border-black border-t md:border-none mt-4 md:mt-0">
             © DiNoto Group 2024
         </div>
 
-        <div class="flex gap-4 ml-16">
+        <div class="flex gap-4 md:ml-16 flex-col md:flex-row">
             {#each data.data.navigation as item}
                 <nav>
                     <PrismicLink field={item.link}>
