@@ -118,6 +118,7 @@ export type NavigationTopDocument<Lang extends string = string> = prismic.Prismi
 >;
 
 type PageDocumentDataSlicesSlice =
+	| StickyNavigationSlice
 	| VideoGallerySlice
 	| WelcomeSlice
 	| VideoSlice
@@ -377,6 +378,28 @@ interface WorkDocumentData {
 	client: prismic.TitleField;
 
 	/**
+	 * Related Work 1 field in *Work*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.related_work_1
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	related_work_1: prismic.ContentRelationshipField<'work'>;
+
+	/**
+	 * Related Work 2 field in *Work*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.related_work_2
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	related_work_2: prismic.ContentRelationshipField<'work'>;
+
+	/**
 	 * Background field in *Work*
 	 *
 	 * - **Field Type**: Select
@@ -416,28 +439,6 @@ interface WorkDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	items: prismic.GroupField<Simplify<WorkDocumentDataItemsItem>>;
-
-	/**
-	 * Related Work 1 field in *Work*
-	 *
-	 * - **Field Type**: Content Relationship
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.related_work_1
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	related_work_1: prismic.ContentRelationshipField<'work'>;
-
-	/**
-	 * Related Work 2 field in *Work*
-	 *
-	 * - **Field Type**: Content Relationship
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: work.related_work_2
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	related_work_2: prismic.ContentRelationshipField<'work'>;
 
 	/**
 	 * Slice Zone field in *Work*
@@ -2318,6 +2319,76 @@ type SliderSliceVariation = SliderSliceDefault;
 export type SliderSlice = prismic.SharedSlice<'slider', SliderSliceVariation>;
 
 /**
+ * Item in *StickyNavigation → Default → Primary → items*
+ */
+export interface StickyNavigationSliceDefaultPrimaryItemsItem {
+	/**
+	 * Text field in *StickyNavigation → Default → Primary → items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sticky_navigation.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *StickyNavigation → Default → Primary → items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sticky_navigation.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *StickyNavigation → Default → Primary*
+ */
+export interface StickyNavigationSliceDefaultPrimary {
+	/**
+	 * items field in *StickyNavigation → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sticky_navigation.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<StickyNavigationSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for StickyNavigation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StickyNavigationSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<StickyNavigationSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *StickyNavigation*
+ */
+type StickyNavigationSliceVariation = StickyNavigationSliceDefault;
+
+/**
+ * StickyNavigation Shared Slice
+ *
+ * - **API ID**: `sticky_navigation`
+ * - **Description**: StickyNavigation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type StickyNavigationSlice = prismic.SharedSlice<
+	'sticky_navigation',
+	StickyNavigationSliceVariation
+>;
+
+/**
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
@@ -2912,6 +2983,11 @@ declare module '@prismicio/client' {
 			SliderSliceDefaultPrimary,
 			SliderSliceVariation,
 			SliderSliceDefault,
+			StickyNavigationSlice,
+			StickyNavigationSliceDefaultPrimaryItemsItem,
+			StickyNavigationSliceDefaultPrimary,
+			StickyNavigationSliceVariation,
+			StickyNavigationSliceDefault,
 			TextSlice,
 			TextSliceDefaultPrimary,
 			TextSliceVariation,

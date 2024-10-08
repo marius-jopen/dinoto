@@ -1,0 +1,44 @@
+{
+  "id": "sticky_navigation",
+  "type": "SharedSlice",
+  "name": "StickyNavigation",
+  "description": "StickyNavigation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "items",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

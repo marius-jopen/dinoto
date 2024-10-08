@@ -18,6 +18,7 @@ import Newsletter from './Newsletter/index.svelte';
 import Opener1 from './Opener1/index.svelte';
 import Opener2 from './Opener2/index.svelte';
 import Slider from './Slider/index.svelte';
+import StickyNavigation from './StickyNavigation/index.svelte';
 import Text from './Text/index.svelte';
 import TextBig from './TextBig/index.svelte';
 import Video from './Video/index.svelte';
@@ -44,6 +45,7 @@ export const components = {
 	opener1: Opener1,
 	opener2: Opener2,
 	slider: Slider,
+	sticky_navigation: StickyNavigation,
 	text: Text,
 	text_big: TextBig,
 	video: Video,
