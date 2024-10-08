@@ -5,6 +5,7 @@
 	import Footer from '$lib/components/footer.svelte';
 	import { workStore } from '$lib/stores';
 	import { backgroundColor, textColor } from '../../../lib/components/color-styles';
+	import MobileHeader from '$lib/components/mobile-header.svelte';
 
 	export let data;
 
@@ -21,7 +22,14 @@
 </script>
 
 <div class="{styleClass}">
-	<Header style={styleTextClass} items={data.navigation_top.data.navigation} />
+	<div class="hidden md:block ">
+		<Header style={styleTextClass} items={data.navigation_top.data.navigation} />
+	</div>
+
+	<div class="block md:hidden ">
+		<MobileHeader style={styleTextClass} items={data.navigation_top.data.navigation} />
+	</div>
+
 	<SliceZone slices={data.page.data.slices} {components} />
 	<Footer style={styleTextClass} data={data.navigation_bottom} />
 </div>

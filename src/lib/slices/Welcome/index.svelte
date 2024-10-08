@@ -35,7 +35,7 @@
     <div class="h-full relative">
         <Slider type="welcome" data={matchedProjects} />
 
-        <div class="absolute w-full bottom-0 left-0">
+        <div class="absolute w-full bottom-0 left-0 hidden md:block">
             <div class="box">
                 <svg class="w-full h-auto pb-6" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_68_3172)">

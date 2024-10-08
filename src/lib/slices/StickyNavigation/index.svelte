@@ -13,12 +13,14 @@
 </script>
 
 <IntersectionObserver rootMargin="0px" {element} bind:intersecting>
-	<div bind:this={element}>
-		<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
+	<div class="pb-8 md:pb-0" bind:this={element}>
+		<div class="hidden md:block">
+			<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
+		</div>
 	</div>
 </IntersectionObserver>
 
-<div class:sticky={!intersecting}>
+<div class="hidden md:block" class:sticky={!intersecting}>
 	{#if !intersecting}
 		<Header sticky style={styleTextClass} items={slice.primary.items} />
 	{/if}

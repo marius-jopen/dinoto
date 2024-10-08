@@ -41,7 +41,7 @@
     });
 </script>
 
-<div class="{!sticky && 'fixed top-0 left-0 w-full z-50'} transition duration-200 {background ? 'bg-white/10 backdrop-blur-xl' : 'bg-white/0'} {distanceTop}">
+<div class="hidden md:black {!sticky && 'fixed top-0 left-0 w-full z-50'} transition duration-200 {background ? 'bg-white/10 backdrop-blur-xl' : 'bg-white/0'} {distanceTop}">
     <div class="box {!sticky && 'relative'}">
         <div class="pt-4 pb-4 flex justify-between">
             {#if logo}
@@ -56,5 +56,5 @@
 </div>
 
 {#if !sticky}
-    <div class="{distanceTop}" />
+    <div class="hidden md:black {distanceTop}" />
 {/if}
