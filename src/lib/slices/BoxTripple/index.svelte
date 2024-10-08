@@ -17,7 +17,7 @@
 	$: styleClass3 = backgroundColor(slice.primary.color_3);
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
 	<div class="lg:flex gap-8">
 		<div class="flex flex-col gap-8">
 			<div class="rounded-2xl md:rounded-3xl overflow-hidden {styleClass}">

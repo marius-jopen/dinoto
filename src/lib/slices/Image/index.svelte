@@ -10,7 +10,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="{slice.primary.style == 'Full Screen' ? '' : 'box'} {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="{slice.primary.style == 'Full Screen' ? '' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="{slice.primary.style == 'Inline' ? 'lg:ml-[25%] lg:w-[75%]' : 'w-full'} relative">
 		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">			
 			<PrismicImage class="w-full" field={slice.primary.image} />

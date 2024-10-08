@@ -112,7 +112,7 @@
   }
 </style>
 
-<section class="overflow-hidden {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="overflow-hidden {distanceTop} {distanceBottom}">
   <div class="box">
     <div
       class="mt-12 mb-10 mx-24"

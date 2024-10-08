@@ -3,6 +3,18 @@
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
+	import { onMount } from 'svelte';
+	import AOS from 'aos';
+
+	onMount(() => {
+		AOS.init({
+			duration: 2000,
+			easing: 'ease',
+			once: false,
+		});
+	})
+
+	AOS.refresh();
 </script>
 
 <svelte:head>
@@ -17,8 +29,12 @@
 		<meta name="og:image" content={$page.data.meta_image} />
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
+
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </svelte:head>
+
 <main>
 	<slot />
 </main>
+
 <PrismicPreview {repositoryName} />

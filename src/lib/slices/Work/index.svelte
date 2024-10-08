@@ -32,7 +32,7 @@
 
 <section class="box {distanceTop} {distanceBottom}">
 	<!-- Toggle Button -->
-	<div class="w-full justify-center pb-16 hidden md:flex">
+	<div data-aos="fade-up" class="w-full justify-center pb-16 hidden md:flex">
 		<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">
 			<div class="z-20">
 				Grid

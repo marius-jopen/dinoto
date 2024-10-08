@@ -15,7 +15,7 @@
 	$: styleClassRight = backgroundColor(slice.primary.color_right);
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
 	<div class="lg:flex gap-8">
 		<div class="rounded-2xl md:rounded-3xl overflow-hidden w-full lg:w-1/2 mb-8 lg:mb-0 {styleClassLeft}">
 			{#if slice.primary.headline_left}

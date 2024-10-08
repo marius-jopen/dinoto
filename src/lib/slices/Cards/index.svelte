@@ -113,7 +113,7 @@
 	}
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
 	<div class="w-full flex {align}" style="height: {totalHeight}px;">
 		<div 
 		class="relative"

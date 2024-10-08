@@ -9,7 +9,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
 	<div class="flex flex-wrap rounded-3xl overflow-hidden">
 		{#each slice.primary.items as item, index}
 			<div class="w-1/3 md:w-1/5 aspect-square relative">

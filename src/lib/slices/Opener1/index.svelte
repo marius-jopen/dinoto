@@ -9,7 +9,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
 	<div class="rounded-3xl relative w-full mb-4">
 		<div class="pb-4 md:pb-0 md:absolute top-0 right-0 h-full w-full md:w-8/12 lg:w-8/12 z-0">
 			<PrismicImage class="aspect-[2/1] sm:aspect-[3/1] md:aspect-none w-full h-full rounded-2xl md:rounded-3xl object-cover" field={slice.primary.image} />

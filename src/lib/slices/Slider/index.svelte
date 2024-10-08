@@ -58,7 +58,7 @@
 	});
 </script>
 
-<section class="{distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="{distanceTop} {distanceBottom}">
 	<div>
 		<Splide
 			class="{height}"

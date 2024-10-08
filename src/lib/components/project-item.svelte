@@ -28,6 +28,7 @@
 </script>
 
 <div 
+    data-aos="fade-up"
     on:click={() => getLink() && window.location.assign(getLink())} 
     style="cursor: {data.data.clickable ? 'pointer' : 'default'};"
 >
