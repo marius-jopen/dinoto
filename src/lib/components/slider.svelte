@@ -167,7 +167,7 @@
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
-            <p class="hidden lg:block p2 pt-2 px-1 text-white">
+            <p class="hidden lg:block p3 pt-2 px-1 text-white">
               {slides[index].data.client[0].text}
 
               <span class="opacity-50">
@@ -196,7 +196,7 @@
 <style>
   .my-slide-progress {
     width: 100%;
-    height: 6px;
+    height: 4px;
     margin-top: 5px;
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer; /* Add pointer cursor to indicate clickability */
