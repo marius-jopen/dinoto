@@ -67,7 +67,7 @@
     <div>
         <video
             bind:this={welcomeVideoElement}
-            class="aspect-square md:aspect-video object-cover w-full"
+            class="{type == 'welcome' ? 'aspect-square md:aspect-video' : 'aspect-video'}  object-cover w-full"
             poster={data.video_poster.url}
             src={data.video_url}
             muted
@@ -81,7 +81,7 @@
     <div>
         <video
             bind:this={previewVideoElement}
-            class="aspect-square md:aspect-video object-cover w-full"
+            class="{type == 'welcome' ? 'aspect-square md:aspect-video' : 'aspect-video'}  object-cover w-full"
             poster={data.video_poster.url}
             src={data.video_url}
             muted

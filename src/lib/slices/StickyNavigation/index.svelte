@@ -13,7 +13,7 @@
 </script>
 
 <IntersectionObserver rootMargin="0px" {element} bind:intersecting>
-	<div class="pb-8 md:pb-0" bind:this={element}>
+	<div class="pb-8 md:pb-0 pt-1" bind:this={element}>
 		<div class="hidden md:block">
 			<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
 		</div>

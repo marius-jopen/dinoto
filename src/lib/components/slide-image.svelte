@@ -14,6 +14,6 @@
 
 {#if data.image.url}    
     <div class="w-full h-full">
-        <PrismicImage class="aspect-square md:aspect-video w-full object-cover" field={data.image} />
+        <PrismicImage class="{type == 'welcome' ? 'aspect-square ' : 'aspect-video'}  w-full object-cover" field={data.image} />
     </div>
 {/if}

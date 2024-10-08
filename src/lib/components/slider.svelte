@@ -184,9 +184,9 @@
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>
-          <SlideVideo list={list}  type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
-          <SlideText type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
-          <SlideImage type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideVideo list={list} type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideText list={list} type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
+          <SlideImage list={list} type={type} data={slide} index={i} time={slide.slide_time} status={i === currentSlideIndex ? true : false} />
         </SplideSlide>
       {/each}
     </SplideTrack>

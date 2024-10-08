@@ -114,7 +114,7 @@
 </script>
 
 <section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
-	<div class="w-full flex {align}" style="height: {totalHeight}px;">
+	<div class="hidden w-full md:flex {align}" style="height: {totalHeight}px;">
 		<div 
 		class="relative"
 		style="width: {cardWidth}px;"
@@ -139,5 +139,15 @@
 				</div>
 			{/each}
 		</div>
+	</div>
+
+	<div class="md:hidden">
+		{#each items as card, index (card.id)}
+			<div class="mb-4">
+				<CardImage data={card} status={card.status} />
+				<CardText data={card} status={card.status} />
+				<CardVideo data={card} status={card.status} />
+			</div>
+		{/each}
 	</div>
 </section>

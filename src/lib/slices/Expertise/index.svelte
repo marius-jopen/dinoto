@@ -10,9 +10,9 @@
 </script>
 
 <section class="box {distanceTop} {distanceBottom}">
-	<div class="flex flex-wrap">
+	<div class="flex flex-wrap pb-12 md:pb-0">
 		{#each slice.primary.items as item}
-			<div data-aos="fade-up" class="w-full sm:w-1/2 pb-8 p1 pr-2">
+			<div data-aos="fade-up" class="w-full sm:w-1/2 pb-8 p1 pr-2 text-center md:text-left">
 				<div class="text-d_lightGreen">
 					{item.headline}
 				</div>

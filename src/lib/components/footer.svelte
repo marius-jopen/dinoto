@@ -5,7 +5,7 @@
 </script>
 
 <div data-aos="fade-up"  class="box">
-    <svg class="w-full h-auto" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="w-full h-auto pb-4 md:pb-0" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_68_3172)">
         <path d="M144.354 16.3383H0V415.555H143.802C264.005 415.555 344.331 339.545 344.331 216.223C344.331 92.9006 264.005 16.3383 144.354 16.3383ZM140.428 331.652H88.7516V100.219H140.428C201.654 100.219 251.654 136.256 251.654 216.201C251.654 296.146 201.654 331.63 140.428 331.63V331.652Z" fill="{style}"/>
         <path d="M403.153 0C376.201 0 353.727 22.5287 353.727 50.1203C353.727 77.712 376.201 100.241 403.153 100.241C430.105 100.241 453.704 77.712 453.704 50.1203C453.704 22.5287 431.252 0 403.153 0Z" fill="{style}"/>
@@ -23,7 +23,7 @@
     </svg>
     
     <div class="flex justify-between pt-6 pb-8 p2 flex-col-reverse md:flex-row text-center md:text-left">
-        <div class="pt-4 md:pt-0 border-black border-t md:border-none mt-4 md:mt-0">
+        <div class="pt-4 md:pt-0 md:mt-0">
             © DiNoto Group 2024
         </div>
 

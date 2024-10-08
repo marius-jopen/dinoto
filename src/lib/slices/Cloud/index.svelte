@@ -115,8 +115,8 @@
 <section data-aos="fade-up" class="w-full {distanceTop} {distanceBottom}">
   <div class="overflow-x-clip hidden md:block">
     <div
-      class="mt-12 mb-3 mx-24"
-      style="position: relative; width: 100%; height: 45vw;"
+      class="mt-12 mb-3 mx-[15%]"
+      style="position: relative; height: 35vw;"
       bind:this={container}
       on:mousemove={handleMouseMove}
     >
@@ -124,7 +124,7 @@
       <div
         class="image-container"
         style="
-        --scale-value: {hoveredIndex === index ? 1.4 : 1.2};
+        --scale-value: {hoveredIndex === index ? 1.6 : 1.4};
         top: {image.randomY}%;
         left: {image.randomX}%;
         width: {image.randomSize}%;
@@ -137,7 +137,7 @@
       >
         <PrismicImage 
         style="
-          transform: scale({hoveredIndex === index ? 1.4 : 1.2});
+          transform: scale({hoveredIndex === index ? 1.6 : 1.4});
           transition: transform 1s;
         "
         class="rounded-2xl md:rounded-3xl" field={image.image} />

@@ -52,14 +52,17 @@ h3 {
     @apply text-[35px] md:text-[35px] lg:text-[45px] xl:text-[55px] leading-[115%] md:leading-[110%];
 }
 
-.p1 {
-    @apply text-[25px] md:text-[30px] leading-[120%];
+.p1, p {
+    @apply text-[22px] md:text-[30px] leading-[120%];
 }
 
 .p2 {
     @apply text-[18px] md:text-[20px] leading-[120%];
 }
 
+.p3 {
+    @apply text-[15px] leading-[120%];
+}
 
 .box {
     @apply mx-4 md:mx-6;
