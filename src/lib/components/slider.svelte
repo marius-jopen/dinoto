@@ -162,8 +162,8 @@
   {#if !clickable }
     <div class="gap-4 flex px-6 pt-5 absolute top-0 left-0 w-full z-10">
       {#each $progressBars as barWidth, index}
-        <div class="w-full {hover || list ? "" : "hidden"}">
-          <div class="my-slide-progress rounded-full" on:click|stopPropagation={() => clickTop(index)}>
+        <div class="cursor-pointer w-full {hover || list ? "" : "hidden"}" on:click|stopPropagation={() => clickTop(index)}>
+          <div class="my-slide-progress rounded-full" >
             <div class="my-slide-progress-bar rounded-full" style="width: {barWidth}%"></div>
           </div>
           {#if type == "welcome"}
@@ -196,14 +196,15 @@
 <style>
   .my-slide-progress {
     width: 100%;
-    height: 4px;
+    height: 7px;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.25);
+    border:  rgba(255, 255, 255, 0.6) solid 1px;
     cursor: pointer; /* Add pointer cursor to indicate clickability */
   }
 
   .my-slide-progress-bar {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.6);
     height: 100%;
     width: 0;
   }
