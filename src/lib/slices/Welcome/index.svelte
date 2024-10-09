@@ -31,7 +31,7 @@
 
 
 
-<section data-aos="fade-up">
+<section >
     <div class="h-full relative">
         <Slider type="welcome" data={matchedProjects} />
 

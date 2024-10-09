@@ -54,13 +54,13 @@
 		<div>
 			{#if matchedProjects.length > 0}
 				<!-- First item, full width -->
-				<div class="full-width mb-8">
+				<!-- <div class="full-width mb-8">
 					<ProjectItem data={matchedProjects[0]} />
-				</div>
+				</div> -->
 		
 				<!-- Two-column grid for remaining items -->
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
-					{#each matchedProjects.slice(1) as project}
+					{#each matchedProjects as project}
 						<ProjectItem data={project} />
 					{/each}
 				</div>
