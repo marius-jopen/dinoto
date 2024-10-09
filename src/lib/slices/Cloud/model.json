@@ -57,6 +57,16 @@
                   "constraint": {},
                   "thumbnails": []
                 }
+              },
+              "project": {
+                "type": "Link",
+                "config": {
+                  "label": "project",
+                  "select": "document",
+                  "customtypes": [
+                    "work"
+                  ]
+                }
               }
             }
           }

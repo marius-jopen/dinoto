@@ -1421,6 +1421,16 @@ export interface CloudSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image: prismic.ImageField<never>;
+
+	/**
+	 * project field in *Cloud → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cloud.default.primary.items[].project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'work'>;
 }
 
 /**

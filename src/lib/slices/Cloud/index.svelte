@@ -3,17 +3,24 @@
   import { getDistanceTop, getDistanceBottom } from '../../components/distances';
   import { PrismicImage } from "@prismicio/svelte";
   import { onMount } from 'svelte';
+	import { workStore } from '$lib/stores';
+	import { get } from 'svelte/store';
+	import ProjectItem from '$lib/components/project-item.svelte';
 
   export let slice: Content.CloudSlice;
 
   let distanceTop = getDistanceTop(slice.primary.distance_top);
   let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
-
+  let work = get(workStore);
   let images = []; // Initialize images array
   let hoveredIndex = null;
   let mouseX = 50;
   let mouseY = 50;
   let container;
+
+  function getProjectById(id) {
+    return work.find(project => project.id === id);
+  }
 
   // Start animation loop only on client side
   onMount(() => {
@@ -42,7 +49,7 @@
       randomX = Math.max(0, Math.min(100, randomX));
       randomY = Math.max(0, Math.min(100, randomY));
 
-      let randomSize = Math.random() * 10 + 20;
+      let randomSize = Math.random() * 20 + 15;
 
       return {
         ...item,
@@ -135,12 +142,23 @@
         on:mouseenter={() => (hoveredIndex = index)}
         on:mouseleave={() => (hoveredIndex = null)}
       >
-        <PrismicImage 
-        style="
-          transform: scale({hoveredIndex === index ? 1.6 : 1.4});
-          transition: transform 1s;
-        "
-        class="rounded-2xl md:rounded-3xl" field={image.image} />
+      {#if image.image.url}
+          <PrismicImage 
+          style="
+            transform: scale({hoveredIndex === index ? 1.6 : 1.4});
+            transition: transform 1s;
+          "
+          class="rounded-2xl md:rounded-3xl" field={image.image} />
+          {:else}
+          <div 
+          class="rounded-2xl mb-4"
+          style="
+            transform: scale({hoveredIndex === index ? 1.6 : 1.4});
+            transition: transform 1s;
+          ">
+            <ProjectItem cloud={true} list={true} data={getProjectById(image.project.id)} />
+          </div>
+        {/if}
       </div>
       {/each}
     </div>
@@ -150,7 +168,13 @@
     <div class="box">
       {#each images as image, index}
         <div class="">
-          <PrismicImage class="rounded-2xl mb-4" field={image.image} />
+          {#if image.image.url}
+            <PrismicImage class="rounded-2xl mb-4" field={image.image} />
+          {:else}
+            <div class="rounded-2xl mb-4">
+              <ProjectItem cloud={false} list={true} data={getProjectById(image.project.id)} />
+            </div>
+          {/if}
         </div>
       {/each}
     </div>
