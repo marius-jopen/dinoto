@@ -2733,6 +2733,17 @@ export interface VideoGallerySliceDefaultPrimary {
 	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
 
 	/**
+	 * full field in *VideoGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: video_gallery.default.primary.full
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	full: prismic.BooleanField;
+
+	/**
 	 * Items field in *VideoGallery → Default → Primary*
 	 *
 	 * - **Field Type**: Group
