@@ -49,7 +49,7 @@
       randomX = Math.max(0, Math.min(100, randomX));
       randomY = Math.max(0, Math.min(100, randomY));
 
-      let randomSize = Math.random() * 20 + 15;
+      let randomSize = Math.random() * 20 + 25;
 
       return {
         ...item,
