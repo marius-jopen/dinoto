@@ -16,9 +16,7 @@
 		</div>
 
 		<div class="flex z-20 relative justify-end bg-d_lightGray h-full w-full md:w-7/12 lg:w-5/12 rounded-2xl md:rounded-3xl text-d_black py-8 px-10">
-			<div class="p1">
-				<PrismicRichText field={slice.primary.text} />
-			</div>
+			<PrismicRichText field={slice.primary.text} />
 		</div>
 	</div>
 
