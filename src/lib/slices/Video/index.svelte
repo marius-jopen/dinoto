@@ -12,7 +12,7 @@
 </script>
 
 <section data-aos="fade-up" class="{slice.primary.style == 'Full Screen' ? '' : 'box'} {distanceTop} {distanceBottom}">
-	<div class="{slice.primary.style == 'Inline' ? 'ml-[25%] w-[75%]' : 'w-full'} relative">
+	<div class="{slice.primary.style == 'Inline' ? 'md:ml-[25%] md:w-[75%]' : 'w-full'} relative">
 		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">			
 			<Video
 				videoPoster={slice.primary.video_poster.url}
