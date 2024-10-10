@@ -7,7 +7,7 @@
     // Props and variables
     export let data;
 
-    console.log(data);
+    // console.log(data);
 
     let currentId = data.page.id;  // Use id instead of uid
     let work = get(workStore);
