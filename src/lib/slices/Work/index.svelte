@@ -59,7 +59,7 @@
 				</div> -->
 		
 				<!-- Two-column grid for remaining items -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6">
 					{#each matchedProjects as project}
 						<ProjectItem data={project} />
 					{/each}
