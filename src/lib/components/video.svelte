@@ -65,15 +65,28 @@
   <p>
     autoplay: {autoplay}
   </p>  -->
+  {#if autoplay}
   <video
       bind:this={videoElement}
       poster={videoPoster}
       src={videoUrl}
-      autoplay={autoplay ? true : false}
-      muted={autoplay ? true : false}
+      autoplay
+      muted
       loop
       class="w-full h-full object-cover"
+      playsinline
   ></video>
+  {:else}
+    <video
+        bind:this={videoElement}
+        poster={videoPoster}
+        src={videoUrl}
+        loop
+        class="w-full h-full object-cover"
+        playsinline
+        controls
+    ></video>
+  {/if}
 
   <!-- Play/Pause Button, only if autoplay is false -->
   {#if !autoplay}

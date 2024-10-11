@@ -17,7 +17,7 @@
             videoPoster={data.video_poster.url}
             videoUrl={data.video_url}
             autoplay={data.autoplay} 
-            status={status}  
+            status={false}  
         />
     </div>
 {/if}
