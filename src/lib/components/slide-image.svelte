@@ -13,7 +13,7 @@
 </script>
 
 {#if data.image.url}    
-    <div class="w-full h-full">
-        <PrismicImage class="{type == 'welcome' ? 'aspect-square ' : 'aspect-video'}  w-full object-cover" field={data.image} />
+    <div class="w-full h-full ">
+        <PrismicImage class="{type == 'welcome' ? 'aspect-square md:aspect-video' : 'aspect-video'} w-full object-cover" field={data.image} />
     </div>
 {/if}

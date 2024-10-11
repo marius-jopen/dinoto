@@ -13,7 +13,7 @@
     }
 </script>
 
-{#if data.text.length > 0}
+{#if data.text && data.text.length > 0}
     <div class="{type == 'welcome' ? 'aspect-square ' : 'aspect-video'}  w-full">
         <div class="bg-d_lightGreen h-full w-full flex justify-center flex-col px-8 ">
             <div class="text-center {list ? 'p3' : 'p2'}">

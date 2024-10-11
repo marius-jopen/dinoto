@@ -2804,6 +2804,56 @@ export interface WelcomeSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	project: prismic.ContentRelationshipField<'work'>;
+
+	/**
+	 * slide_time field in *Welcome → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.items[].slide_time
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	slide_time: prismic.NumberField;
+
+	/**
+	 * Image field in *Welcome → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video Url field in *Welcome → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.items[].video_url
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video_url: prismic.KeyTextField;
+
+	/**
+	 * Video Poster field in *Welcome → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
+
+	/**
+	 * Headline field in *Welcome → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: welcome.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
 }
 
 /**

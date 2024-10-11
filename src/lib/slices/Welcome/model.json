@@ -27,6 +27,43 @@
                     "work"
                   ]
                 }
+              },
+              "slide_time": {
+                "type": "Number",
+                "config": {
+                  "label": "slide_time",
+                  "placeholder": ""
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video_url": {
+                "type": "Text",
+                "config": {
+                  "label": "Video Url",
+                  "placeholder": ""
+                }
+              },
+              "video_poster": {
+                "type": "Image",
+                "config": {
+                  "label": "Video Poster",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "headline": {
+                "type": "Text",
+                "config": {
+                  "label": "Headline",
+                  "placeholder": ""
+                }
               }
             }
           }

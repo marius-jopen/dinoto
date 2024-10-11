@@ -168,10 +168,16 @@
           </div>
           {#if type == "welcome"}
             <p class="hidden lg:block p3 pt-2 px-1 text-white">
-              {slides[index].data.client[0].text}
+              {#if slides[index].data.client}
+                  {slides[index].data.client[0].text}
+              {:else if slides[index].data.items[0].headline}
+                  {slides[index].data.items[0].headline}
+              {/if}
 
               <span class="opacity-50">
-                {slides[index].data.title[0].text}
+                {#if slides[index].data.title}
+                  {slides[index].data.title[0].text}
+                 {/if}
               </span>
             </p>
           {/if}
@@ -180,7 +186,7 @@
     </div>
   {/if}
   
-  <Splide class="h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
+  <Splide class="aspect-video h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>

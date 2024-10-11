@@ -1,39 +1,63 @@
 <script lang="ts">
-	import type { Content } from '@prismicio/client';
+    import type { Content } from '@prismicio/client';
     import Slider from '$lib/components/slider.svelte';
-	import { workStore } from '$lib/stores';
-	import { get } from 'svelte/store';
+    import { workStore } from '$lib/stores';
+    import { get } from 'svelte/store';
 
-	export let slice: Content.WelcomeSlice;
+    export let slice: Content.WelcomeSlice;
 
-    let distance = 330
-	let work = get(workStore);
-	let defaultSlideTime = 2000;
+    let distance = 330;
+    let work = get(workStore);
+    let defaultSlideTime = 2000;
 
-	// Get matched projects from the slice and work store
-	let matchedProjects = slice.primary.items
-		.map(item => work.find(project => project.id === item.project.id))
-		.filter(Boolean);
+    // Get matched projects from the slice and work store
+    let matchedProjects = slice.primary.items
+        .map(item => work.find(project => project.id === item.project?.id))
+        .filter(Boolean);
 
-	// Function to get the slide times
-	function getSlideTimes(matchedProjects) {
-		return matchedProjects.map(item =>
-			item?.data?.slide_time ?? defaultSlideTime
-		);
-	}
+    // Function to get the slide times
+    function getSlideTimes(matchedProjects) {
+        return matchedProjects.map(item =>
+            item?.data?.slide_time ?? defaultSlideTime
+        );
+    }
 
-	// Update matched projects with their corresponding slide_time
-	matchedProjects = matchedProjects.map((item, index) => ({
-		...item,
-		slide_time: getSlideTimes(matchedProjects)[index]
-	}));
+    // Update matched projects with their corresponding slide_time
+    matchedProjects = matchedProjects.map((item, index) => ({
+        ...item,
+        slide_time: getSlideTimes(matchedProjects)[index]
+    }));
+
+    // Create a new array that contains all matchedProjects and items with images/videos
+    let newArray = slice.primary.items.map(item => {
+        let matchedProject = work.find(project => project.id === item.project?.id);
+        if (matchedProject) {
+            // If a matched project is found, return the matched project with slide_time
+            return {
+                ...matchedProject,
+                slide_time: matchedProject?.data?.slide_time ?? defaultSlideTime
+            };
+        } else {
+            // If no matched project is found, return the item itself (images/videos) nested in 'data' -> 'items' -> '0'
+            return {
+                slide_time: 3000,
+                data: {
+                    clickable: true,
+                    items: {
+                        0: item
+                    }
+                }
+            };
+        }
+    });
+
+    $: console.log(newArray);
+    $: console.log(matchedProjects);
 </script>
-
-
 
 <section >
     <div class="h-full relative">
-        <Slider type="welcome" data={matchedProjects} />
+        <Slider type="welcome" data={newArray} />
 
         <div class="absolute w-full bottom-0 left-0 ">
             <div class="box">
