@@ -35,12 +35,12 @@
 
 	if (slice.primary.direction == 'left_big') {
 		align = "justify-start";
-		offsetY = 60;
+		offsetY = 80;
 		offsetX = 40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'left_small') {
 		align = "justify-center";
-		offsetY = 60;
+		offsetY = 80;
 		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'center_big') {
@@ -50,17 +50,17 @@
 		cardWidthPercentage = 1;  
 	} else if (slice.primary.direction == 'center_small') {
 		align = "justify-center";
-		offsetY = 60;
+		offsetY = 80;
 		offsetX = 0;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_big') {
 		align = "justify-end";
-		offsetY = 60;
+		offsetY = 80;
 		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	} else if (slice.primary.direction == 'right_small') {
 		align = "justify-center";
-		offsetY = 60;
+		offsetY = 80;
 		offsetX = -40;
 		cardWidthPercentage = 0.6;  
 	}

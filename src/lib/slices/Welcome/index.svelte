@@ -56,7 +56,7 @@
 </script>
 
 <section >
-    <div class="h-full relative overflow-hidden">
+    <div class="h-full relative ">
         <Slider type="welcome" data={newArray} />
 
         <div class="absolute w-full bottom-0 left-0 ">

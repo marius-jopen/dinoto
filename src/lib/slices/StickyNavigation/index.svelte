@@ -12,13 +12,15 @@
 	$: styleTextClass = textColor(slice.primary.logoColor);
 </script>
 
-<IntersectionObserver rootMargin="0px" {element} bind:intersecting>
-	<div class="pb-8 md:pb-0 pt-1" bind:this={element}>
-		<div class="hidden md:block">
-			<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
+<div class="block">
+	<IntersectionObserver rootMargin="0px" {element} bind:intersecting>
+		<div class="z-1 pb-8 md:pb-0 pt-1" bind:this={element}>
+			<div class="hidden md:block">
+				<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
+			</div>
 		</div>
-	</div>
-</IntersectionObserver>
+	</IntersectionObserver>
+</div>
 
 <div class="hidden md:block" class:sticky={!intersecting}>
 	{#if !intersecting}

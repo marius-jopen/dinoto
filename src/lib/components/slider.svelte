@@ -158,7 +158,7 @@
   }
 </script>
 
-<div class="relative h-full" on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
+<div class="relative h-full " on:click={nextSlide} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
   {#if !clickable }
     <div class="gap-4 flex px-6 pt-5 absolute top-0 left-0 w-full z-10">
       {#each $progressBars as barWidth, index}
@@ -186,7 +186,7 @@
     </div>
   {/if}
   
-  <Splide class="bg-neutral-200 aspect-video h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
+  <Splide class="bg-neutral-200 {type == 'welcome' && 'aspect-square'} md:aspect-video h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>
