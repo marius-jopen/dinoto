@@ -8,7 +8,7 @@
 
 	onMount(() => {
 		AOS.init({
-			duration: 2000,
+			duration: 700,
 			easing: 'ease',
 			once: false,
 		});

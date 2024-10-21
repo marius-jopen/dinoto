@@ -12,6 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "narrow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Narrow",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "logoColor": {
 				"type": "Select",
 				"config": {

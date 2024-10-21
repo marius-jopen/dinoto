@@ -17,7 +17,7 @@
 
 	// Setting card height based on size
 	if (slice.primary.height == 's') {
-		cardHeightPercentage = 0.2; 
+		cardHeightPercentage = 0.3; 
 	} else if (slice.primary.height == 'm') {
 		cardHeightPercentage = 0.4; 
 	} else if (slice.primary.height == 'l') {
@@ -113,7 +113,7 @@
 	}
 </script>
 
-<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="hidden w-full md:flex {align}" style="height: {totalHeight}px;">
 		<div 
 		class="relative"
@@ -133,9 +133,9 @@
 				"
 				class="{isCardInFront(index) ? '' : 'cursor-pointer'} left-0 top-0 absolute w-full"
 				>
-					<CardImage data={card} status={card.status} />
-					<CardText data={card} status={card.status} />
-					<CardVideo data={card} status={card.status} />
+					<CardImage aos={index * 300} data={card} status={card.status} />
+					<CardText aos={index * 300} data={card} status={card.status} />
+					<CardVideo aos={index * 300} data={card} status={card.status} />
 				</div>
 			{/each}
 		</div>
@@ -144,9 +144,9 @@
 	<div class="md:hidden">
 		{#each items as card, index (card.id)}
 			<div class="mb-4">
-				<CardImage data={card} status={card.status} />
-				<CardText data={card} status={card.status} />
-				<CardVideo data={card} status={card.status} />
+				<CardImage aos={index * 300} data={card} status={card.status} />
+				<CardText aos={index * 300} data={card} status={card.status} />
+				<CardVideo aos={index * 300} data={card} status={card.status} />
 			</div>
 		{/each}
 	</div>

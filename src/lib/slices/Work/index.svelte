@@ -30,7 +30,7 @@
 	}
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<!-- Toggle Button -->
 	<div data-aos="slide-up" class="w-full justify-center pb-16 hidden md:flex">
 		<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">

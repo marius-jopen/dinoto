@@ -9,7 +9,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="{slice.primary.style == "Inline" ? 'md:ml-[35%] md:w-[65%]' : 'w-full'}">
 		<PrismicRichText field={slice.primary.text} />
 	</div>

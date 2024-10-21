@@ -13,7 +13,7 @@
 	$: styleClass = backgroundColor(slice.primary.color);
 </script>
 
-<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="{styleClass} rounded-2xl md:rounded-3xl">
 		<div class="flex relative pb-10">
 			{#if slice.primary.number}

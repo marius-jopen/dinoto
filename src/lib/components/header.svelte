@@ -41,7 +41,7 @@
     });
 </script>
 
-<div class="hidden md:block {!sticky && 'fixed top-0 left-0 w-full z-50'} transition duration-200 {background ? 'bg-white/10 backdrop-blur-xl' : 'bg-white/0'} {distanceTop}">
+<div class="hidden md:block {!sticky && 'fixed top-0 left-0 w-full z-50'}  {distanceTop}">
     <div class="box {!sticky && 'relative'}">
         <div class="pt-4 pb-4 flex justify-between">
             {#if logo}

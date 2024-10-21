@@ -2077,6 +2077,17 @@ export type NewsletterSlice = prismic.SharedSlice<'newsletter', NewsletterSliceV
  */
 export interface Opener1SliceDefaultPrimary {
 	/**
+	 * Narrow field in *Opener1 → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: opener1.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Opener1 → Default → Primary*
 	 *
 	 * - **Field Type**: Select

@@ -9,12 +9,12 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="flex flex-wrap rounded-3xl overflow-hidden">
 		{#each slice.primary.items as item, index}
 			<div class="w-1/3 md:w-1/5 aspect-square relative">
 				<div class="hover:opacity-0 transition-opacity duration-200 absolute z-20 w-full h-full aspect-square top-0 left-0 {index % 2 === 0 ? 'bg-d_lightGreen' : 'bg-d_black'}">
-					<PrismicImage class="w-full h-full p-4 md:p-8 lg:p-10" field={item.logo} />
+					<PrismicImage class="w-full h-full p-4 md:p-8 lg:p-10 object-contain" field={item.logo} />
 				</div>
 				
 				<div class="z-10 aspect-square">

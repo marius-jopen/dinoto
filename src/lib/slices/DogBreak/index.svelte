@@ -9,7 +9,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section class="box {distanceTop} {distanceBottom}">
+<section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
     <div class="text-center md:w-[70%] mx-8 md:mx-[15%]">
         <PrismicRichText field={slice.primary.text} />
     </div>

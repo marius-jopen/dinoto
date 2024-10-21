@@ -13,7 +13,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section data-aos="fade-up" class="box flex justify-center {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} flex justify-center {distanceTop} {distanceBottom}">
 	<div class="{styleClass} w-full md:w-8/12 lg:w-4/12 py-7 px-8 rounded-2xl md:rounded-3xl relative">
 		<PrismicRichText field={slice.primary.text} />
 

@@ -10,7 +10,7 @@
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 </script>
 
-<section data-aos="fade-up" class="box {distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="flex justify-between w-full border-b pb-8 mb-4" style="border-color: {styleClass}">
 		<div class="flex flex-col justify-end" style="color: {styleClass}">
 			<p>
