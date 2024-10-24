@@ -7,13 +7,13 @@
 	export let slice: Content.StickyNavigationSlice;
 
 	let element;      // Reference for the element being observed
-	let intersecting; // Boolean flag for whether the element is in view
+	let intersecting = true; // Boolean flag for whether the element is in view
 
 	$: styleTextClass = textColor(slice.primary.logoColor);
 </script>
 
 <div class="block">
-	<IntersectionObserver rootMargin="0px" {element} bind:intersecting>
+	<IntersectionObserver rootMargin="-20px" {element} bind:intersecting>
 		<div class="z-1 pb-8 md:pb-0 pt-1" bind:this={element}>
 			<div class="hidden md:block">
 				<Header sticky logo={false} style={styleTextClass} items={slice.primary.items} />
@@ -31,7 +31,7 @@
 <style>
 	.sticky {
 		position: fixed;
-		top: 0;
+		top: 0px;
 		width: 100%;
 		z-index: 1000;
 	}
