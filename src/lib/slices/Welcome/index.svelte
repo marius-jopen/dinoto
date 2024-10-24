@@ -56,7 +56,7 @@
 </script>
 
 <section >
-    <div class="h-full relative ">
+    <div class="aspect-square md:aspect-video h-full relative ">
         <Slider type="welcome" data={newArray} />
 
         <div class="absolute w-full bottom-0 left-0 ">

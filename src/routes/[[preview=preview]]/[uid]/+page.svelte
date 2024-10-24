@@ -21,15 +21,17 @@
 	console.log(data);
 </script>
 
-<div class="{styleClass}">
-	<div class="hidden md:block ">
-		<Header style={styleTextClass} items={data.navigation_top.data.navigation} />
-	</div>
+{#key data}
+	<div class="{styleClass}">
+		<div class="hidden md:block ">
+			<Header style={styleTextClass} items={data.navigation_top.data.navigation} />
+		</div>
 
-	<div class="block md:hidden ">
-		<MobileHeader style={styleTextClass} items={data.navigation_top.data.navigation} />
-	</div>
+		<div class="block md:hidden ">
+			<MobileHeader style={styleTextClass} items={data.navigation_top.data.navigation} />
+		</div>
 
-	<SliceZone slices={data.page.data.slices} {components} />
-	<Footer style={styleTextClass} data={data.navigation_bottom} />
-</div>
+		<SliceZone slices={data.page.data.slices} {components} />
+		<Footer style={styleTextClass} data={data.navigation_bottom} />
+	</div>
+{/key}
