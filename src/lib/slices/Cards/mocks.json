@@ -105,6 +105,20 @@
 										}
 									]
 								}
+							],
+							[
+								"caption",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Pariatur anim consectetur commodo quis non adipisicing. Elit elit excepteur et consequat magna ipsum ut velit excepteur anim mollit. Fugiat incididunt eiusmod incididunt duis veniam voluptate laborum cupidatat sunt duis eiusmod occaecat adipisicing et deserunt."
+											}
+										}
+									]
+								}
 							]
 						]
 					}

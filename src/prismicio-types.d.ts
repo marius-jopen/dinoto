@@ -521,6 +521,17 @@ export type AllDocumentTypes =
  */
 export interface BoxCenterSliceDefaultPrimary {
 	/**
+	 * Narrow field in *BoxCenter → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: box_center.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *BoxCenter → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -608,6 +619,17 @@ export type BoxCenterSlice = prismic.SharedSlice<'box_center', BoxCenterSliceVar
  * Primary content in *BoxDouble → Default → Primary*
  */
 export interface BoxDoubleSliceDefaultPrimary {
+	/**
+	 * Narrow field in *BoxDouble → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: box_double.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *BoxDouble → Default → Primary*
 	 *
@@ -751,6 +773,17 @@ export type BoxDoubleSlice = prismic.SharedSlice<'box_double', BoxDoubleSliceVar
  */
 export interface BoxSingleSliceDefaultPrimary {
 	/**
+	 * Narrow field in *BoxSingle → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: box_single.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *BoxSingle → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -848,6 +881,17 @@ export type BoxSingleSlice = prismic.SharedSlice<'box_single', BoxSingleSliceVar
  * Primary content in *BoxTripple → Default → Primary*
  */
 export interface BoxTrippleSliceDefaultPrimary {
+	/**
+	 * Narrow field in *BoxTripple → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: box_tripple.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *BoxTripple → Default → Primary*
 	 *
@@ -1118,12 +1162,33 @@ export interface CardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Caption field in *Cards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.items[].caption
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	caption: prismic.RichTextField;
 }
 
 /**
  * Primary content in *Cards → Default → Primary*
  */
 export interface CardsSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cards.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Cards → Default → Primary*
 	 *
@@ -1236,6 +1301,17 @@ export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
  */
 export interface ChapterSliceDefaultPrimary {
 	/**
+	 * Narrow field in *Chapter → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: chapter.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Chapter → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -1328,6 +1404,17 @@ export interface ChatSliceDefaultPrimaryItemsItem {
  * Primary content in *Chat → Default → Primary*
  */
 export interface ChatSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Chat → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: chat.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Chat → Default → Primary*
 	 *
@@ -1438,6 +1525,17 @@ export interface CloudSliceDefaultPrimaryItemsItem {
  */
 export interface CloudSliceDefaultPrimary {
 	/**
+	 * Narrow field in *Cloud → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cloud.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Cloud → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -1501,6 +1599,17 @@ export type CloudSlice = prismic.SharedSlice<'cloud', CloudSliceVariation>;
  * Primary content in *DogBreak → Default → Primary*
  */
 export interface DogBreakSliceDefaultPrimary {
+	/**
+	 * Narrow field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: dog_break.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *DogBreak → Default → Primary*
 	 *
@@ -1591,6 +1700,17 @@ export interface ExpertiseSliceDefaultPrimaryItemsItem {
  */
 export interface ExpertiseSliceDefaultPrimary {
 	/**
+	 * Narrow field in *Expertise → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: expertise.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Expertise → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -1654,6 +1774,17 @@ export type ExpertiseSlice = prismic.SharedSlice<'expertise', ExpertiseSliceVari
  * Primary content in *Headline → Default → Primary*
  */
 export interface HeadlineSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: headline.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Headline → Default → Primary*
 	 *
@@ -1739,6 +1870,17 @@ export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariati
  * Primary content in *Image → Default → Primary*
  */
 export interface ImageSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: image.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Image → Default → Primary*
 	 *
@@ -1850,6 +1992,17 @@ export interface ListSliceDefaultPrimaryItemsItem {
  */
 export interface ListSliceDefaultPrimary {
 	/**
+	 * Narrow field in *List → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: list.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *List → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -1938,6 +2091,17 @@ export interface LogosSliceDefaultPrimaryItemsItem {
  * Primary content in *Logos → Default → Primary*
  */
 export interface LogosSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: logos.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Logos → Default → Primary*
 	 *
@@ -2172,6 +2336,17 @@ export type Opener1Slice = prismic.SharedSlice<'opener1', Opener1SliceVariation>
  */
 export interface Opener2SliceDefaultPrimary {
 	/**
+	 * Narrow field in *Opener2 → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: opener2.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Opener2 → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -2292,6 +2467,17 @@ export interface SliderSliceDefaultPrimaryItemsItem {
  */
 export interface SliderSliceDefaultPrimary {
 	/**
+	 * Narrow field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: slider.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Slider → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -2381,6 +2567,17 @@ export interface StickyNavigationSliceDefaultPrimaryItemsItem {
  */
 export interface StickyNavigationSliceDefaultPrimary {
 	/**
+	 * Narrow field in *StickyNavigation → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: sticky_navigation.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Logo Color field in *StickyNavigation → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -2439,6 +2636,17 @@ export type StickyNavigationSlice = prismic.SharedSlice<
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Text → Default → Primary*
 	 *
@@ -2515,6 +2723,17 @@ export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
  */
 export interface TextBigSliceDefaultPrimary {
 	/**
+	 * Narrow field in *TextBig → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text_big.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *TextBig → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -2589,6 +2808,17 @@ export type TextBigSlice = prismic.SharedSlice<'text_big', TextBigSliceVariation
  * Primary content in *Video → Default → Primary*
  */
 export interface VideoSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: video.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Video → Default → Primary*
 	 *
@@ -2732,6 +2962,17 @@ export interface VideoGallerySliceDefaultPrimaryItemsItem {
  */
 export interface VideoGallerySliceDefaultPrimary {
 	/**
+	 * Narrow field in *VideoGallery → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: video_gallery.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *VideoGallery → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -2872,6 +3113,17 @@ export interface WelcomeSliceDefaultPrimaryItemsItem {
  */
 export interface WelcomeSliceDefaultPrimary {
 	/**
+	 * Narrow field in *Welcome → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: welcome.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
+	/**
 	 * Items field in *Welcome → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2928,6 +3180,17 @@ export interface WorkSliceDefaultPrimaryItemsItem {
  * Primary content in *Work → Default → Primary*
  */
 export interface WorkSliceDefaultPrimary {
+	/**
+	 * Narrow field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: work.default.primary.narrow
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	narrow: prismic.BooleanField;
+
 	/**
 	 * Distance Top field in *Work → Default → Primary*
 	 *

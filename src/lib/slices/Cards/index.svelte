@@ -11,21 +11,52 @@
 	// Initial settings for card layout
 	let orderItemsReverse = slice.primary.order_top_bottom ? true : false;
 	let orderCardsTopDown = slice.primary.stacking_top_bottom ? false : true;
+	let screenWidth = 1400;
+	const screenBreakpoint = 1200;
 
 	let cardHeightPercentage = 0.5;
 	let align = "justify-center";
 
-	// Setting card height based on size
-	if (slice.primary.height == 's') {
-		cardHeightPercentage = 0.3; 
-	} else if (slice.primary.height == 'm') {
-		cardHeightPercentage = 0.4; 
-	} else if (slice.primary.height == 'l') {
-		cardHeightPercentage = 0.5; 
-	} else if (slice.primary.height == 'xl') {
-		cardHeightPercentage = 0.6; 
-	} else if (slice.primary.height == 'xxl') {
-		cardHeightPercentage = 0.8; 
+	// Get current screen width
+	onMount(() => {
+		screenWidth = window.innerWidth;
+		window.addEventListener('resize', () => {
+			screenWidth = window.innerWidth;
+		});
+	});
+
+	$: {
+		if (slice.primary.height == 's') {
+			if (screenWidth >= screenBreakpoint) {
+				cardHeightPercentage = 0.3;
+			} else {
+				cardHeightPercentage = 0.6;
+			}
+		} else if (slice.primary.height == 'm') {
+			if (screenWidth >= screenBreakpoint) {
+				cardHeightPercentage = 0.4;
+			} else {
+				cardHeightPercentage = 0.7;
+			}
+		} else if (slice.primary.height == 'l') {
+			if (screenWidth >= screenBreakpoint) {
+				cardHeightPercentage = 0.5;
+			} else {
+				cardHeightPercentage = 0.8;
+			}
+		} else if (slice.primary.height == 'xl') {
+			if (screenWidth >= screenBreakpoint) {
+				cardHeightPercentage = 0.6;
+			} else {
+				cardHeightPercentage = 0.9;
+			}
+		} else if (slice.primary.height == 'xxl') {
+			if (screenWidth >= screenBreakpoint) {
+				cardHeightPercentage = 0.8;
+			} else {
+				cardHeightPercentage = 1.1;
+			}
+		}
 	}
 
 	// Set offset based on direction
@@ -112,6 +143,7 @@
 		return index === items.length - 1;
 	}
 </script>
+
 
 <section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="hidden w-full md:flex {align}" style="height: {totalHeight}px;">

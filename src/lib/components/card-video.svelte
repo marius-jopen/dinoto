@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import VideoComponent from '../components/video.svelte'; // Import the VideoComponent
+	import Caption from "./caption.svelte";
 
     export let data;
     export let status = false;
@@ -21,4 +22,6 @@
             status={false}  
         />
     </div>
+
+    <Caption aos caption={data.caption} />
 {/if}

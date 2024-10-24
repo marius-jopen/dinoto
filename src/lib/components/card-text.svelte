@@ -1,6 +1,7 @@
 <script>
     import { backgroundColor } from '../../lib/components/color-styles';
     import { PrismicRichText } from "@prismicio/svelte";
+	import Caption from "./caption.svelte";
 
     export let data
     export let status
@@ -28,4 +29,6 @@
             <PrismicRichText field={data.text} />
         </div>
     </div>
+
+    <Caption aos caption={data.caption} />
 {/if}
