@@ -42,7 +42,7 @@
             return {
                 slide_time: 3000,
                 data: {
-                    clickable: true,
+                    clickable: false,
                     items: {
                         0: item
                     }
