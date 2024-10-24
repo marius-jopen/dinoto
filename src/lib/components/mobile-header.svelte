@@ -49,7 +49,7 @@
     }
 </script>
 
-<div class="w-full top-0 left-0 z-50 fixed {distanceTop} {background ? 'bg-white/10 backdrop-blur-xl' : 'bg-white/0'}">
+<div class="w-full top-0 left-0 z-50 fixed {distanceTop} ">
     <div class="box flex justify-between pt-2 pb-4">
         <div class="pt-2">
             <HeaderLogo style={visible ? 'black' : style} />
