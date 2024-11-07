@@ -61,6 +61,30 @@
             "allowTargetBlank": true,
             "multi": "heading1,heading2"
           }
+        },
+        "video_mpg4": {
+          "type": "Link",
+          "config": {
+            "label": "Video MPG4",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "video_webm": {
+          "type": "Link",
+          "config": {
+            "label": "Video WEBM",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "video_poster": {
+          "type": "Image",
+          "config": {
+            "label": "Video Poster",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}

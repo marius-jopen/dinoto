@@ -1641,6 +1641,36 @@ export interface DogBreakSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Video MPG4 field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dog_break.default.primary.video_mpg4
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	video_mpg4: prismic.LinkToMediaField;
+
+	/**
+	 * Video WEBM field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dog_break.default.primary.video_webm
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	video_webm: prismic.LinkToMediaField;
+
+	/**
+	 * Video Poster field in *DogBreak → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dog_break.default.primary.video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
 }
 
 /**
