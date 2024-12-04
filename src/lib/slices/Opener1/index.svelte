@@ -20,9 +20,11 @@
 		</div>
 	</div>
 
-	<div class="w-full rounded-2xl md:rounded-3xl bg-d_lightGreen text-d_black text-center pt-10 pb-10 px-8">
-		<h2>
-			{slice.primary.headline}
-		</h2>
-	</div>
+	{#if slice.primary.headline}
+		<div class="w-full rounded-2xl md:rounded-3xl bg-d_lightGreen text-d_black text-center pt-10 pb-10 px-8">
+			<h2>
+				{slice.primary.headline}
+			</h2>
+		</div>
+	{/if}
 </section>
