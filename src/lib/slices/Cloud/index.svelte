@@ -49,7 +49,7 @@
       randomX = Math.max(0, Math.min(100, randomX));
       randomY = Math.max(0, Math.min(100, randomY));
 
-      let randomSize = Math.random() * 20 + 25;
+      let randomSize = Math.random() * 15 + 25;
 
       return {
         ...item,
@@ -60,7 +60,7 @@
         currentOffsetY: 0,
         targetOffsetX: 0,
         targetOffsetY: 0,
-        delayFactor: Math.random() * 0.5 + 1,
+        delayFactor: 2,
       };
     });
 
@@ -86,7 +86,7 @@
         dy /= distance;
       }
 
-      let movementStrength = Math.min(30 / distance, 10);
+      let movementStrength = Math.random() * 20 + 5;
       let delay = image.delayFactor;
 
       image.targetOffsetX = dx * movementStrength * delay;
@@ -136,8 +136,9 @@
         left: {image.randomX}%;
         width: {image.randomSize}%;
         height: {image.randomSize}%;
-        transform: translate(-50%, -50%) translate3d({image.currentOffsetX}%, {image.currentOffsetY}%, 0) ;
-        transition: scale 1s;
+        transform: translate3d(-50%, -50%, 0) translate3d({image.currentOffsetX}%, {image.currentOffsetY}%, 0) ;
+        transition: 0.5s;
+        z-index: {hoveredIndex === index ? 200 : 1};
         "
         on:mouseenter={() => (hoveredIndex = index)}
         on:mouseleave={() => (hoveredIndex = null)}

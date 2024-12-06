@@ -17,8 +17,14 @@
 	<div class="{styleClass} w-full md:w-8/12 lg:w-4/12 py-7 px-8 rounded-2xl md:rounded-3xl relative">
 		<PrismicRichText field={slice.primary.text} />
 
-		<div class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%] mt-2">
-			{slice.primary.emoji}
+		<div 
+			data-aos="flip-right"
+			data-aos-delay="1000"
+			data-aos-duration="600"
+			class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%] mt-2">
+			<div class="-mt-0.5">
+				{slice.primary.emoji}
+			</div>
 		</div>
 	</div>
 </section>

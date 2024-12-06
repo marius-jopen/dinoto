@@ -15,8 +15,14 @@
 			<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
 				<PrismicRichText field={slice.primary.text_bottom} />
 
-				<div class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[12%] md:right-[10%] -mt-1 lg:mt-0">
-					{slice.primary.emoji}
+				<div 
+					data-aos="flip-right"
+					data-aos-delay="1000"
+					data-aos-duration="600"
+					class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%]">
+					<div class="-mt-0.5">
+						{slice.primary.emoji}
+					</div>
 				</div>
 			</div>
 		</div>
