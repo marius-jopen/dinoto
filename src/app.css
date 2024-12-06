@@ -40,6 +40,10 @@ body {
     --d-darkGreen: #54AB00;
 }
 
+.h0 {
+    @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[80px] leading-[115%] md:leading-[115%];
+}
+
 h1 {
     @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px] leading-[115%] md:leading-[115%];
 }

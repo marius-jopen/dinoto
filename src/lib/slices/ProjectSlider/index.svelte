@@ -19,7 +19,7 @@
 		rewind: true,
 		arrows: true,
 		pagination: false,
-		perPage: 2.2,
+		perPage: 1.8,
 		perMove: 1,
 		pauseOnHover: false,
 		type: 'loop',
@@ -32,8 +32,8 @@
 	let eventListenerAttached = false;
 	let work = get(workStore);
 
-	console.log("WORK");
-	console.log(work);
+	// console.log("WORK");
+	// console.log(work);
 
 	function getProjectById(id) {
 		return work.find(project => project.id === id);
@@ -70,7 +70,7 @@
 	});
 </script>
 
-<section data-aos="fade-up" class="hidden md:block {distanceTop} {distanceBottom}">
+<section class="hidden md:block {distanceTop} {distanceBottom}">
 	<Splide
 		class="{height}"
 		options={splideOptions}
@@ -79,7 +79,7 @@
 		>
 			{#each slice.primary.items as item, index}
 				<SplideSlide>
-					<div class="w-full box {height}">
+					<div data-aos="fade-up" class="w-full box {height}">
 						<div class="mr-6">
 							<ProjectItem cloud={false} list={true} data={getProjectById(item.project.id)} />
 						</div>
@@ -89,9 +89,9 @@
 		</Splide>
 </section>
 
-<section data-aos="fade-up" class="box md:hidden {distanceTop} {distanceBottom}">
+<section class="box md:hidden {distanceTop} {distanceBottom}">
 	{#each slice.primary.items as item, index}
-		<div class="w-full {height}">
+		<div data-aos="fade-up" class="w-full {height}">
 			<div class="mb-6">
 				<ProjectItem cloud={false} list={true} data={getProjectById(item.project.id)} />
 			</div>
