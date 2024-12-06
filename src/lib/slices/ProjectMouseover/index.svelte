@@ -62,7 +62,7 @@
     </div>
 
     <div
-        class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/4 opacity-0"
+        class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/3 lg:w-1/4 opacity-0"
         class:opacity-100={isHovering}
         style="top: {mouseY}px; left: {mouseX}px; pointer-events: none;"
     >

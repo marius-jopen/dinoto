@@ -16,7 +16,6 @@
 	let slider; // Will hold the Splide component instance
 
 	let splideOptions = {
-		rewind: true,
 		arrows: true,
 		pagination: false,
 		perPage: 1.8,
