@@ -11,12 +11,16 @@ import Cloud from './Cloud/index.svelte';
 import DogBreak from './DogBreak/index.svelte';
 import Expertise from './Expertise/index.svelte';
 import Headline from './Headline/index.svelte';
+import Highlights from './Highlights/index.svelte';
 import Image from './Image/index.svelte';
 import List from './List/index.svelte';
 import Logos from './Logos/index.svelte';
+import News from './News/index.svelte';
 import Newsletter from './Newsletter/index.svelte';
 import Opener1 from './Opener1/index.svelte';
 import Opener2 from './Opener2/index.svelte';
+import ProjectMouseover from './ProjectMouseover/index.svelte';
+import ProjectSlider from './ProjectSlider/index.svelte';
 import Slider from './Slider/index.svelte';
 import StickyNavigation from './StickyNavigation/index.svelte';
 import Text from './Text/index.svelte';
@@ -38,12 +42,16 @@ export const components = {
 	dog_break: DogBreak,
 	expertise: Expertise,
 	headline: Headline,
+	highlights: Highlights,
 	image: Image,
 	list: List,
 	logos: Logos,
+	news: News,
 	newsletter: Newsletter,
 	opener1: Opener1,
 	opener2: Opener2,
+	project_mouseover: ProjectMouseover,
+	project_slider: ProjectSlider,
 	slider: Slider,
 	sticky_navigation: StickyNavigation,
 	text: Text,

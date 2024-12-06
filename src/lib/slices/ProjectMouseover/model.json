@@ -1,0 +1,36 @@
+{
+  "id": "project_mouseover",
+  "type": "SharedSlice",
+  "name": "ProjectMouseover",
+  "description": "ProjectMouseover",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "project": {
+          "type": "Link",
+          "config": {
+            "label": "Project",
+            "select": "document",
+            "customtypes": [
+              "work"
+            ]
+          }
+        },
+        "text": {
+          "type": "Text",
+          "config": {
+            "label": "Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

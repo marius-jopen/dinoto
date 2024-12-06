@@ -1,0 +1,38 @@
+{
+  "id": "news",
+  "type": "SharedSlice",
+  "name": "News",
+  "description": "News",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "news_article": {
+                "type": "Link",
+                "config": {
+                  "label": "News Article",
+                  "select": "document",
+                  "customtypes": [
+                    "news_article"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -117,7 +117,131 @@ export type NavigationTopDocument<Lang extends string = string> = prismic.Prismi
 	Lang
 >;
 
+type NewsArticleDocumentDataSlicesSlice =
+	| VideoSlice
+	| SliderSlice
+	| TextBigSlice
+	| TextSlice
+	| ImageSlice
+	| CardsSlice
+	| ListSlice
+	| HeadlineSlice
+	| ChapterSlice
+	| BoxDoubleSlice
+	| BoxSingleSlice
+	| BoxCenterSlice;
+
+/**
+ * Content for News Article documents
+ */
+interface NewsArticleDocumentData {
+	/**
+	 * Title field in *News Article*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Teaser field in *News Article*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.teaser
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	teaser: prismic.RichTextField;
+
+	/**
+	 * Date field in *News Article*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#date
+	 */
+	date: prismic.DateField;
+
+	/**
+	 * Image field in *News Article*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Slice Zone field in *News Article*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<NewsArticleDocumentDataSlicesSlice> /**
+	 * Meta Title field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: news_article.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: news_article.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *News Article*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * News Article document from Prismic
+ *
+ * - **API ID**: `news_article`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<NewsArticleDocumentData>,
+	'news_article',
+	Lang
+>;
+
 type PageDocumentDataSlicesSlice =
+	| NewsSlice
+	| ProjectSliderSlice
+	| ProjectMouseoverSlice
+	| HighlightsSlice
 	| StickyNavigationSlice
 	| VideoGallerySlice
 	| WelcomeSlice
@@ -513,6 +637,7 @@ export type WorkDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes =
 	| NavigationBottomDocument
 	| NavigationTopDocument
+	| NewsArticleDocument
 	| PageDocument
 	| WorkDocument;
 
@@ -1897,6 +2022,83 @@ type HeadlineSliceVariation = HeadlineSliceDefault;
 export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariation>;
 
 /**
+ * Item in *Highlights → Default → Primary → Items*
+ */
+export interface HighlightsSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Highlights → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Text field in *Highlights → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Highlights → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Highlights → Default → Primary*
+ */
+export interface HighlightsSliceDefaultPrimary {
+	/**
+	 * Items field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<HighlightsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Highlights Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<HighlightsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Highlights*
+ */
+type HighlightsSliceVariation = HighlightsSliceDefault;
+
+/**
+ * Highlights Shared Slice
+ *
+ * - **API ID**: `highlights`
+ * - **Description**: Highlights
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightsSlice = prismic.SharedSlice<'highlights', HighlightsSliceVariation>;
+
+/**
  * Primary content in *Image → Default → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -2193,6 +2395,63 @@ type LogosSliceVariation = LogosSliceDefault;
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
 
 /**
+ * Item in *News → Default → Primary → Items*
+ */
+export interface NewsSliceDefaultPrimaryItemsItem {
+	/**
+	 * News Article field in *News → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news.default.primary.items[].news_article
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	news_article: prismic.ContentRelationshipField<'news_article'>;
+}
+
+/**
+ * Primary content in *News → Default → Primary*
+ */
+export interface NewsSliceDefaultPrimary {
+	/**
+	 * Items field in *News → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<NewsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for News Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NewsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *News*
+ */
+type NewsSliceVariation = NewsSliceDefault;
+
+/**
+ * News Shared Slice
+ *
+ * - **API ID**: `news`
+ * - **Description**: News
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSlice = prismic.SharedSlice<'news', NewsSliceVariation>;
+
+/**
  * Primary content in *Newsletter → Default → Primary*
  */
 export interface NewsletterSliceDefaultPrimary {
@@ -2445,6 +2704,118 @@ type Opener2SliceVariation = Opener2SliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type Opener2Slice = prismic.SharedSlice<'opener2', Opener2SliceVariation>;
+
+/**
+ * Primary content in *ProjectMouseover → Default → Primary*
+ */
+export interface ProjectMouseoverSliceDefaultPrimary {
+	/**
+	 * Project field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_mouseover.default.primary.project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'work'>;
+
+	/**
+	 * Text field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_mouseover.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProjectMouseover Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectMouseoverSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ProjectMouseoverSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ProjectMouseover*
+ */
+type ProjectMouseoverSliceVariation = ProjectMouseoverSliceDefault;
+
+/**
+ * ProjectMouseover Shared Slice
+ *
+ * - **API ID**: `project_mouseover`
+ * - **Description**: ProjectMouseover
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectMouseoverSlice = prismic.SharedSlice<
+	'project_mouseover',
+	ProjectMouseoverSliceVariation
+>;
+
+/**
+ * Item in *ProjectSlider → Default → Primary → Items*
+ */
+export interface ProjectSliderSliceDefaultPrimaryItemsItem {
+	/**
+	 * Project field in *ProjectSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_slider.default.primary.items[].project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'work'>;
+}
+
+/**
+ * Primary content in *ProjectSlider → Default → Primary*
+ */
+export interface ProjectSliderSliceDefaultPrimary {
+	/**
+	 * Items field in *ProjectSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_slider.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<ProjectSliderSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for ProjectSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ProjectSliderSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *ProjectSlider*
+ */
+type ProjectSliderSliceVariation = ProjectSliderSliceDefault;
+
+/**
+ * ProjectSlider Shared Slice
+ *
+ * - **API ID**: `project_slider`
+ * - **Description**: ProjectSlider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectSliderSlice = prismic.SharedSlice<'project_slider', ProjectSliderSliceVariation>;
 
 /**
  * Item in *Slider → Default → Primary → Items*
@@ -3297,6 +3668,9 @@ declare module '@prismicio/client' {
 			NavigationTopDocument,
 			NavigationTopDocumentData,
 			NavigationTopDocumentDataNavigationItem,
+			NewsArticleDocument,
+			NewsArticleDocumentData,
+			NewsArticleDocumentDataSlicesSlice,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
@@ -3353,6 +3727,11 @@ declare module '@prismicio/client' {
 			HeadlineSliceDefaultPrimary,
 			HeadlineSliceVariation,
 			HeadlineSliceDefault,
+			HighlightsSlice,
+			HighlightsSliceDefaultPrimaryItemsItem,
+			HighlightsSliceDefaultPrimary,
+			HighlightsSliceVariation,
+			HighlightsSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
@@ -3367,6 +3746,11 @@ declare module '@prismicio/client' {
 			LogosSliceDefaultPrimary,
 			LogosSliceVariation,
 			LogosSliceDefault,
+			NewsSlice,
+			NewsSliceDefaultPrimaryItemsItem,
+			NewsSliceDefaultPrimary,
+			NewsSliceVariation,
+			NewsSliceDefault,
 			NewsletterSlice,
 			NewsletterSliceDefaultPrimary,
 			NewsletterSliceVariation,
@@ -3379,6 +3763,15 @@ declare module '@prismicio/client' {
 			Opener2SliceDefaultPrimary,
 			Opener2SliceVariation,
 			Opener2SliceDefault,
+			ProjectMouseoverSlice,
+			ProjectMouseoverSliceDefaultPrimary,
+			ProjectMouseoverSliceVariation,
+			ProjectMouseoverSliceDefault,
+			ProjectSliderSlice,
+			ProjectSliderSliceDefaultPrimaryItemsItem,
+			ProjectSliderSliceDefaultPrimary,
+			ProjectSliderSliceVariation,
+			ProjectSliderSliceDefault,
 			SliderSlice,
 			SliderSliceDefaultPrimaryItemsItem,
 			SliderSliceDefaultPrimary,

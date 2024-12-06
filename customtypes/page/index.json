@@ -45,6 +45,18 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"news": {
+							"type": "SharedSlice"
+						},
+						"project_slider": {
+							"type": "SharedSlice"
+						},
+						"project_mouseover": {
+							"type": "SharedSlice"
+						},
+						"highlights": {
+							"type": "SharedSlice"
+						},
 						"sticky_navigation": {
 							"type": "SharedSlice"
 						},
