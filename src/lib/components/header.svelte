@@ -13,6 +13,7 @@
     let hideHeader = false;
 
     onMount(() => {
+        console.log('Header mounted:', { sticky, logo });
         const handleScroll = () => {
             const scrollPosition = window.scrollY + window.innerHeight;
             const bottomPosition = document.documentElement.scrollHeight;
@@ -28,8 +29,9 @@
 </script>
 
 {#if !hideHeader}
-    <div transition:fade={{duration: 200}} class="hidden md:block {!sticky && 'fixed top-0 left-0 w-full z-50'} {distanceTop}">
-        <div class="box {!sticky && 'relative'}">
+    <div transition:fade={{duration: 200}} 
+         class="hidden md:block {!sticky ? 'fixed top-0 left-0 w-full z-50' : ''} {distanceTop}">
+        <div class="box {!sticky ? 'relative' : ''}">
             <div class="pt-4 pb-4 flex justify-between">
                 {#if !sticky}
                     {#if logo}
@@ -38,8 +40,7 @@
                         <div />
                     {/if}
                 {:else}
-                    <div>
-                    </div>
+                    <HeaderLogo {style} />
                 {/if}
         
                 <Navigation {items} />
