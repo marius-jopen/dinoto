@@ -2061,6 +2061,28 @@ export interface HighlightsSliceDefaultPrimaryItemsItem {
  */
 export interface HighlightsSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: highlights.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: highlights.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *Highlights → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2414,6 +2436,28 @@ export interface NewsSliceDefaultPrimaryItemsItem {
  */
 export interface NewsSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *News → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: news.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *News → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: news.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Items field in *News → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2710,6 +2754,28 @@ export type Opener2Slice = prismic.SharedSlice<'opener2', Opener2SliceVariation>
  */
 export interface ProjectMouseoverSliceDefaultPrimary {
 	/**
+	 * Distance Top field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: project_mouseover.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: project_mouseover.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
 	 * Project field in *ProjectMouseover → Default → Primary*
 	 *
 	 * - **Field Type**: Content Relationship
@@ -2779,6 +2845,28 @@ export interface ProjectSliderSliceDefaultPrimaryItemsItem {
  * Primary content in *ProjectSlider → Default → Primary*
  */
 export interface ProjectSliderSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *ProjectSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: project_slider.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *ProjectSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: project_slider.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
 	/**
 	 * Items field in *ProjectSlider → Default → Primary*
 	 *
@@ -3523,6 +3611,17 @@ export interface WelcomeSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#boolean
 	 */
 	narrow: prismic.BooleanField;
+
+	/**
+	 * Logo Hidden field in *Welcome → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: welcome.default.primary.logo_hidden
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	logo_hidden: prismic.BooleanField;
 
 	/**
 	 * Items field in *Welcome → Default → Primary*

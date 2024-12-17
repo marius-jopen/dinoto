@@ -21,6 +21,15 @@
             "default_value": false
           }
         },
+        "logo_hidden": {
+          "type": "Boolean",
+          "config": {
+            "label": "Logo Hidden",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
