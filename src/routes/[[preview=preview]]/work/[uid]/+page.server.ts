@@ -25,10 +25,14 @@ export async function load({ params, fetch, cookies }) {
 
 export async function entries() {
 	const client = createClient();
-
-	const pages = await client.getAllByType('work');
-
-	return pages.map((page) => {
-		return { uid: page.uid };
-	});
+	try {
+		// Get all work items that actually exist
+		const works = await client.getAllByType('work');
+		return works.map((work) => ({
+			uid: work.uid
+		}));
+	} catch (e) {
+		console.error('Failed to fetch work items for prerendering:', e);
+		return []; // Return empty array if fetch fails
+	}
 }

@@ -25,10 +25,14 @@ export async function load({ params, fetch, cookies }) {
 
 export async function entries() {
 	const client = createClient();
-
-	const pages = await client.getAllByType('work');
-
-	return pages.map((page) => {
-		return { uid: page.uid };
-	});
+	try {
+		// Get all news articles that actually exist
+		const articles = await client.getAllByType('news_article');
+		return articles.map((article) => ({
+			uid: article.uid
+		}));
+	} catch (e) {
+		console.error('Failed to fetch news articles for prerendering:', e);
+		return []; // Return empty array if fetch fails
+	}
 }

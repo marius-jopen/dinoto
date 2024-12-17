@@ -25,10 +25,14 @@ export async function load({ params, fetch, cookies }) {
 
 export async function entries() {
 	const client = createClient();
-
-	const pages = await client.getAllByType('page');
-
-	return pages.map((page) => {
-		return { uid: page.uid };
-	});
+	try {
+		// Get all pages that actually exist
+		const pages = await client.getAllByType('page');
+		return pages.map((page) => ({
+			uid: page.uid
+		}));
+	} catch (e) {
+		console.error('Failed to fetch pages for prerendering:', e);
+		return []; // Return empty array if fetch fails
+	}
 }
