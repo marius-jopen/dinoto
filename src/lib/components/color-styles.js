@@ -5,7 +5,7 @@ export function backgroundColor(style) {
         return 'style-light-green';
     } else if (style === 'White') {
         return 'style-white';
-    } else if (style === 'Green') {
+    } else if (style === 'Dark Green') {
         return 'style-dark-green';
     } else if (style === 'Dark Gray') {
         return 'style-dark-gray';
@@ -22,7 +22,7 @@ export function textColor(style) {
         return 'var(--d-lightGreen)';
     } else if (style === 'White') {
         return 'var(--d-white)';
-    } else if (style === 'Green') {
+    } else if (style === 'Dark Green') {
         return 'var(--d-darkGreen)';
     } else if (style === 'Light Gray') {
         return 'var(--d-lightGray)';

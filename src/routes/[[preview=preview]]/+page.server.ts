@@ -8,12 +8,14 @@ export async function load({ fetch, cookies }) {
 	const navigation_top = await client.getSingle('navigation_top');
 	const navigation_bottom = await client.getSingle('navigation_bottom');
 	const work = await client.getAllByType('work');
+	const news = await client.getAllByType('news_article');
 
 	return {
 		page,
 		navigation_top,
 		navigation_bottom,
 		work,
+		news,
 		title: asText(page.data.title),
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title,

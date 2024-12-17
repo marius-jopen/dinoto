@@ -3,19 +3,22 @@
 	import { components } from '$lib/slices';
 	import Header from '$lib/components/header.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	import { workStore } from '$lib/stores';
+	import { workStore, newsStore } from '$lib/stores';
 	import { backgroundColor, textColor } from '../../../lib/components/color-styles';
 	import MobileHeader from '$lib/components/mobile-header.svelte';
 
 	export let data;
 
 	let work = data.work;
+	let news = data.news;
+	
 	let styleClass
 	
 	$: styleClass = backgroundColor(data.page.data.background);
 	$: styleTextClass = textColor(data.page.data.logoColor);
 
 	workStore.set(work);
+	newsStore.set(news);
 
 
 	console.log(data);
