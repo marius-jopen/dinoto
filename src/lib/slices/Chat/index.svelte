@@ -14,7 +14,7 @@
 <section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="flex-col-reverse md:flex-row flex gap-8">
 		<div class="md:w-1/2 flex flex-col justify-end">
-			<div data-aos="fade-up">
+			<div class="hidden md:block" data-aos="fade-up">
 				{#each slice.primary.items as item, index}
 					<div class="transition-all duration-300 overflow-hidden"
 						class:opacity-0={index + 1 !== currentVideo}
@@ -37,6 +37,21 @@
 						{/if}
 					</div>
 				{/each}
+			</div>
+
+			<div class="block md:hidden">
+				{#if slice.primary.items[0].video_mpg4.url && slice.primary.items[0].video_webm.url}
+					<div class="flex justify-center w-full scale-[1.5]">
+						<video width="600" height="100%" poster={slice.primary.items[0].video_poster.url} autoplay loop muted playsinline>
+							<source 
+							src={slice.primary.items[0].video_mpg4.url} 
+							type='video/mp4; codecs="hvc1"'>
+							<source 
+							src={slice.primary.items[0].video_webm.url} 
+							type="video/webm">
+						</video>
+					</div>
+				{/if}
 			</div>
 
 			<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
