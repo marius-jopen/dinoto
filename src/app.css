@@ -41,31 +41,31 @@ body {
 }
 
 .h0 {
-    @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[80px] leading-[115%] md:leading-[115%];
+    @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[80px] leading-[115%] md:leading-[110%];
 }
 
 h1 {
-    @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px] leading-[115%] md:leading-[115%];
+    @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px] leading-[115%] md:leading-[110%];
 }
 
 h2 {
-    @apply text-[30px] md:text-[30px] lg:text-[40px] xl:text-[40px] leading-[115%] md:leading-[120%];
+    @apply text-[30px] md:text-[30px] lg:text-[40px] xl:text-[40px] leading-[115%] md:leading-[115%];
 }
 
 h3 {
-    @apply text-[25px] md:text-[25px] lg:text-[25px] xl:text-[25px] leading-[115%] md:leading-[133%];
+    @apply text-[25px] md:text-[25px] lg:text-[25px] xl:text-[25px] leading-[115%] md:leading-[130%];
 }
 
 .p1, p {
-    @apply text-[22px] md:text-[20px] leading-[135%];
+    @apply text-[22px] md:text-[20px] leading-[133%];
 }
 
 .p2 {
-    @apply text-[18px] md:text-[20px] leading-[130%];
+    @apply text-[18px] md:text-[20px] leading-[128%];
 }
 
 .p3 {
-    @apply text-[15px] leading-[130%];
+    @apply text-[15px] leading-[125%];
 }
 
 .box {
