@@ -7,11 +7,38 @@
 
 	let distanceTop = getDistanceTop(slice.primary.distance_top);
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
+
+    let currentVideo = 1;
 </script>
 
 <section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="flex-col-reverse md:flex-row flex gap-8">
 		<div class="md:w-1/2 flex flex-col justify-end">
+			<div data-aos="fade-up">
+				{#each slice.primary.items as item, index}
+					<div class="transition-all duration-300 overflow-hidden"
+						class:opacity-0={index + 1 !== currentVideo}
+						class:pointer-events-none={index + 1 !== currentVideo}
+						class:absolute={index + 1 !== currentVideo}
+						class:h-0={index + 1 !== currentVideo}
+						class:h-auto={index + 1 === currentVideo}
+					>
+						{#if item.video_mpg4.url && item.video_webm.url}
+							<div class="flex justify-center w-full scale-[1.5]">
+								<video width="600" height="100%" poster={item.video_poster.url} autoplay loop muted playsinline>
+									<source 
+									src={item.video_mpg4.url} 
+									type='video/mp4; codecs="hvc1"'>
+									<source 
+									src={item.video_webm.url} 
+									type="video/webm">
+								</video>
+							</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
+
 			<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
 				<PrismicRichText field={slice.primary.text_bottom} />
 
@@ -27,9 +54,14 @@
 			</div>
 		</div>
 		
-		<div class="md:w-1/2 flex flex-col justify-start gap-y-4">
-			{#each slice.primary.items as item}
-				<div data-aos="fade-up" class="bg-d_mediumGray text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
+		<div class="md:w-1/2 flex flex-col justify-end gap-y-4">
+			{#each slice.primary.items as item, index}
+				<div 
+					data-aos="fade-up" 
+					class="bg-d_mediumGray text-d_black py-6 px-8 rounded-2xl md:rounded-3xl"
+					on:mouseenter={() => currentVideo = index + 1}
+					on:mouseleave={() => currentVideo = 1}
+				>
 					<PrismicRichText field={item.text} />
 				</div>
 			{/each}
