@@ -97,9 +97,9 @@
 							</div>
 						</div>
 						
-						<div class="md:w-1/2">
+						<div class="md:w-1/2 flex justify-center items-center">
 							<PrismicLink field={item.link} >
-								<PrismicImage class="rounded-2xl" field={item.image} />
+								<PrismicImage class="rounded-2xl md:h-[300px] md:h-[400px] w-auto object-cover" field={item.image} />
 							</PrismicLink>
 						</div>
 					</div>
