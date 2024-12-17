@@ -14,7 +14,7 @@
                 </div>
             </div>
     
-            <div class="w-full flex flex-col justify-center bg-white rounded-2xl md:rounded-3xl overflow-hidden py-8 md:py-0 transition-all duration-300 group-hover:bg-black/5 -mt-8 md:mt-0 pt-16 md:pt-0">
+            <div class="w-full flex flex-col justify-center bg-white rounded-2xl md:rounded-3xl overflow-hidden py-8 md:py-0 transition-all duration-300  -mt-8 md:mt-0 pt-16 md:pt-0">
                 <h1 class="text-center">
                     {data.data.title[0].text}
                 </h1>
