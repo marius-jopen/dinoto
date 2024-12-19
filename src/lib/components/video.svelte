@@ -85,6 +85,7 @@
         class="w-full h-full object-cover"
         playsinline
         controls
+        playsinline
     ></video>
   {/if}
 

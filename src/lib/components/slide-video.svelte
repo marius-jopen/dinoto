@@ -72,6 +72,7 @@
             src={data.video_url}
             muted
             loop
+            playsinline
         />
     </div>
 {/if}
@@ -86,6 +87,7 @@
             src={data.video_url}
             muted
             loop
+            playsinline
             on:mouseenter={handleMouseEnter}
             on:mouseleave={handleMouseLeave}
         />
