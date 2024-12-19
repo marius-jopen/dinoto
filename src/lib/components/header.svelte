@@ -8,6 +8,7 @@
     export let style;
     export let sticky;
     export let logo = true;
+    export let place;
 
     let distanceTop = "h-[65px]";
     let hideHeader = false;
@@ -49,6 +50,6 @@
     </div>
 {/if}
 
-{#if !sticky}
+{#if !sticky && place != 'home'}
     <div class="hidden md:block {distanceTop}" />
 {/if}

@@ -5,6 +5,7 @@
 	import { workStore, newsStore } from '$lib/stores';
 	import { backgroundColor, textColor } from '../../lib/components/color-styles';
 	import MobileHeader from '$lib/components/mobile-header.svelte';
+	import Header from '$lib/components/header.svelte';
 
 	export let data;
 
@@ -19,10 +20,23 @@
 	workStore.set(work);
 	newsStore.set(news);
 	console.log(data)
+
+	let showHeader = false;
+
+	// Set a timeout to show the header after 1 second
+	setTimeout(() => {
+		showHeader = true;
+	}, 1000);
 </script>
 
 {#key data}
 	<div class="{styleClass}">
+		{#if showHeader}
+			<div class="hidden md:block ">
+				<Header style={styleTextClass} place="home" items={data.navigation_top.data.navigation} />
+			</div>
+		{/if}
+
 		<div class="block md:hidden ">
 			<MobileHeader style={styleTextClass} items={data.navigation_top.data.navigation} />
 		</div>
