@@ -58,7 +58,7 @@
     const { logo_hidden = false } = slice.primary;
 </script>
 
-<section class="{!logo_hidden ? 'z-[1000] relative ' : ''}">
+<section class="{!logo_hidden ? 'md:z-[1000] md:relative ' : ''}">
     <div class="aspect-square md:aspect-video h-full relative ">
         <Slider type="welcome" data={newArray} />
 
