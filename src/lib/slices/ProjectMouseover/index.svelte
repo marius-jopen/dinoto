@@ -61,15 +61,17 @@
 		{/if}
     </div>
 
-    <div
-        class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/3 lg:w-1/4 opacity-0 "
-        class:opacity-100={isHovering}
-        style="top: {mouseY}px; left: {mouseX}px; pointer-events: none;"
-    >
-        <ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
-    </div>
+	{#if slice.primary.project.id}
+		<div
+			class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/3 lg:w-1/4 opacity-0 "
+			class:opacity-100={isHovering}
+			style="top: {mouseY}px; left: {mouseX}px; pointer-events: none;"
+		>
+			<ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
+		</div>
 
-	<div class="md:hidden pt-10">
-		<ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
-	</div>
+		<div class="md:hidden pt-10">
+			<ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
+		</div>
+	{/if}
 </section>
