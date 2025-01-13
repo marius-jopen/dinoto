@@ -1,4 +1,6 @@
 <script lang="ts">
+	console.log("IMAGE LOADED")
+
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 	import { PrismicImage, PrismicRichText } from "@prismicio/svelte";

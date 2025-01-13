@@ -1,4 +1,6 @@
 <script lang="ts">
+	console.log("WELCOME LOADED")
+
     import type { Content } from '@prismicio/client';
     import Slider from '$lib/components/slider.svelte';
     import { workStore } from '$lib/stores';

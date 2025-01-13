@@ -3,6 +3,7 @@
     import { page } from '$app/stores';
 
     export let data;
+
     export let list = false
     export let cloud = false
     export let hidecaption = false

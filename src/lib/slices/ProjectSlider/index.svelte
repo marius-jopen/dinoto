@@ -1,4 +1,6 @@
 <script lang="ts">
+	console.log("PROJECT SLIDER LOADED")
+	
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';

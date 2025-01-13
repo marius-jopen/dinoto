@@ -1,4 +1,5 @@
 <script lang="ts">
+	console.log("WORK LOADED")
 	import type { Content } from '@prismicio/client';
 	import { workStore } from '$lib/stores';
 	import { get } from 'svelte/store';

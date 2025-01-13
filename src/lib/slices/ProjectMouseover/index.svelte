@@ -1,4 +1,6 @@
 <script lang="ts">
+	console.log("PROJECT MOUSEOVER LOADED")
+
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 	import ProjectItem from '$lib/components/project-item.svelte';

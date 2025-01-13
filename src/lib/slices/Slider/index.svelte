@@ -1,4 +1,6 @@
 <script lang="ts">
+	console.log("SLIDER LOADED")
+	
 	import type { Content } from '@prismicio/client';
 	import { getDistanceTop, getDistanceBottom } from '../../components/distances';
 	import Video from '../../components/video.svelte';
