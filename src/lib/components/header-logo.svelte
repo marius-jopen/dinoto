@@ -3,7 +3,7 @@
 </script>
 
 <a href="/">
-    <svg class=" w-24 md:w-32 h-auto" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- <svg class=" w-24 md:w-32 h-auto" viewBox="0 0 1588 424" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_68_3172)">
         <path d="M144.354 16.3383H0V415.555H143.802C264.005 415.555 344.331 339.545 344.331 216.223C344.331 92.9006 264.005 16.3383 144.354 16.3383ZM140.428 331.652H88.7516V100.219H140.428C201.654 100.219 251.654 136.256 251.654 216.201C251.654 296.146 201.654 331.63 140.428 331.63V331.652Z" class="transition-color duration-300" fill="{style}"/>
         <path d="M403.153 0C376.201 0 353.727 22.5287 353.727 50.1203C353.727 77.712 376.201 100.241 403.153 100.241C430.105 100.241 453.704 77.712 453.704 50.1203C453.704 22.5287 431.252 0 403.153 0Z" class="transition-color duration-300" fill="{style}"/>
@@ -18,5 +18,10 @@
         <rect width="1588" height="424" class="transition-color duration-300" fill="{style}"/>
         </clipPath>
         </defs>
+    </svg> -->
+
+    <svg class=" w-auto h-6 md:h-12" viewBox="0 0 247.9 303.1" xml:space="preserve">
+        <path class="transition-color duration-300" fill="{style}" d="M1.9,276.3V26.8c0-12,9.7-21.7,21.7-21.7h80.8c74.4,0,139.3,50.8,139.3,147.1c0,95.9-65.7,145.9-140.1,145.9H23.6C11.7,298.1,1.9,288.3,1.9,276.3"/>
     </svg>
+
 </a>
