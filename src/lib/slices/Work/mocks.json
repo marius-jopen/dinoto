@@ -22,6 +22,11 @@
 						]
 					}
 				]
+			},
+			"switch": {
+				"__TYPE__": "FieldContent",
+				"value": "list",
+				"type": "Select"
 			}
 		},
 		"items": []

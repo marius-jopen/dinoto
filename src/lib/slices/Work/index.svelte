@@ -9,7 +9,7 @@
 	export let slice: Content.WorkSlice;
 
 	let work = get(workStore);
-	let showList1 = true; // Boolean variable to toggle between lists
+	let showList1 = slice.primary.switch == 'both' || slice.primary.switch == 'grid';
 	let distanceTop = getDistanceTop(slice.primary.distance_top);
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 
@@ -32,22 +32,24 @@
 
 <section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
 	<!-- Toggle Button -->
-	<div data-aos="slide-up" class="w-full justify-center pb-16 hidden md:flex ">
-		<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">
-			<div class="z-20">
-				Grid
-			</div>
-
-			<div class="z-20">
-				List
-			</div>
-
-			<div class="absolute z-10 top-0 left-0 h-full w-full flex {showList1 ? "justify-start" : "justify-end"}">
-				<div class="w-[calc(50%+10px)] bg-white rounded-full h-full">
+	 {#if slice.primary.switch == 'both'}
+		<div data-aos="slide-up" class="w-full justify-center pb-16 hidden md:flex ">
+			<button on:click={toggleList} class="text-black flex gap-12 rounded-full bg-d_mediumGray px-8 py-3 relative">
+				<div class="z-20">
+					Grid
 				</div>
-			</div>
-		</button>
-	</div>
+
+				<div class="z-20">
+					List
+				</div>
+
+				<div class="absolute z-10 top-0 left-0 h-full w-full flex {showList1 ? "justify-start" : "justify-end"}">
+					<div class="w-[calc(50%+10px)] bg-white rounded-full h-full">
+					</div>
+				</div>
+			</button>
+		</div>
+	{/if}
 
 	<!-- Show List 1 -->
 	{#if showList1}

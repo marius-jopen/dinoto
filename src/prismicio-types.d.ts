@@ -1523,6 +1523,36 @@ export interface ChatSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Video MPG4 field in *Chat → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.items[].video_mpg4
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	video_mpg4: prismic.LinkToMediaField;
+
+	/**
+	 * Video WEBM field in *Chat → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.items[].video_webm
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	video_webm: prismic.LinkToMediaField;
+
+	/**
+	 * Video Poster field in *Chat → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: chat.default.primary.items[].video_poster
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	video_poster: prismic.ImageField<never>;
 }
 
 /**
@@ -3680,6 +3710,17 @@ export interface WorkSliceDefaultPrimaryItemsItem {
  * Primary content in *Work → Default → Primary*
  */
 export interface WorkSliceDefaultPrimary {
+	/**
+	 * switch field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: both
+	 * - **API ID Path**: work.default.primary.switch
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	switch: prismic.SelectField<'both' | 'grid' | 'list', 'filled'>;
+
 	/**
 	 * Narrow field in *Work → Default → Primary*
 	 *

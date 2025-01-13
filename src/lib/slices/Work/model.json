@@ -12,6 +12,19 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "switch": {
+          "type": "Select",
+          "config": {
+            "label": "switch",
+            "placeholder": "",
+            "options": [
+              "both",
+              "grid",
+              "list"
+            ],
+            "default_value": "both"
+          }
+        },
         "narrow": {
           "type": "Boolean",
           "config": {
