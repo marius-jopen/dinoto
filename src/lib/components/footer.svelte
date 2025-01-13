@@ -24,7 +24,7 @@
     
     <div class="flex justify-between pt-6 pb-8 p2 flex-col-reverse md:flex-row text-center md:text-left">
         <div class="pt-4 md:pt-0 md:mt-0">
-            © DiNoto Group 2024
+            © DiNoto Group {new Date().getFullYear()}
         </div>
 
         <div class="flex gap-4 md:ml-16 flex-col md:flex-row">

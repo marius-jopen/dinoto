@@ -52,10 +52,10 @@
     <div class=" hover-area">
 
 		{#if slice.primary.text}
-			<div class="md:w-2/3">
-				<h1 >
+			<div class="box-narrow">
+				<div class="h0 md:w-3/4 " >
 					{slice.primary.text}
-				</h1>
+				</div>
 			</div>
 		{/if}
 
@@ -66,10 +66,10 @@
         class:opacity-100={isHovering}
         style="top: {mouseY}px; left: {mouseX}px; pointer-events: none;"
     >
-        <ProjectItem cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
+        <ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
     </div>
 
 	<div class="md:hidden pt-6">
-		<ProjectItem cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
+		<ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
 	</div>
 </section>

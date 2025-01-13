@@ -5,6 +5,7 @@
     export let data;
     export let list = false
     export let cloud = false
+    export let hidecaption = false
 
     let previews = data.data.items;
     let defaultSlideTime = 2000;
@@ -38,7 +39,7 @@
         <Slider list={list} clickable={data.data.clickable} type="preview" data={previews} />
     </div>
 
-    {#if !cloud}
+    {#if !cloud && !hidecaption}
         <div class="bg-white rounded-b-2xl md:rounded-b-3xl pb-4 pt-[45px] px-4 md:px-8 -mt-8 p2 text-center flex flex-col justify-center items-center h-[110px]">
             {data.data.client[0]?.text}
             
