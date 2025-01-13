@@ -2022,6 +2022,17 @@ export interface HeadlineSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	style: prismic.SelectField<'horizontal' | 'vertical', 'filled'>;
+
+	/**
+	 * headlinexl field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: headline.default.primary.headlinexl
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	headlinexl: prismic.BooleanField;
 }
 
 /**
@@ -3710,6 +3721,26 @@ export interface WorkSliceDefaultPrimaryItemsItem {
  * Primary content in *Work → Default → Primary*
  */
 export interface WorkSliceDefaultPrimary {
+	/**
+	 * Link field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.default.primary.link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+
+	/**
+	 * LinkText field in *Work → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: work.default.primary.linktext
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	linktext: prismic.KeyTextField;
+
 	/**
 	 * switch field in *Work → Default → Primary*
 	 *

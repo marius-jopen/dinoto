@@ -49,27 +49,25 @@
     data-aos="fade-up"
     class="box {distanceTop} {distanceBottom} relative"
 >
-    <div class=" hover-area">
-
+    <div class="hover-area">
 		{#if slice.primary.text}
 			<div class="box-narrow">
-				<div class="h0 md:w-3/4 " >
+				<div class="hxl" >
 					{slice.primary.text}
 				</div>
 			</div>
 		{/if}
-
     </div>
 
     <div
-        class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/3 lg:w-1/4 opacity-0"
+        class="hidden md:block absolute -ml-10 -mt-10 z-50 w-1/3 lg:w-1/4 opacity-0 "
         class:opacity-100={isHovering}
         style="top: {mouseY}px; left: {mouseX}px; pointer-events: none;"
     >
         <ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
     </div>
 
-	<div class="md:hidden pt-6">
+	<div class="md:hidden pt-10">
 		<ProjectItem hidecaption={true} cloud={false} list={true} data={getProjectById(slice.primary.project.id)} />
 	</div>
 </section>

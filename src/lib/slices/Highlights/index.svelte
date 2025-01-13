@@ -65,7 +65,7 @@
 			{#each slice.primary.items as item, index}
 				<SplideSlide>
 					<div class="w-full flex-col-reverse md:flex-row flex gap-12 md:h-full">
-						<div class="md:w-1/2 flex flex-col justify-center">
+						<div class="md:w-1/2 flex flex-col justify-center relative">
 							
 							{#if item.text}
 								<div class="text-center mx-auto w-10/12 md:w-2/3 md:mt-8">
@@ -73,7 +73,7 @@
 								</div>
 							{/if}
 
-							<div class="flex gap-8 mt-12 justify-center">
+							<div class="flex gap-8 mt-12 justify-center md:absolute bottom-0 left-0 right-0">
 								<button
 									class="prev-button"
 									on:click={() => splideInstance?.go('<')}

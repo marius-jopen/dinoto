@@ -12,6 +12,22 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "linktext": {
+          "type": "Text",
+          "config": {
+            "label": "LinkText",
+            "placeholder": ""
+          }
+        },
         "switch": {
           "type": "Select",
           "config": {

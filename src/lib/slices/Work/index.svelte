@@ -5,6 +5,7 @@
 	import ProjectItem from '$lib/components/project-item.svelte';
 	import ProjectItemList from '$lib/components/project-item-list.svelte';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
+	import { PrismicLink } from '@prismicio/svelte';
 
 	export let slice: Content.WorkSlice;
 
@@ -80,6 +81,14 @@
 			{:else}
 				<p>No matching projects found.</p>
 			{/if}
+		</div>
+	{/if}
+
+	{#if slice.primary.link}
+		<div data-aos="slide-up" class="text-center md:text-right pt-8">
+			<PrismicLink field={slice.primary.link}>
+				{slice.primary.linktext}
+			</PrismicLink>
 		</div>
 	{/if}
 </section>

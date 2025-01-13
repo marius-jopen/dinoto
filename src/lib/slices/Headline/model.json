@@ -78,6 +78,15 @@
             ],
             "default_value": "horizontal"
           }
+        },
+        "headlinexl": {
+          "type": "Boolean",
+          "config": {
+            "label": "headlinexl",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {}

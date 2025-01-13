@@ -27,6 +27,18 @@
 				"__TYPE__": "FieldContent",
 				"value": "list",
 				"type": "Select"
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"linktext": {
+				"__TYPE__": "FieldContent",
+				"value": "maybe",
+				"type": "Text"
 			}
 		},
 		"items": []
