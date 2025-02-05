@@ -2280,6 +2280,26 @@ export interface ListSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Image 1 field in *List → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: list.default.primary.items[].image_1
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_1: prismic.ImageField<never>;
+
+	/**
+	 * Image 2 field in *List → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: list.default.primary.items[].image_2
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_2: prismic.ImageField<never>;
 }
 
 /**
@@ -2318,6 +2338,17 @@ export interface ListSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * HoverLine field in *List → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: list.default.primary.hoverline
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	hoverline: prismic.BooleanField;
 
 	/**
 	 * Items field in *List → Default → Primary*

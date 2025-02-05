@@ -53,6 +53,15 @@
             "default_value": "none"
           }
         },
+        "hoverline": {
+          "type": "Boolean",
+          "config": {
+            "label": "HoverLine",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
@@ -73,6 +82,22 @@
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "paragraph,preformatted,strong,hyperlink,em"
+                }
+              },
+              "image_1": {
+                "type": "Image",
+                "config": {
+                  "label": "Image 1",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "image_2": {
+                "type": "Image",
+                "config": {
+                  "label": "Image 2",
+                  "constraint": {},
+                  "thumbnails": []
                 }
               }
             }
