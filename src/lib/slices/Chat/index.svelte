@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
-    import { PrismicRichText } from "@prismicio/svelte";
+    import { PrismicText } from "@prismicio/svelte";
 
 	export let slice: Content.ChatSlice;
 
@@ -12,8 +12,8 @@
 </script>
 
 <section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
-	<div class="flex-col-reverse md:flex-row flex gap-8">
-		<div class="md:w-1/2 flex flex-col justify-end">
+	<div class="flex-col md:flex-row flex gap-8">
+		<div class="md:w-1/2 flex flex-col justify-center">
 			<div class="hidden md:block" data-aos="fade-up">
 				{#each slice.primary.items as item, index}
 					<div class="transition-all duration-300 overflow-hidden"
@@ -53,34 +53,18 @@
 					</div>
 				{/if}
 			</div>
-
-			{#if slice.primary.text_bottom.length > 0}
-				<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
-					<PrismicRichText field={slice.primary.text_bottom} />
-
-				<div 
-					data-aos="flip-right"
-					data-aos-delay="1000"
-					data-aos-duration="600"
-					class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%]">
-					<div class="-mt-0.5">
-						{slice.primary.emoji}
-						</div>
-					</div>
-				</div>
-			{/if}
 		</div>
 		
-		<div class="md:w-1/2 flex flex-col justify-end gap-y-4">
+		<div class="md:w-2/3 flex flex-col justify-end gap-y-4">
 			{#each slice.primary.items as item, index}
-				<div 
+				<h2 
 					data-aos="fade-up" 
-					class="bg-d_mediumGray text-d_black py-6 px-8 rounded-2xl md:rounded-3xl"
+					class="text-d_gray hover:text-d_lightGreen py-6"
 					on:mouseenter={() => currentVideo = index + 1}
 					on:mouseleave={() => currentVideo = 1}
 				>
-					<PrismicRichText field={item.text} />
-				</div>
+					<PrismicText field={item.text} />
+				</h2>
 			{/each}
 		</div>
 	</div>
