@@ -10,7 +10,7 @@
 </script>
 
 <section class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
-    <div class="relative mb-[200px]">
+    <div data-aos="fade-up"  class="relative mb-[200px]">
         <div class="text-center md:w-[70%] mx-8 md:mx-[15%]">
             <PrismicRichText field={slice.primary.text} />
         </div>

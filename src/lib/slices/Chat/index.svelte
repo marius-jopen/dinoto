@@ -54,8 +54,9 @@
 				{/if}
 			</div>
 
-			<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
-				<PrismicRichText field={slice.primary.text_bottom} />
+			{#if slice.primary.text_bottom.length > 0}
+				<div data-aos="fade-up" class="relative bg-d_lightGreen text-d_black py-6 px-8 rounded-2xl md:rounded-3xl">
+					<PrismicRichText field={slice.primary.text_bottom} />
 
 				<div 
 					data-aos="flip-right"
@@ -64,9 +65,10 @@
 					class="bg-d_white w-12 h-12 text-center pt-3 rounded-full absolute right-[10%]">
 					<div class="-mt-0.5">
 						{slice.primary.emoji}
+						</div>
 					</div>
 				</div>
-			</div>
+			{/if}
 		</div>
 		
 		<div class="md:w-1/2 flex flex-col justify-end gap-y-4">
