@@ -85,7 +85,7 @@
 		</div>
 	{/if}
 
-	{#if slice.primary.link}
+	{#if slice.primary.link.length > 0}
 		<div data-aos="slide-up" class="text-center md:text-right pt-8">
 			<PrismicLink field={slice.primary.link}>
 				{slice.primary.linktext}

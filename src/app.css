@@ -130,3 +130,13 @@ button.splide__pagination__page {
     background: var(--d-black) !important;
     transform: scale(1) !important;
 }
+
+::selection {
+    background-color: var(--d-lightGreen);
+    color: var(--d-black);
+}
+
+::-moz-selection {
+    background-color: var(--d-lightGreen);
+    color: var(--d-black);
+}
