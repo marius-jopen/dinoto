@@ -142,6 +142,15 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"project_mouseover": {
+							"type": "SharedSlice"
+						},
+						"project_slider": {
+							"type": "SharedSlice"
+						},
+						"highlights": {
+							"type": "SharedSlice"
+						},
 						"video_gallery": {
 							"type": "SharedSlice"
 						},

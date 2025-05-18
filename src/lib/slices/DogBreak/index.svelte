@@ -16,7 +16,7 @@
         </div>
     
         {#if slice.primary.video_mpg4.url && slice.primary.video_webm.url}
-            <div class="flex justify-center absolute bottom-0 left-0 w-full mb-[-280px] scale-[1.5]">
+            <div class="flex justify-center absolute bottom-0 left-0 w-full mb-[-300px] scale-[1.5]">
                 <video width="600" height="100%" poster={slice.primary.video_poster.url} autoplay loop muted playsinline>
                     <source 
                     src={slice.primary.video_mpg4.url} 

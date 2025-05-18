@@ -69,7 +69,7 @@
     on:mouseenter={handleMouseEnter}
     on:mouseleave={handleMouseLeave}
     style="cursor: {data.data.clickable ? 'pointer' : 'default'};"
-    class="relative py-8 hover:bg-white transition-color duration-200"
+    class="relative py-8 hover:bg-white hover:text-neutral-700 transition-color duration-200"
 > 
     <div class="box">
         <h2>

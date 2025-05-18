@@ -15,15 +15,17 @@
             </div>
     
             <div class="w-full flex flex-col justify-center bg-white rounded-2xl md:rounded-3xl overflow-hidden py-8 md:py-0 transition-all duration-300  -mt-8 md:mt-0 pt-16 md:pt-0">
-                <h1 class="text-center">
+                <h2 class="md:text-center px-6 md:px-8">
                     {data.data.title[0].text}
-                </h1>
+                </h2>
     
-                <div class="text-center pt-4">
-                    {data.data.teaser[0].text}
-                </div>
+                {#if data.data.teaser[0].text}
+                    <div class="md:text-center pt-8 w-full md:w-10/12 mx-auto text-xl px-6 md:px-8">
+                        {data.data.teaser[0].text}
+                    </div>
+                {/if}
     
-                <div class="text-center text-black/50 pb-2 pt-6 text-sm">
+                <div class="md:text-center text-black/50 pb-2 pt-6 text-sm px-6 md:px-8">
                     {data.data.date}
                 </div>
             </div>

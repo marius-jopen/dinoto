@@ -118,6 +118,18 @@ export type NavigationTopDocument<Lang extends string = string> = prismic.Prismi
 >;
 
 type NewsArticleDocumentDataSlicesSlice =
+	| VideoGallerySlice
+	| Opener2Slice
+	| WelcomeSlice
+	| CloudSlice
+	| Opener1Slice
+	| LogosSlice
+	| BoxTrippleSlice
+	| NewsletterSlice
+	| ExpertiseSlice
+	| HighlightsSlice
+	| DogBreakSlice
+	| ChatSlice
 	| VideoSlice
 	| SliderSlice
 	| TextBigSlice
@@ -427,6 +439,9 @@ export interface WorkDocumentDataItemsItem {
 }
 
 type WorkDocumentDataSlicesSlice =
+	| ProjectMouseoverSlice
+	| ProjectSliderSlice
+	| HighlightsSlice
 	| VideoGallerySlice
 	| BoxSingleSlice
 	| ChapterSlice

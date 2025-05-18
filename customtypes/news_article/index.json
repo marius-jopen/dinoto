@@ -50,6 +50,42 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"video_gallery": {
+							"type": "SharedSlice"
+						},
+						"opener2": {
+							"type": "SharedSlice"
+						},
+						"welcome": {
+							"type": "SharedSlice"
+						},
+						"cloud": {
+							"type": "SharedSlice"
+						},
+						"opener1": {
+							"type": "SharedSlice"
+						},
+						"logos": {
+							"type": "SharedSlice"
+						},
+						"box_tripple": {
+							"type": "SharedSlice"
+						},
+						"newsletter": {
+							"type": "SharedSlice"
+						},
+						"expertise": {
+							"type": "SharedSlice"
+						},
+						"highlights": {
+							"type": "SharedSlice"
+						},
+						"dog_break": {
+							"type": "SharedSlice"
+						},
+						"chat": {
+							"type": "SharedSlice"
+						},
 						"video": {
 							"type": "SharedSlice"
 						},
