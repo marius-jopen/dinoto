@@ -77,7 +77,7 @@ h3 {
 }
 
 .box-narrow {
-    @apply mx-4 md:mx-48;
+    @apply mx-4 md:mx-auto max-w-[600px];
 }
 
 .style-white {
