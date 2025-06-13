@@ -192,6 +192,17 @@ interface NewsArticleDocumentData {
 	image: prismic.ImageField<never>;
 
 	/**
+	 * Logo field in *News Article*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+
+	/**
 	 * Slice Zone field in *News Article*
 	 *
 	 * - **Field Type**: Slice Zone
@@ -3224,6 +3235,17 @@ export interface TextSliceDefaultPrimary {
 	narrow: prismic.BooleanField;
 
 	/**
+	 * Style field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Inline
+	 * - **API ID Path**: text.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'Inline' | 'Full', 'filled'>;
+
+	/**
 	 * Distance Top field in *Text → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -3254,17 +3276,6 @@ export interface TextSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
-
-	/**
-	 * Style field in *Text → Default → Primary*
-	 *
-	 * - **Field Type**: Select
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: Inline
-	 * - **API ID Path**: text.default.primary.style
-	 * - **Documentation**: https://prismic.io/docs/field#select
-	 */
-	style: prismic.SelectField<'Inline' | 'Full', 'filled'>;
 }
 
 /**

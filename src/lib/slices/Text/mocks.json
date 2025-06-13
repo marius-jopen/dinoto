@@ -16,7 +16,7 @@
 			},
 			"style": {
 				"__TYPE__": "FieldContent",
-				"value": "Inline",
+				"value": "Full",
 				"type": "Select"
 			}
 		},

@@ -15,18 +15,24 @@
             </div>
     
             <div class="w-full flex flex-col justify-center bg-white rounded-2xl md:rounded-3xl overflow-hidden py-8 md:py-0 transition-all duration-300  -mt-8 md:mt-0 pt-16 md:pt-0">
-                <h2 class="md:text-center px-6 md:px-8">
+                <h2 class="px-6 md:px-8">
                     {data.data.title[0].text}
                 </h2>
-    
+
                 {#if data.data.teaser[0].text}
-                    <div class="md:text-center pt-8 w-full md:w-10/12 mx-auto text-xl px-6 md:px-8">
+                    <div class="pt-8 text-xl pl-6 md:px-8">
                         {data.data.teaser[0].text}
                     </div>
                 {/if}
-    
-                <div class="md:text-center text-black/50 pb-2 pt-6 text-sm px-6 md:px-8">
-                    {data.data.date}
+
+                <div class="flex gap-4 pl-6 md:px-8 items-center {data.data.logo.url ? '' : 'pt-6'}">
+                    {#if data.data.logo.url}
+                        <PrismicImage field={data.data.logo} class="h-16 w-auto" />
+                    {/if}
+        
+                    <div class="text-black/50 h-full text-sm flex items-center">
+                        {data.data.date}
+                    </div>
                 </div>
             </div>
         </div>
