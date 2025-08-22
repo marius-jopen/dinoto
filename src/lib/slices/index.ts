@@ -15,6 +15,7 @@ import Highlights from './Highlights/index.svelte';
 import Image from './Image/index.svelte';
 import List from './List/index.svelte';
 import Logos from './Logos/index.svelte';
+import MixedSlider from './MixedSlider/index.svelte';
 import News from './News/index.svelte';
 import Newsletter from './Newsletter/index.svelte';
 import Opener1 from './Opener1/index.svelte';
@@ -46,6 +47,7 @@ export const components = {
 	image: Image,
 	list: List,
 	logos: Logos,
+	mixed_slider: MixedSlider,
 	news: News,
 	newsletter: Newsletter,
 	opener1: Opener1,

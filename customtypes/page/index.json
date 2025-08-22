@@ -45,6 +45,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"mixed_slider": {
+							"type": "SharedSlice"
+						},
 						"news": {
 							"type": "SharedSlice"
 						},

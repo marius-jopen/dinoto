@@ -1,0 +1,113 @@
+{
+  "id": "mixed_slider",
+  "type": "SharedSlice",
+  "name": "MixedSlider",
+  "description": "MixedSlider",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "distance_top": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Top",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
+        "distance_bottom": {
+          "type": "Select",
+          "config": {
+            "label": "Distance Bottom",
+            "placeholder": "",
+            "options": [
+              "none",
+              "xs",
+              "s",
+              "m",
+              "xl",
+              "xxl"
+            ],
+            "default_value": "none"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Select",
+                "config": {
+                  "label": "Color",
+                  "placeholder": "",
+                  "options": [
+                    "White",
+                    "Light Gray",
+                    "Dark Gray",
+                    "Black",
+                    "Light Green",
+                    "Green"
+                  ],
+                  "default_value": "White"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "image_hover": {
+                "type": "Image",
+                "config": {
+                  "label": "Image Hover",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              },
+              "caption": {
+                "type": "Text",
+                "config": {
+                  "label": "Caption",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

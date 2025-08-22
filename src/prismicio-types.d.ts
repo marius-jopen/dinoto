@@ -261,6 +261,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| MixedSliderSlice
 	| NewsSlice
 	| ProjectSliderSlice
 	| ProjectMouseoverSlice
@@ -2515,6 +2516,139 @@ type LogosSliceVariation = LogosSliceDefault;
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
 
 /**
+ * Item in *MixedSlider → Default → Primary → Items*
+ */
+export interface MixedSliderSliceDefaultPrimaryItemsItem {
+	/**
+	 * Color field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: White
+	 * - **API ID Path**: mixed_slider.default.primary.items[].color
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	color: prismic.SelectField<
+		'White' | 'Light Gray' | 'Dark Gray' | 'Black' | 'Light Green' | 'Green',
+		'filled'
+	>;
+
+	/**
+	 * Image field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Image Hover field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].image_hover
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_hover: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Text field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+
+	/**
+	 * Caption field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].caption
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	caption: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *MixedSlider → Default → Primary*
+ */
+export interface MixedSliderSliceDefaultPrimary {
+	/**
+	 * Distance Top field in *MixedSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: mixed_slider.default.primary.distance_top
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_top: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Distance Bottom field in *MixedSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: none
+	 * - **API ID Path**: mixed_slider.default.primary.distance_bottom
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
+
+	/**
+	 * Items field in *MixedSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<MixedSliderSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for MixedSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MixedSliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<MixedSliderSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *MixedSlider*
+ */
+type MixedSliderSliceVariation = MixedSliderSliceDefault;
+
+/**
+ * MixedSlider Shared Slice
+ *
+ * - **API ID**: `mixed_slider`
+ * - **Description**: MixedSlider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MixedSliderSlice = prismic.SharedSlice<'mixed_slider', MixedSliderSliceVariation>;
+
+/**
  * Item in *News → Default → Primary → Items*
  */
 export interface NewsSliceDefaultPrimaryItemsItem {
@@ -3974,6 +4108,11 @@ declare module '@prismicio/client' {
 			LogosSliceDefaultPrimary,
 			LogosSliceVariation,
 			LogosSliceDefault,
+			MixedSliderSlice,
+			MixedSliderSliceDefaultPrimaryItemsItem,
+			MixedSliderSliceDefaultPrimary,
+			MixedSliderSliceVariation,
+			MixedSliderSliceDefault,
 			NewsSlice,
 			NewsSliceDefaultPrimaryItemsItem,
 			NewsSliceDefaultPrimary,
