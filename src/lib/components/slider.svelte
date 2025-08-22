@@ -186,7 +186,7 @@
     </div>
   {/if}
   
-  <Splide class="bg-neutral-200 {type == 'welcome' && 'aspect-square'} md:aspect-video h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
+  <Splide class="bg-neutral-200 {type == 'welcome' && 'aspect-square'} hover:scale-105 transition-all duration-300 md:aspect-video h-full" options={splideOptions} bind:this={slider} hasTrack={false} aria-label="...">
     <SplideTrack>
       {#each slides as slide, i}
         <SplideSlide>
