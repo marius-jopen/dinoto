@@ -76,14 +76,6 @@
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
-							],
-							[
-								"caption",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "ocean",
-									"type": "Text"
-								}
 							]
 						]
 					}

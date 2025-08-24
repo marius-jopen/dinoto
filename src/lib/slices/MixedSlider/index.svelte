@@ -16,17 +16,61 @@
 	let splideOptions = {
 		arrows: true,
 		pagination: false,
-		perPage: 3,
+		perPage: 1.7,
 		perMove: 1,
 		pauseOnHover: false,
+		rewind: false,
 		type: 'loop',
+		start: 0,
 	};
+
+	// Use loop by default, but avoid visual duplication when there are too few items
+	// Splide needs more slides than `perPage` to loop without duplicating the first slide in view
+	let effectiveOptions = splideOptions;
+
+	// Rotate items so the original first item is rendered last when enough slides
+	let rotatedItems: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = [];
 
 	let height = "h-[100%]";
 
 	let currentSlideIndex = 0; // Tracks the current active slide index
 	let splideInstance: any; // Will hold the actual Splide instance
 	let eventListenerAttached = false;
+
+	// Build a content signature to detect duplicates (keeps first occurrence only)
+	const createItemSignature = (item: Content.MixedSliderSliceDefaultPrimaryItemsItem) => {
+		const video = typeof item.video === 'string' ? item.video.trim() : '';
+		const image = item.image && item.image.url ? item.image.url : '';
+		const imageHover = item.image_hover && item.image_hover.url ? item.image_hover.url : '';
+		const text = typeof item.text === 'string' ? item.text.trim() : '';
+		const color = typeof item.color === 'string' ? item.color : '';
+		return [video, image, imageHover, text, color].join('|');
+	};
+
+	// Unique items array prevents the same content from appearing twice
+	const uniqueItems: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = (() => {
+		const seen = new Set<string>();
+		const result: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = [];
+		for (const item of slice.primary.items) {
+			const sig = createItemSignature(item);
+			if (!seen.has(sig)) {
+				seen.add(sig);
+				result.push(item);
+			}
+		}
+		return result;
+	})();
+
+	// Quick-and-dirty: repeat items 4x to make the loop feel richer
+	const repeatedItems: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = [
+		...uniqueItems,
+		...uniqueItems,
+		...uniqueItems,
+		...uniqueItems
+	];
+
+	// Keep original order: first array item should be first visible
+	rotatedItems = uniqueItems;
 
 	// Function to update the current slide index
 	const updateCurrentSlideIndex = () => {
@@ -58,45 +102,16 @@
 		});
 	});
 
-	// Function to render content based on item type
-	function renderContent(item: Content.MixedSliderSliceDefaultPrimaryItemsItem) {
-		if (item.video && item.video.trim()) {
-			// Video content
-			return {
-				type: 'video',
-				content: item.video
-			};
-		} else if (item.image && item.image.url) {
-			// Image content with optional hover effect
-			return {
-				type: 'image',
-				image: item.image,
-				imageHover: item.image_hover
-			};
-		} else if (item.text && item.text.trim()) {
-			// Text content
-			return {
-				type: 'text',
-				content: item.text
-			};
-		}
-		
-		// Fallback for empty items
-		return {
-			type: 'empty'
-		};
-	}
 </script>
 
 <section class="hidden md:block {distanceTop} {distanceBottom}">
 	<Splide
 		class="{height}"
-		options={splideOptions}
+		options={effectiveOptions}
 		bind:this={slider}
 		aria-label="Mixed Content Slider"
 	>
-		{#each slice.primary.items as item, index}
-			{@const content = renderContent(item)}
+		{#each repeatedItems as item, index}
 			<SplideSlide>
 				<div data-aos="fade-up" class="w-full box {height}">
 					<div class="mr-6 h-full">
@@ -104,7 +119,7 @@
 							class="w-full h-full rounded-3xl overflow-hidden {backgroundColor(item.color)}"
 							style="color: {textColor(item.color)};"
 						>
-							{#if content.type === 'video'}
+							{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 								<video 
 									class="w-full h-full object-cover" 
 									autoplay 
@@ -113,38 +128,59 @@
 									playsinline
 									controls
 								>
-									<source src={content.content} type="video/mp4">
+									<source src={item.video} type="video/mp4">
 									Your browser does not support the video tag.
 								</video>
-							{:else if content.type === 'image' && content.image}
-								{#if content.imageHover && content.imageHover.url}
-									<!-- Image with hover effect -->
-									<div class="relative w-full h-full group">
+							{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
+								<!-- Image background with text overlay (and optional hover image) -->
+								<div class="relative w-full h-full group">
+									<img 
+										src={item.image.url} 
+										alt={item.image.alt || ''} 
+										class="w-full h-full object-cover {item.image_hover && item.image_hover.url ? 'transition-opacity duration-300 group-hover:opacity-0' : ''}"
+									/>
+									{#if item.image_hover && item.image_hover.url}
 										<img 
-											src={content.image.url} 
-											alt={content.image.alt || ''} 
-											class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-										/>
-										<img 
-											src={content.imageHover.url} 
-											alt={content.imageHover.alt || ''} 
+											src={item.image_hover.url} 
+											alt={item.image_hover.alt || ''} 
 											class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 										/>
+									{/if}
+									<div class="absolute inset-0 w-full h-full flex flex-col justify-center py-3 px-8">
+										<div class="pb-10 pt-2">
+											<h2 class="text-2xl text-center md:text-3xl lg:text-4xl font-bold leading-tight text-white">
+												{item.text}
+											</h2>
+										</div>
 									</div>
-								{:else}
-									<!-- Image only -->
+								</div>
+							{:else if item && item.image && item.image.url && item.image_hover && item.image_hover.url}
+								<!-- Image with hover effect -->
+								<div class="relative w-full h-full group">
 									<img 
-										src={content.image.url} 
-										alt={content.image.alt || ''} 
-										class="w-full h-full object-cover"
+										src={item.image.url} 
+										alt={item.image.alt || ''} 
+										class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
 									/>
-								{/if}
-							{:else if content.type === 'text'}
+									<img 
+										src={item.image_hover.url} 
+										alt={item.image_hover.alt || ''} 
+										class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+									/>
+								</div>
+							{:else if item && item.image && item.image.url}
+								<!-- Image only -->
+								<img 
+									src={item.image.url} 
+									alt={item.image.alt || ''} 
+									class="w-full h-full object-cover"
+								/>
+							{:else if item && item.text && typeof item.text === 'string' && item.text.trim()}
 								<!-- Text content styled like Cards component -->
 								<div class="w-full h-full flex flex-col justify-center py-3 px-8">
 									<div class="pb-10 pt-2">
-										<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-											{content.content}
+										<h2 class="text-2xl text-center md:text-3xl lg:text-4xl font-bold leading-tight text-white">
+											{item.text}
 										</h2>
 									</div>
 								</div>
@@ -163,15 +199,14 @@
 </section>
 
 <section class="box md:hidden {distanceTop} {distanceBottom}">
-	{#each slice.primary.items as item, index}
-		{@const content = renderContent(item)}
+	{#each repeatedItems as item, index}
 		<div data-aos="fade-up" class="w-full {height}">
 			<div class="mb-6 h-full">
 				<div 
 					class="w-full h-full rounded-lg overflow-hidden {backgroundColor(item.color)}"
 					style="color: {textColor(item.color)};"
 				>
-					{#if content.type === 'video'}
+					{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 						<video 
 							class="w-full h-full object-cover" 
 							autoplay 
@@ -180,38 +215,59 @@
 							playsinline
 							controls
 						>
-							<source src={content.content} type="video/mp4">
+							<source src={item.video} type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
-					{:else if content.type === 'image' && content.image}
-						{#if content.imageHover && content.imageHover.url}
-							<!-- Image with hover effect -->
-							<div class="relative w-full h-full group">
+					{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
+						<!-- Image background with text overlay (and optional hover image) -->
+						<div class="relative w-full h-full group">
+							<img 
+								src={item.image.url} 
+								alt={item.image.alt || ''} 
+								class="w-full h-full object-cover {item.image_hover && item.image_hover.url ? 'transition-opacity duration-300 group-hover:opacity-0' : ''}"
+							/>
+							{#if item.image_hover && item.image_hover.url}
 								<img 
-									src={content.image.url} 
-									alt={content.image.alt || ''} 
-									class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-								/>
-								<img 
-									src={content.imageHover.url} 
-									alt={content.imageHover.alt || ''} 
+									src={item.image_hover.url} 
+									alt={item.image_hover.alt || ''} 
 									class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 								/>
+							{/if}
+							<div class="absolute inset-0 w-full h-full flex flex-col justify-center py-3 px-8">
+								<div class="pb-10 pt-2">
+									<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+										{item.text}
+									</h2>
+								</div>
 							</div>
-						{:else}
-							<!-- Image only -->
+						</div>
+					{:else if item && item.image && item.image.url && item.image_hover && item.image_hover.url}
+						<!-- Image with hover effect -->
+						<div class="relative w-full h-full group">
 							<img 
-								src={content.image.url} 
-								alt={content.image.alt || ''} 
-								class="w-full h-full object-cover"
+								src={item.image.url} 
+								alt={item.image.alt || ''} 
+								class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
 							/>
-						{/if}
-					{:else if content.type === 'text'}
+							<img 
+								src={item.image_hover.url} 
+								alt={item.image_hover.alt || ''} 
+								class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+							/>
+						</div>
+					{:else if item && item.image && item.image.url}
+						<!-- Image only -->
+						<img 
+							src={item.image.url} 
+							alt={item.image.alt || ''} 
+							class="w-full h-full object-cover"
+						/>
+					{:else if item && item.text && typeof item.text === 'string' && item.text.trim()}
 						<!-- Text content styled like Cards component -->
 						<div class="w-full h-full flex flex-col justify-center py-3 px-8">
 							<div class="pb-10 pt-2">
 								<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-									{content.content}
+									{item.text}
 								</h2>
 							</div>
 						</div>

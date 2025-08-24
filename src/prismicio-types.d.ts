@@ -2572,16 +2572,6 @@ export interface MixedSliderSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
-
-	/**
-	 * Caption field in *MixedSlider → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: mixed_slider.default.primary.items[].caption
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	caption: prismic.KeyTextField;
 }
 
 /**
