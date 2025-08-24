@@ -199,7 +199,7 @@
 </section>
 
 <section class="box md:hidden {distanceTop} {distanceBottom}">
-	{#each repeatedItems as item, index}
+	{#each uniqueItems as item, index}
 		<div data-aos="fade-up" class="w-full {height}">
 			<div class="mb-6 h-full">
 				<div 
@@ -234,8 +234,8 @@
 								/>
 							{/if}
 							<div class="absolute inset-0 w-full h-full flex flex-col justify-center py-3 px-8">
-								<div class="pb-10 pt-2">
-									<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+								<div class="pb-4 pt-4">
+									<h2 class="text-2xl md:text-3xl lg:text-4xl text-center font-bold leading-tight text-white">
 										{item.text}
 									</h2>
 								</div>
@@ -265,8 +265,8 @@
 					{:else if item && item.text && typeof item.text === 'string' && item.text.trim()}
 						<!-- Text content styled like Cards component -->
 						<div class="w-full h-full flex flex-col justify-center py-3 px-8">
-							<div class="pb-10 pt-2">
-								<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+							<div class="pb-4 pt-4">
+								<h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white text-center">
 									{item.text}
 								</h2>
 							</div>
