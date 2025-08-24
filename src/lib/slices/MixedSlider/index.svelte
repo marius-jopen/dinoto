@@ -16,7 +16,7 @@
 	let splideOptions = {
 		arrows: true,
 		pagination: false,
-		perPage: 1.7,
+		perPage: 2,
 		perMove: 1,
 		pauseOnHover: false,
 		rewind: false,
@@ -113,7 +113,7 @@
 	>
 		{#each repeatedItems as item, index}
 			<SplideSlide>
-				<div data-aos="fade-up" class="w-full box {height}">
+				<div class="w-full box {height}">
 					<div class="mr-6 h-full">
 						<div 
 							class="w-full h-full rounded-3xl overflow-hidden {backgroundColor(item.color)}"
