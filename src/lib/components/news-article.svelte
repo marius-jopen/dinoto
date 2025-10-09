@@ -25,13 +25,13 @@
                     </div>
                 {/if}
 
-                <div class="flex gap-4 pl-6 md:px-8 items-center {data.data.logo?.url ? '' : 'pt-6'}">
+                <div class="flex gap-4 pl-6 md:px-8 items-center mt-8 {data.data.logo?.url ? '' : 'pt-6'}">
                     {#if data.data.logo?.url}
                         <PrismicImage field={data.data.logo} class="h-16 w-auto" />
                     {/if}
         
                     {#if data.data.date}
-                        <div class="text-black/50 h-full text-sm flex items-center">
+                        <div class="text-black/50 h-full text-sm flex items-center -mt-1">
                             {data.data.date}
                         </div>
                     {/if}

@@ -16,20 +16,22 @@
 				{data.title[0].text}
 			</h2>
 
-			{#if data.teaser[0].text}
+			{#if data.teaser[0]?.text}
 				<div class="pt-8 text-xl pl-6 md:px-8">
 					{data.teaser[0].text}
 				</div>
 			{/if}
 
-			<div class="flex gap-4 pl-6 md:px-8 items-center {data.logo.url ? '' : 'pt-6'}">
+			<div class="flex gap-4 pl-6 md:px-8 items-center mt-8 {data.logo.url ? '' : 'pt-6'}">
 				{#if data.logo.url}
 					<PrismicImage field={data.logo} class="h-16 w-auto" />
 				{/if}
 	
-				<div class="text-black/50 h-full text-sm flex items-center">
-					{data.date}
-				</div>
+				{#if data.date}
+					<div class="text-black/50 h-full text-sm flex items-center">
+						{data.date}
+					</div>
+				{/if}
 			</div>
 		</div>
 	</div>
