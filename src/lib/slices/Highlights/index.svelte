@@ -20,6 +20,7 @@
 		arrows: false,
 		pagination: false,
 		pauseOnHover: false,
+		autoplay: true,
 		type: 'fade', // Keep loop type for continuous sliding
 	};
 
@@ -70,7 +71,7 @@
 						<div class="md:w-1/2 flex flex-col justify-center relative">
 							
 							{#if item.text}
-								<div class="text-center mx-auto w-10/12 md:w-2/3 md:mt-8">
+								<div class="text-center mx-auto w-10/12 md:w-2/3">
 									{item.text}
 								</div>
 							{/if}
@@ -99,9 +100,9 @@
 							</div>
 						</div>
 						
-						<div class="md:w-1/2 flex justify-center items-center">
+						<div class="md:w-1/2 ">
 							<PrismicLink field={item.link} >
-								<PrismicImage class="rounded-2xl md:h-[300px] md:h-[400px] w-auto object-cover" field={item.image} />
+								<PrismicImage class="rounded-2xl md:h-[300px] md:h-[400px] w-full object-cover" field={item.image} />
 							</PrismicLink>
 						</div>
 					</div>
