@@ -3189,6 +3189,17 @@ export interface SliderSliceDefaultPrimary {
 	narrow: prismic.BooleanField;
 
 	/**
+	 * Boxed field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: slider.default.primary.boxed
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	boxed: prismic.BooleanField;
+
+	/**
 	 * Distance Top field in *Slider → Default → Primary*
 	 *
 	 * - **Field Type**: Select

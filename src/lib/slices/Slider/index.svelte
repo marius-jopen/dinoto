@@ -60,10 +60,10 @@
 	});
 </script>
 
-<section data-aos="fade-up" class="{distanceTop} {distanceBottom}">
+<section data-aos="fade-up" class="{slice.primary.boxed == true ? 'box' : ''} {distanceTop} {distanceBottom}">
 	<div>
 		<Splide
-			class="{height}"
+			class="{height} {slice.primary.boxed == true ? 'rounded-2xl md:rounded-3xl overflow-hidden' : ''}"
 			options={splideOptions}
 			bind:this={slider}
 			aria-label="Slider"

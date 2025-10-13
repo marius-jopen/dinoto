@@ -21,6 +21,15 @@
             "default_value": false
           }
         },
+        "boxed": {
+          "type": "Boolean",
+          "config": {
+            "label": "Boxed",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "distance_top": {
           "type": "Select",
           "config": {

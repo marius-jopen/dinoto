@@ -79,6 +79,10 @@
 						]
 					}
 				]
+			},
+			"boxed": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []
