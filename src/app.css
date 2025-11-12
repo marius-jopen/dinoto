@@ -140,3 +140,15 @@ button.splide__pagination__page {
     background-color: var(--d-lightGreen);
     color: var(--d-black);
 }
+
+.text-box p {
+    @apply pb-4 p1;
+}
+
+.text-box li {
+    @apply pb-4 list-disc list-outside ml-5 p1;
+}
+
+.text-box h1 {
+    @apply pb-4;
+}
