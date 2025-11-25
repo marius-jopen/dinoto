@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   export let videoPoster: string;
   export let videoUrl: string;
   export let autoplay: boolean = false; // Video-specific autoplay
@@ -8,6 +10,10 @@
   let isPlaying = false; // Track whether the video is playing
   let isMounted = false; // Track whether the component is mounted
   let isManuallyControlled = false; // Track whether the video is controlled manually
+  let hlsInstance: any = null;
+
+  // Detect if URL is HLS
+  $: isHls = videoUrl && videoUrl.includes('.m3u8');
 
   // Play/pause toggle inside the Video component
   const togglePlayPause = () => {
@@ -30,29 +36,80 @@
       }
   }
 
- 
-
   // Update isPlaying state when the video starts playing or pauses
   const updatePlayState = () => {
       isPlaying = !videoElement.paused;
   };
 
-  import { onMount } from 'svelte';
+  // Initialize HLS if needed
+  const initHls = async () => {
+      if (!isHls || !videoElement) return;
+      
+      const { default: Hls } = await import('hls.js');
+      
+      if (Hls.isSupported()) {
+          hlsInstance = new Hls({
+              autoStartLoad: true,
+              capLevelToPlayerSize: true,
+              maxBufferLength: 30,
+              enableWorker: true,
+          });
+          
+          hlsInstance.loadSource(videoUrl);
+          hlsInstance.attachMedia(videoElement);
+          
+          hlsInstance.on(Hls.Events.ERROR, (event: any, data: any) => {
+              if (data.fatal) {
+                  switch (data.type) {
+                      case Hls.ErrorTypes.NETWORK_ERROR:
+                          hlsInstance.startLoad();
+                          break;
+                      case Hls.ErrorTypes.MEDIA_ERROR:
+                          hlsInstance.recoverMediaError();
+                          break;
+                      default:
+                          hlsInstance.destroy();
+                          break;
+                  }
+              }
+          });
+      } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+          // Native HLS support (Safari)
+          videoElement.src = videoUrl;
+      }
+  };
 
   // On mount, only play automatically if autoplay is true
   onMount(() => {
       isMounted = true; // Set the mounted flag to true
 
-      if (autoplay) {
-        videoElement.muted = true;
-        videoElement.volume = 0;
-        videoElement.play(); // Play the video automatically if autoplay is true
-        isPlaying = true;
+      if (isHls) {
+          initHls().then(() => {
+              if (autoplay && videoElement) {
+                  videoElement.muted = true;
+                  videoElement.volume = 0;
+                  videoElement.play();
+                  isPlaying = true;
+              }
+          });
+      } else {
+          if (autoplay) {
+              videoElement.muted = true;
+              videoElement.volume = 0;
+              videoElement.play(); // Play the video automatically if autoplay is true
+              isPlaying = true;
+          }
       }
 
       // Attach event listeners to keep track of the play/pause state
       videoElement.addEventListener('play', updatePlayState);
       videoElement.addEventListener('pause', updatePlayState);
+
+      return () => {
+          if (hlsInstance) {
+              hlsInstance.destroy();
+          }
+      };
   });
 
 </script>
@@ -69,7 +126,7 @@
   <video
       bind:this={videoElement}
       poster={videoPoster}
-      src={videoUrl}
+      src={isHls ? undefined : videoUrl}
       autoplay
       muted
       loop
@@ -80,7 +137,7 @@
     <video
         bind:this={videoElement}
         poster={videoPoster}
-        src={videoUrl}
+        src={isHls ? undefined : videoUrl}
         loop
         class="w-full h-full object-cover"
         playsinline

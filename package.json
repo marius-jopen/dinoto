@@ -46,6 +46,7 @@
 		"@prismicio/svelte": "^1.2.0",
 		"@splidejs/splide": "^4.1.4",
 		"@splidejs/svelte-splide": "^0.2.9",
-		"aos": "^2.3.4"
+		"aos": "^2.3.4",
+		"hls.js": "^1.6.15"
 	}
 }

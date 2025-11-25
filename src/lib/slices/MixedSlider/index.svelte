@@ -8,6 +8,51 @@
 
 	export let slice: Content.MixedSliderSlice;
 
+	let videoElements: HTMLVideoElement[] = [];
+	let mobileVideoElements: HTMLVideoElement[] = [];
+	let hlsInstances: any[] = [];
+
+	// Check if URL is HLS
+	const isHls = (url: string) => url && url.includes('.m3u8');
+
+	// Initialize HLS for a video element
+	const initHls = async (videoEl: HTMLVideoElement, url: string): Promise<any> => {
+		const { default: Hls } = await import('hls.js');
+		
+		if (Hls.isSupported()) {
+			const hls = new Hls({
+				autoStartLoad: true,
+				capLevelToPlayerSize: true,
+				maxBufferLength: 30,
+				enableWorker: true,
+			});
+			
+			hls.loadSource(url);
+			hls.attachMedia(videoEl);
+			
+			hls.on(Hls.Events.ERROR, (event: any, data: any) => {
+				if (data.fatal) {
+					switch (data.type) {
+						case Hls.ErrorTypes.NETWORK_ERROR:
+							hls.startLoad();
+							break;
+						case Hls.ErrorTypes.MEDIA_ERROR:
+							hls.recoverMediaError();
+							break;
+						default:
+							hls.destroy();
+							break;
+					}
+				}
+			});
+			
+			return hls;
+		} else if (videoEl.canPlayType('application/vnd.apple.mpegurl')) {
+			videoEl.src = url;
+		}
+		return null;
+	};
+
 	let distanceTop = getDistanceTop(slice.primary.distance_top);
 	let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 
@@ -100,6 +145,32 @@
 				}
 			}
 		});
+
+		// Initialize HLS for desktop videos
+		repeatedItems.forEach((item, index) => {
+			const videoUrl = typeof item.video === 'string' ? item.video.trim() : '';
+			const videoEl = videoElements[index];
+			if (videoEl && videoUrl && isHls(videoUrl)) {
+				initHls(videoEl, videoUrl).then((hls) => {
+					if (hls) hlsInstances.push(hls);
+				});
+			}
+		});
+
+		// Initialize HLS for mobile videos
+		uniqueItems.forEach((item, index) => {
+			const videoUrl = typeof item.video === 'string' ? item.video.trim() : '';
+			const videoEl = mobileVideoElements[index];
+			if (videoEl && videoUrl && isHls(videoUrl)) {
+				initHls(videoEl, videoUrl).then((hls) => {
+					if (hls) hlsInstances.push(hls);
+				});
+			}
+		});
+
+		return () => {
+			hlsInstances.forEach(hls => hls?.destroy());
+		};
 	});
 
 </script>
@@ -121,6 +192,7 @@
 						>
 							{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 								<video 
+									bind:this={videoElements[index]}
 									class="w-full h-full object-cover" 
 									autoplay 
 									muted 
@@ -128,7 +200,9 @@
 									playsinline
 									controls
 								>
-									<source src={item.video} type="video/mp4">
+									{#if !isHls(item.video)}
+										<source src={item.video} type="video/mp4">
+									{/if}
 									Your browser does not support the video tag.
 								</video>
 							{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
@@ -208,6 +282,7 @@
 				>
 					{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 						<video 
+							bind:this={mobileVideoElements[index]}
 							class="w-full h-full object-cover" 
 							autoplay 
 							muted 
@@ -215,7 +290,9 @@
 							playsinline
 							controls
 						>
-							<source src={item.video} type="video/mp4">
+							{#if !isHls(item.video)}
+								<source src={item.video} type="video/mp4">
+							{/if}
 							Your browser does not support the video tag.
 						</video>
 					{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
