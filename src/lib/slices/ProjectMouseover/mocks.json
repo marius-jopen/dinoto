@@ -10,11 +10,6 @@
 					"id": "mock_document_id"
 				}
 			},
-			"text": {
-				"__TYPE__": "FieldContent",
-				"value": "boy",
-				"type": "Text"
-			},
 			"richtext": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [

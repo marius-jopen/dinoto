@@ -3008,16 +3008,6 @@ export interface ProjectMouseoverSliceDefaultPrimary {
 	project: prismic.ContentRelationshipField<'work'>;
 
 	/**
-	 * Text field in *ProjectMouseover → Default → Primary*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: project_mouseover.default.primary.text
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	text: prismic.KeyTextField;
-
-	/**
 	 * Richtext field in *ProjectMouseover → Default → Primary*
 	 *
 	 * - **Field Type**: Rich Text

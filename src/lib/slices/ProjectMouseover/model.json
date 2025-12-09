@@ -54,13 +54,6 @@
             ]
           }
         },
-        "text": {
-          "type": "Text",
-          "config": {
-            "label": "Text",
-            "placeholder": ""
-          }
-        },
         "richtext": {
           "type": "StructuredText",
           "config": {
