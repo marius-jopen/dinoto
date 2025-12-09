@@ -14,6 +14,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "boy",
 				"type": "Text"
+			},
+			"richtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In sunt ad anim ipsum cillum do aliquip duis. Exercitation adipisicing id anim consectetur eu ea. Ipsum sint consectetur velit sint adipisicing aliquip minim."
+						}
+					}
+				]
 			}
 		},
 		"items": []

@@ -3016,6 +3016,16 @@ export interface ProjectMouseoverSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
+
+	/**
+	 * Richtext field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project_mouseover.default.primary.richtext
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	richtext: prismic.RichTextField;
 }
 
 /**

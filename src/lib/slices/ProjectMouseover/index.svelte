@@ -6,6 +6,8 @@
 	import ProjectItem from '$lib/components/project-item.svelte';
 	import { workStore } from '$lib/stores';
 	import { get } from 'svelte/store';
+	import { PrismicRichText } from "@prismicio/svelte";
+	import { isFilled } from '@prismicio/helpers';
 
 	export let slice: Content.ProjectMouseoverSlice;
 	
@@ -52,10 +54,10 @@
     class="box {distanceTop} {distanceBottom} relative"
 >
     <div class="hover-area">
-		{#if slice.primary.text}
+		{#if isFilled.richText(slice.primary.richtext)}
 			<div class="box-narrow">
 				<div class="hxl" >
-					{slice.primary.text}
+					<PrismicRichText field={slice.primary.richtext} />
 				</div>
 			</div>
 		{/if}
