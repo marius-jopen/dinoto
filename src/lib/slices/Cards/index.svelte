@@ -174,8 +174,8 @@
 	</div>
 
 	<div class="md:hidden">
-		{#each items as card, index (card.id)}
-			<div class="mb-4">
+		{#each [...items].reverse() as card, index (card.id)}
+			<div class="mb-0">
 				<CardImage aos={index * 300} data={card} status={card.status} />
 				<CardText aos={index * 300} data={card} status={card.status} />
 				<CardVideo aos={index * 300} data={card} status={card.status} />
