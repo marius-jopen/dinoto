@@ -66,12 +66,6 @@
 {#if visible}
     <div transition:fade={{ delay: 250, duration: 300 }} class="fixed top-0 left-0 bg-d_lightGreen z-40 h-screen w-full">
         <div class="flex flex-col justify-center text-black h-full text-center -mt-2">
-            <a href="/">
-                <h1 class="py-1" on:click={closeNav}>
-                    Home
-                </h1>
-            </a>
-
             {#each items as item}
                 <h1 class="py-1" on:click={closeNav}>
                     <PrismicLink field={item.link}>
