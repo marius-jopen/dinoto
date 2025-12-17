@@ -11,8 +11,8 @@
 
     let currentVideo = 1;
     let videoElements: HTMLVideoElement[] = [];
-    let mobileVideoElement: HTMLVideoElement;
     let hlsInstances: any[] = [];
+    let clickedVideo: number | null = null;
 
     // Check if a URL is HLS
     const isHls = (url: string) => url && url.includes('.m3u8');
@@ -56,7 +56,7 @@
     };
 
     onMount(() => {
-        // Initialize HLS for desktop videos
+        // Initialize HLS for videos
         slice.primary.items.forEach((item, index) => {
             const videoEl = videoElements[index];
             const videoUrl = item.video_mpg4?.url;
@@ -66,14 +66,6 @@
                 });
             }
         });
-
-        // Initialize HLS for mobile video
-        const mobileVideoUrl = slice.primary.items[0]?.video_mpg4?.url;
-        if (mobileVideoElement && mobileVideoUrl && isHls(mobileVideoUrl)) {
-            initHls(mobileVideoElement, mobileVideoUrl).then((hls) => {
-                if (hls) hlsInstances.push(hls);
-            });
-        }
 
         return () => {
             hlsInstances.forEach(hls => hls?.destroy());
@@ -112,20 +104,30 @@
 			</div>
 
 			<div class="block md:hidden">
-				{#if slice.primary.items[0].video_mpg4.url && slice.primary.items[0].video_webm.url}
-					<div class="flex justify-center w-full scale-[1.5]">
-						<video bind:this={mobileVideoElement} width="600" height="100%" poster={slice.primary.items[0].video_poster.url} autoplay loop muted playsinline>
-							{#if !isHls(slice.primary.items[0].video_mpg4.url)}
-								<source 
-								src={slice.primary.items[0].video_mpg4.url} 
-								type='video/mp4; codecs="hvc1"'>
-								<source 
-								src={slice.primary.items[0].video_webm.url} 
-								type="video/webm">
-							{/if}
-						</video>
+				{#each slice.primary.items as item, index}
+					<div class="transition-all duration-300 overflow-hidden"
+						class:opacity-0={index + 1 !== currentVideo}
+						class:pointer-events-none={index + 1 !== currentVideo}
+						class:absolute={index + 1 !== currentVideo}
+						class:h-0={index + 1 !== currentVideo}
+						class:h-auto={index + 1 === currentVideo}
+					>
+						{#if item.video_mpg4.url && item.video_webm.url}
+							<div class="flex justify-center w-full scale-[1.5]">
+								<video width="600" height="100%" poster={item.video_poster.url} autoplay loop muted playsinline>
+									{#if !isHls(item.video_mpg4.url)}
+										<source 
+										src={item.video_mpg4.url} 
+										type='video/mp4; codecs="hvc1"'>
+										<source 
+										src={item.video_webm.url} 
+										type="video/webm">
+									{/if}
+								</video>
+							</div>
+						{/if}
 					</div>
-				{/if}
+				{/each}
 			</div>
 		</div>
 		
@@ -133,9 +135,11 @@
 			{#each slice.primary.items as item, index}
 				<h2 
 					data-aos="fade-up" 
-					class="text-d_gray hover:text-d_lightGreen py-6"
+					class="text-d_gray hover:text-d_lightGreen py-6 cursor-pointer"
+					class:text-d_lightGreen={clickedVideo === index + 1}
 					on:mouseenter={() => currentVideo = index + 1}
-					on:mouseleave={() => currentVideo = 1}
+					on:mouseleave={() => { if (clickedVideo === null) currentVideo = 1; else currentVideo = clickedVideo; }}
+					on:click={() => { clickedVideo = index + 1; currentVideo = index + 1; }}
 				>
 					<PrismicText field={item.text} />
 				</h2>
