@@ -15,6 +15,12 @@
 	let distanceTop = getDistanceTop(slice.primary.distance_top);
     let distanceBottom = getDistanceBottom(slice.primary.distance_bottom);
 
+	const textAlignClass = {
+		left: 'text-left',
+		center: 'text-center',
+		right: 'text-right',
+	}[slice.primary.text_align ?? 'left'] ?? 'text-left';
+
 	function getProjectById(id) {
 		return work.find(project => project.id === id);
 	}
@@ -56,7 +62,7 @@
     <div class="hover-area">
 		{#if isFilled.richText(slice.primary.richtext)}
 			<div class="box-narrow">
-				<div class="hxl" >
+				<div class="hxl {textAlignClass}">
 					<PrismicRichText field={slice.primary.richtext} />
 				</div>
 			</div>

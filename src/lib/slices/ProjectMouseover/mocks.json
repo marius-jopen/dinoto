@@ -16,10 +16,15 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "In sunt ad anim ipsum cillum do aliquip duis. Exercitation adipisicing id anim consectetur eu ea. Ipsum sint consectetur velit sint adipisicing aliquip minim."
+							"text": "Dolor nulla cupidatat sit aute qui. Ex cillum est commodo reprehenderit magna. Irure fugiat qui deserunt Lorem aliqua incididunt est voluptate in eiusmod nisi id minim aute."
 						}
 					}
 				]
+			},
+			"text_align": {
+				"__TYPE__": "FieldContent",
+				"value": "left",
+				"type": "Select"
 			}
 		},
 		"items": []

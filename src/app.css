@@ -40,11 +40,11 @@ body {
     --d-darkGreen: #54AB00;
 }
 
-.hxl {
+h5, .hxl {
     @apply text-[35px] md:text-[50px] lg:text-[70px] xl:text-[100px] leading-[110%] md:leading-[105%];
 }
 
-.h0 {
+h4, .h0 {
     @apply text-[30px] md:text-[40px] lg:text-[50px] xl:text-[80px] leading-[115%] md:leading-[110%];
 }
 

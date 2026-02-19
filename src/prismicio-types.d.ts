@@ -3036,6 +3036,17 @@ export interface ProjectMouseoverSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	richtext: prismic.RichTextField;
+
+	/**
+	 * Text Align field in *ProjectMouseover → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: left
+	 * - **API ID Path**: project_mouseover.default.primary.text_align
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	text_align: prismic.SelectField<'left' | 'center' | 'right', 'filled'>;
 }
 
 /**

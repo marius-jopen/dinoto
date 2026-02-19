@@ -59,7 +59,7 @@
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2"
+            "multi": "heading1,heading2,heading4,heading5"
           }
         },
         "style": {

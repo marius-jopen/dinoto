@@ -14,10 +14,6 @@
 	let mobileVideoElements: HTMLVideoElement[] = [];
 	let hlsInstances: any[] = [];
 
-	// bind:muted requires a writable variable — Svelte uses this to set the DOM
-	// property directly at mount time, which is the only reliable way to mute
-	// videos in Svelte (the HTML `muted` attribute alone doesn't work with SSR hydration).
-	let videoMuted = true;
 
 	// Check if URL is HLS
 	const isHls = (url: string) => url && url.includes('.m3u8');
@@ -153,25 +149,36 @@
 			}
 		});
 
-		// Initialize HLS for desktop videos
+		// Desktop videos: mute first, then play — this is the only reliable way
+		// to autoplay muted in SvelteKit SSR (autoplay in HTML runs before JS).
 		repeatedItems.forEach((item, index) => {
 			const videoUrl = typeof item.video === 'string' ? item.video.trim() : '';
 			const videoEl = videoElements[index];
-			if (videoEl && videoUrl && isHls(videoUrl)) {
+			if (!videoEl || !videoUrl) return;
+			videoEl.muted = true;
+			if (isHls(videoUrl)) {
 				initHls(videoEl, videoUrl).then((hls) => {
 					if (hls) hlsInstances.push(hls);
+					videoEl.play().catch(() => {});
 				});
+			} else {
+				videoEl.play().catch(() => {});
 			}
 		});
 
-		// Initialize HLS for mobile videos
+		// Mobile videos: same approach
 		uniqueItems.forEach((item, index) => {
 			const videoUrl = typeof item.video === 'string' ? item.video.trim() : '';
 			const videoEl = mobileVideoElements[index];
-			if (videoEl && videoUrl && isHls(videoUrl)) {
+			if (!videoEl || !videoUrl) return;
+			videoEl.muted = true;
+			if (isHls(videoUrl)) {
 				initHls(videoEl, videoUrl).then((hls) => {
 					if (hls) hlsInstances.push(hls);
+					videoEl.play().catch(() => {});
 				});
+			} else {
+				videoEl.play().catch(() => {});
 			}
 		});
 
@@ -216,9 +223,7 @@
 						{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 						<video 
 							bind:this={videoElements[index]}
-							bind:muted={videoMuted}
 							class="w-full h-full object-cover" 
-							autoplay 
 							loop 
 							playsinline
 						>
@@ -308,9 +313,7 @@
 					{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 					<video 
 						bind:this={mobileVideoElements[index]}
-						bind:muted={videoMuted}
 						class="w-full h-full object-cover" 
-						autoplay 
 						loop 
 						playsinline
 					>
