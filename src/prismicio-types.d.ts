@@ -2255,6 +2255,16 @@ export interface ImageSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	style: prismic.SelectField<'Inline' | 'Full Rounded' | 'Full Screen', 'filled'>;
+
+	/**
+	 * Link field in *Image → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image.default.primary.link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**

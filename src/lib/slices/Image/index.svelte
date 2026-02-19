@@ -3,7 +3,7 @@
 
 	import type { Content } from '@prismicio/client';
     import { getDistanceTop, getDistanceBottom } from '../../components/distances';
-	import { PrismicImage, PrismicRichText } from "@prismicio/svelte";
+	import { PrismicImage, PrismicRichText, PrismicLink } from "@prismicio/svelte";
 	import { isFilled } from '@prismicio/helpers';
 
 	export let slice: Content.ImageSlice;
@@ -14,8 +14,15 @@
 
 <section data-aos="fade-up" class="{slice.primary.style == 'Full Screen' ? '' : 'box'} {distanceTop} {distanceBottom}">
 	<div class="{slice.primary.style == 'Inline' ? 'lg:ml-[25%] lg:w-[75%]' : 'w-full'} relative">
-		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">			
-			<PrismicImage class="w-full" field={slice.primary.image} />
+		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">
+			{#if isFilled.link(slice.primary.link)}
+			{console.log(slice.primary.link)}
+				<PrismicLink field={slice.primary.link}>
+					<PrismicImage class="w-full" field={slice.primary.image} />
+				</PrismicLink>
+			{:else}
+				<PrismicImage class="w-full" field={slice.primary.image} />
+			{/if}
 		</div>
 
 		{#if isFilled.richText(slice.primary.caption)}
