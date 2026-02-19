@@ -177,7 +177,23 @@
 
 </script>
 
-<section class="hidden md:block {distanceTop} {distanceBottom}">
+<style>
+	:global(.mixed-slider .splide__arrow) {
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
+	:global(.mixed-slider:hover .splide__arrow) {
+		opacity: 1;
+	}
+	:global(.mixed-slider .splide__arrow--prev) {
+		left: 3rem;
+	}
+	:global(.mixed-slider .splide__arrow--next) {
+		right: 2rem;
+	}
+</style>
+
+<section class="mixed-slider hidden md:block mr-4 md:mr-6 {distanceTop} {distanceBottom}">
 	<Splide
 		class="{height}"
 		options={effectiveOptions}
