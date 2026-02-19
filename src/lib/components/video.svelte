@@ -147,22 +147,23 @@
 
   <!-- Play/Pause Button, only if autoplay is false -->
   {#if !autoplay}
-      {#if !isPlaying}
-          <!-- Play Button (always visible when video is paused) -->
-          <button
-              on:click={togglePlayPause}
-              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-d_white text-d_black px-4 py-2 rounded-lg transition-opacity duration-300 ease-in-out opacity-100"
-          >
-              Play
-          </button>
-      {:else}
-          <!-- Pause Button (fades in/out on hover when video is playing) -->
-          <button
-              on:click={togglePlayPause}
-              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-d_white text-d_black px-4 py-2 rounded-lg transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100"
-          >
-              Pause
-          </button>
-      {/if}
+      <button
+          on:click={togglePlayPause}
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border-2 border-white/70 bg-black/40 flex items-center justify-center transition-opacity duration-300 ease-in-out {isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}"
+          aria-label={isPlaying ? 'Pause' : 'Play'}
+      >
+          {#if isPlaying}
+              <!-- Pause icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9">
+                  <rect x="5" y="3" width="4" height="18" rx="1"/>
+                  <rect x="15" y="3" width="4" height="18" rx="1"/>
+              </svg>
+          {:else}
+              <!-- Play icon (offset slightly right to visually centre the triangle) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9 translate-x-0.5">
+                  <polygon points="6,3 20,12 6,21"/>
+              </svg>
+          {/if}
+      </button>
   {/if}
 </div>
