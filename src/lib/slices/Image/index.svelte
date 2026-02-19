@@ -16,7 +16,6 @@
 	<div class="{slice.primary.style == 'Inline' ? 'lg:ml-[25%] lg:w-[75%]' : 'w-full'} relative">
 		<div class="{slice.primary.style == 'Full Screen' ? '' : 'rounded-2xl md:rounded-3xl overflow-hidden'}">
 			{#if isFilled.link(slice.primary.link)}
-			{console.log(slice.primary.link)}
 				<PrismicLink field={slice.primary.link}>
 					<PrismicImage class="w-full" field={slice.primary.image} />
 				</PrismicLink>
