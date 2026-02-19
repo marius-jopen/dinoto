@@ -14,6 +14,11 @@
 	let mobileVideoElements: HTMLVideoElement[] = [];
 	let hlsInstances: any[] = [];
 
+	// bind:muted requires a writable variable — Svelte uses this to set the DOM
+	// property directly at mount time, which is the only reliable way to mute
+	// videos in Svelte (the HTML `muted` attribute alone doesn't work with SSR hydration).
+	let videoMuted = true;
+
 	// Check if URL is HLS
 	const isHls = (url: string) => url && url.includes('.m3u8');
 
@@ -209,15 +214,14 @@
 						style="color: {textColor(item.color)};"
 					>
 						{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
-								<video 
-									bind:this={videoElements[index]}
-									class="w-full h-full object-cover" 
-									autoplay 
-									muted 
-									loop 
-									playsinline
-									controls
-								>
+						<video 
+							bind:this={videoElements[index]}
+							bind:muted={videoMuted}
+							class="w-full h-full object-cover" 
+							autoplay 
+							loop 
+							playsinline
+						>
 									{#if !isHls(item.video)}
 										<source src={item.video} type="video/mp4">
 									{/if}
@@ -282,10 +286,10 @@
 								<p class="text-gray-400">No content</p>
 							</div>
 						{/if}
-						{#if isFilled.link(item.link) && item.image && item.image.url}
-							<PrismicLink field={item.link} class="absolute inset-0 z-10" />
-						{/if}
-					</div>
+					{#if isFilled.link(item.link)}
+						<PrismicLink field={item.link} class="absolute inset-0 z-10" />
+					{/if}
+				</div>
 				</div>
 			</div>
 		</SplideSlide>
@@ -302,15 +306,14 @@
 					style="color: {textColor(item.color)};"
 				>
 					{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
-						<video 
-							bind:this={mobileVideoElements[index]}
-							class="w-full h-full object-cover" 
-							autoplay 
-							muted 
-							loop 
-							playsinline
-							controls
-						>
+					<video 
+						bind:this={mobileVideoElements[index]}
+						bind:muted={videoMuted}
+						class="w-full h-full object-cover" 
+						autoplay 
+						loop 
+						playsinline
+					>
 							{#if !isHls(item.video)}
 								<source src={item.video} type="video/mp4">
 							{/if}
@@ -375,7 +378,7 @@
 							<p class="text-gray-400">No content</p>
 						</div>
 					{/if}
-					{#if isFilled.link(item.link) && item.image && item.image.url}
+					{#if isFilled.link(item.link)}
 						<PrismicLink field={item.link} class="absolute inset-0 z-10" />
 					{/if}
 				</div>
