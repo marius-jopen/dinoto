@@ -2582,6 +2582,16 @@ export interface MixedSliderSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *MixedSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mixed_slider.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**

@@ -5,6 +5,8 @@
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
 	import { onMount } from 'svelte';
+	import { PrismicLink } from '@prismicio/svelte';
+	import { isFilled } from '@prismicio/helpers';
 
 	export let slice: Content.MixedSliderSlice;
 
@@ -186,11 +188,11 @@
 			<SplideSlide>
 				<div class="w-full box {height}">
 					<div class="mr-6 h-full">
-						<div 
-							class="w-full h-full rounded-3xl overflow-hidden {backgroundColor(item.color)}"
-							style="color: {textColor(item.color)};"
-						>
-							{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
+					<div 
+						class="group relative w-full h-full rounded-3xl overflow-hidden {backgroundColor(item.color)}"
+						style="color: {textColor(item.color)};"
+					>
+						{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
 								<video 
 									bind:this={videoElements[index]}
 									class="w-full h-full object-cover" 
@@ -205,43 +207,43 @@
 									{/if}
 									Your browser does not support the video tag.
 								</video>
-							{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
-								<!-- Image background with text overlay (and optional hover image) -->
-								<div class="relative w-full h-full group">
-									<img 
-										src={item.image.url} 
-										alt={item.image.alt || ''} 
-										class="w-full h-full object-cover {item.image_hover && item.image_hover.url ? 'transition-opacity duration-300 group-hover:opacity-0' : ''}"
-									/>
-									{#if item.image_hover && item.image_hover.url}
-										<img 
-											src={item.image_hover.url} 
-											alt={item.image_hover.alt || ''} 
-											class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-										/>
-									{/if}
-									<div class="absolute inset-0 w-full h-full flex flex-col justify-center py-3 px-8">
-										<div class="pb-10 pt-2">
-											<h2 class="text-2xl text-center md:text-3xl lg:text-4xl font-bold leading-tight text-white">
-												{item.text}
-											</h2>
-										</div>
-									</div>
-								</div>
-							{:else if item && item.image && item.image.url && item.image_hover && item.image_hover.url}
-								<!-- Image with hover effect -->
-								<div class="relative w-full h-full group">
-									<img 
-										src={item.image.url} 
-										alt={item.image.alt || ''} 
-										class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-									/>
+						{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
+							<!-- Image background with text overlay (and optional hover image) -->
+							<div class="relative w-full h-full">
+								<img 
+									src={item.image.url} 
+									alt={item.image.alt || ''} 
+									class="w-full h-full object-cover {item.image_hover && item.image_hover.url ? 'transition-opacity duration-300 group-hover:opacity-0' : ''}"
+								/>
+								{#if item.image_hover && item.image_hover.url}
 									<img 
 										src={item.image_hover.url} 
 										alt={item.image_hover.alt || ''} 
 										class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 									/>
+								{/if}
+								<div class="absolute inset-0 w-full h-full flex flex-col justify-center py-3 px-8">
+									<div class="pb-10 pt-2">
+										<h2 class="text-2xl text-center md:text-3xl lg:text-4xl font-bold leading-tight text-white">
+											{item.text}
+										</h2>
+									</div>
 								</div>
+							</div>
+						{:else if item && item.image && item.image.url && item.image_hover && item.image_hover.url}
+							<!-- Image with hover effect -->
+							<div class="relative w-full h-full">
+								<img 
+									src={item.image.url} 
+									alt={item.image.alt || ''} 
+									class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+								/>
+								<img 
+									src={item.image_hover.url} 
+									alt={item.image_hover.alt || ''} 
+									class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+								/>
+							</div>
 							{:else if item && item.image && item.image.url}
 								<!-- Image only -->
 								<img 
@@ -258,16 +260,19 @@
 										</h2>
 									</div>
 								</div>
-							{:else}
-								<!-- Fallback for empty items -->
-								<div class="w-full h-full bg-gray-100 flex items-center justify-center">
-									<p class="text-gray-400">No content</p>
-								</div>
-							{/if}
-						</div>
+						{:else}
+							<!-- Fallback for empty items -->
+							<div class="w-full h-full bg-gray-100 flex items-center justify-center">
+								<p class="text-gray-400">No content</p>
+							</div>
+						{/if}
+						{#if isFilled.link(item.link) && item.image && item.image.url}
+							<PrismicLink field={item.link} class="absolute inset-0 z-10" />
+						{/if}
 					</div>
 				</div>
-			</SplideSlide>
+			</div>
+		</SplideSlide>
 		{/each}
 	</Splide>
 </section>
@@ -277,7 +282,7 @@
 		<div data-aos="fade-up" class="w-full {height}">
 			<div class="mb-6 h-full">
 				<div 
-					class="w-full h-full rounded-lg overflow-hidden {backgroundColor(item.color)}"
+					class="group relative w-full h-full rounded-lg overflow-hidden {backgroundColor(item.color)}"
 					style="color: {textColor(item.color)};"
 				>
 					{#if item && item.video && typeof item.video === 'string' && item.video.trim()}
@@ -297,7 +302,7 @@
 						</video>
 					{:else if item && item.image && item.image.url && item.text && typeof item.text === 'string' && item.text.trim()}
 						<!-- Image background with text overlay (and optional hover image) -->
-						<div class="relative w-full h-full group">
+						<div class="relative w-full h-full">
 							<img 
 								src={item.image.url} 
 								alt={item.image.alt || ''} 
@@ -320,7 +325,7 @@
 						</div>
 					{:else if item && item.image && item.image.url && item.image_hover && item.image_hover.url}
 						<!-- Image with hover effect -->
-						<div class="relative w-full h-full group">
+						<div class="relative w-full h-full">
 							<img 
 								src={item.image.url} 
 								alt={item.image.alt || ''} 
@@ -353,6 +358,9 @@
 						<div class="w-full h-full bg-gray-100 flex items-center justify-center">
 							<p class="text-gray-400">No content</p>
 						</div>
+					{/if}
+					{#if isFilled.link(item.link) && item.image && item.image.url}
+						<PrismicLink field={item.link} class="absolute inset-0 z-10" />
 					{/if}
 				</div>
 			</div>
