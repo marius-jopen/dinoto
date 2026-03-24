@@ -72,10 +72,6 @@
 		start: 0,
 	};
 
-	// Use loop by default, but avoid visual duplication when there are too few items
-	// Splide needs more slides than `perPage` to loop without duplicating the first slide in view
-	let effectiveOptions = splideOptions;
-
 	// Rotate items so the original first item is rendered last when enough slides
 	let rotatedItems: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = [];
 
@@ -108,6 +104,12 @@
 		}
 		return result;
 	})();
+
+	// Use loop by default, but avoid visual duplication when there are too few items
+	// When there are only 2 or fewer unique items, disable arrows and dragging since all items are already visible
+	let effectiveOptions = uniqueItems.length <= 2
+		? { ...splideOptions, arrows: false, drag: false, type: 'slide' }
+		: splideOptions;
 
 	// Quick-and-dirty: repeat items 4x to make the loop feel richer
 	const repeatedItems: Content.MixedSliderSliceDefaultPrimaryItemsItem[] = [

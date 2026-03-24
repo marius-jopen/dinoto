@@ -31,9 +31,8 @@
     }
 </script>
 
-<div 
-    data-aos="fade-up"
-    on:click={() => getLink() && window.location.assign(getLink())} 
+<div
+    on:click={() => getLink() && window.location.assign(getLink())}
     style="cursor: {data.data.clickable ? 'pointer' : 'default'};"
 >
     <div class="rounded-2xl md:rounded-3xl overflow-hidden">

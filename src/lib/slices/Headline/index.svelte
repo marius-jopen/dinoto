@@ -9,7 +9,7 @@
 </script>
 
 <section data-aos="fade-up" class=" {slice.primary.narrow ? 'box-narrow' : 'box'} {distanceTop} {distanceBottom}">
-	<h2 class="text-center md:text-left border-d_darkGray border-t border-b py-4 lg:flex gap-4 md:pl-[35%] lg:pl-0 ">
+	<h2 class="text-center md:text-left border-d_darkGray border-t border-b py-4 lg:flex gap-4 md:pl-[35%] lg:pl-0 -mt-px">
 		<div class="{slice.primary.headlinexl ? 'hxl' : ''}">
 			{slice.primary.text_1}
 		</div>
