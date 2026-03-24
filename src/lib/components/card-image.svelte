@@ -6,7 +6,6 @@
     export let status
     export let aos = 0
 
-    console.log(data.caption)
 </script>
 
 {#if data.image.url}

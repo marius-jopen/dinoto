@@ -3,6 +3,8 @@
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
+	import 'aos/dist/aos.css';
+	import '@splidejs/svelte-splide/css';
 	import { onMount } from 'svelte';
 	import AOS from 'aos';
 
@@ -10,11 +12,9 @@
 		AOS.init({
 			duration: 700,
 			easing: 'ease',
-			once: false,
+			once: true,
 		});
-	})
-
-	AOS.refresh();
+	});
 </script>
 
 <svelte:head>
@@ -30,7 +30,7 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 
-	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </svelte:head>
 
 <main>

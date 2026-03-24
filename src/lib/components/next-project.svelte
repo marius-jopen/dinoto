@@ -13,10 +13,6 @@
 
     $: data;
 
-    $: console.log(work);
-    $: console.log(data);
-    $: console.log(data.page.uid);
-
     $: if (work && Array.isArray(work)) {
         // Step 1: Filter out the project with the matching UID
         workAdjusted = work.filter(project => project.uid !== data?.page?.uid);

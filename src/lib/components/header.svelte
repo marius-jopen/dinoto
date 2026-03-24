@@ -14,7 +14,6 @@
     let hideHeader = false;
 
     onMount(() => {
-        console.log('Header mounted:', { sticky, logo });
         const handleScroll = () => {
             const scrollPosition = window.scrollY + window.innerHeight;
             const bottomPosition = document.documentElement.scrollHeight;

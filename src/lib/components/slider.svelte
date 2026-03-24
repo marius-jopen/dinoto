@@ -1,6 +1,6 @@
 <script>
   import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
-  import '@splidejs/svelte-splide/css';
+
   import { onMount, onDestroy } from 'svelte';
   import { writable } from 'svelte/store';
   import SlideImage from './slide-image.svelte';
