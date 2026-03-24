@@ -74,7 +74,7 @@
 		</div>
 	{:else}
 		<!-- Show List 2 -->
-		<div class="flex flex-col divide-d_darkGray divide-y border-y border-d_darkGray">
+		<div class="flex flex-col border-t border-d_darkGray">
 			{#if matchedProjects.length > 0}
 				{#each matchedProjects as project}
 					<ProjectItemList data={project} />

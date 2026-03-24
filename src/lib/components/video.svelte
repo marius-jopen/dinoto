@@ -6,6 +6,15 @@
   export let autoplay: boolean = false; // Video-specific autoplay
   export let status: boolean = false; // External control for play/pause, default false
 
+  // YouTube URL detection
+  function getYouTubeId(url: string): string | null {
+    if (!url) return null;
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]+)/);
+    return match ? match[1] : null;
+  }
+
+  $: youtubeId = getYouTubeId(videoUrl);
+
   let videoElement: HTMLVideoElement;
   let isPlaying = false; // Track whether the video is playing
   let isMounted = false; // Track whether the component is mounted
@@ -114,56 +123,62 @@
 
 </script>
 
-<div class="relative group h-full w-full">
-  <!-- Video Element -->
-  <!-- <p>
-    status: {status}
-  </p> 
-  <p>
-    autoplay: {autoplay}
-  </p>  -->
-  {#if autoplay}
-  <video
-      bind:this={videoElement}
-      poster={videoPoster}
-      src={isHls ? undefined : videoUrl}
-      autoplay
-      muted
-      loop
-      class="w-full h-full object-cover"
-      playsinline
-  ></video>
-  {:else}
+{#if youtubeId}
+  <div class="relative w-full" style="padding-bottom: 56.25%;">
+    <iframe
+      src="https://www.youtube.com/embed/{youtubeId}"
+      title="YouTube video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="absolute inset-0 w-full h-full"
+    ></iframe>
+  </div>
+{:else}
+  <div class="relative group h-full w-full">
+    {#if autoplay}
     <video
         bind:this={videoElement}
         poster={videoPoster}
         src={isHls ? undefined : videoUrl}
+        autoplay
+        muted
         loop
         class="w-full h-full object-cover"
         playsinline
-        controls
     ></video>
-  {/if}
+    {:else}
+      <video
+          bind:this={videoElement}
+          poster={videoPoster}
+          src={isHls ? undefined : videoUrl}
+          loop
+          class="w-full h-full object-cover"
+          playsinline
+          controls
+      ></video>
+    {/if}
 
-  <!-- Play/Pause Button, only if autoplay is false -->
-  {#if !autoplay}
-      <button
-          on:click={togglePlayPause}
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border-2 border-white/70 bg-black/40 flex items-center justify-center transition-opacity duration-300 ease-in-out {isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}"
-          aria-label={isPlaying ? 'Pause' : 'Play'}
-      >
-          {#if isPlaying}
-              <!-- Pause icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9">
-                  <rect x="5" y="3" width="4" height="18" rx="1"/>
-                  <rect x="15" y="3" width="4" height="18" rx="1"/>
-              </svg>
-          {:else}
-              <!-- Play icon (offset slightly right to visually centre the triangle) -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9 translate-x-0.5">
-                  <polygon points="6,3 20,12 6,21"/>
-              </svg>
-          {/if}
-      </button>
-  {/if}
-</div>
+    <!-- Play/Pause Button, only if autoplay is false -->
+    {#if !autoplay}
+        <button
+            on:click={togglePlayPause}
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border-2 border-white/70 bg-black/40 flex items-center justify-center transition-opacity duration-300 ease-in-out {isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}"
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+        >
+            {#if isPlaying}
+                <!-- Pause icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9">
+                    <rect x="5" y="3" width="4" height="18" rx="1"/>
+                    <rect x="15" y="3" width="4" height="18" rx="1"/>
+                </svg>
+            {:else}
+                <!-- Play icon (offset slightly right to visually centre the triangle) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9 translate-x-0.5">
+                    <polygon points="6,3 20,12 6,21"/>
+                </svg>
+            {/if}
+        </button>
+    {/if}
+  </div>
+{/if}
