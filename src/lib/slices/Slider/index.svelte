@@ -17,8 +17,8 @@
 
 	let splideOptions = {
 		rewind: true,
-		arrows: true,
-		pagination: true,
+		arrows: !slice.primary.hide_slider_arrows,
+		pagination: !slice.primary.hide_slider_buttons,
 		pauseOnHover: false,
 		type: 'loop', // Keep loop type for continuous sliding
 	};

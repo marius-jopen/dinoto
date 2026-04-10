@@ -3253,6 +3253,28 @@ export interface SliderSliceDefaultPrimary {
 	distance_bottom: prismic.SelectField<'none' | 'xs' | 's' | 'm' | 'xl' | 'xxl', 'filled'>;
 
 	/**
+	 * Hide Slider Arrows field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: slider.default.primary.hide_slider_arrows
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	hide_slider_arrows: prismic.BooleanField;
+
+	/**
+	 * Hide Slider Buttons field in *Slider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: slider.default.primary.hide_slider_buttons
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	hide_slider_buttons: prismic.BooleanField;
+
+	/**
 	 * Items field in *Slider → Default → Primary*
 	 *
 	 * - **Field Type**: Group

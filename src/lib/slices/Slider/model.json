@@ -62,6 +62,24 @@
             "default_value": "none"
           }
         },
+        "hide_slider_arrows": {
+          "type": "Boolean",
+          "config": {
+            "label": "Hide Slider Arrows",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "hide_slider_buttons": {
+          "type": "Boolean",
+          "config": {
+            "label": "Hide Slider Buttons",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
