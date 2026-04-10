@@ -23,6 +23,8 @@
 		type: 'loop', // Keep loop type for continuous sliding
 	};
 
+	let mediaContain = slice.primary.media_contain;
+	let objectFit = mediaContain ? 'object-contain' : 'object-cover';
 	let height = "h-[50vw]";
 
 	let currentSlideIndex = 0; // Tracks the current active slide index
@@ -78,7 +80,7 @@
 
 					<div class="{height}">
 						{#if item.image.url}
-							<PrismicImage class="h-full w-full object-cover" field={item.image} />
+							<PrismicImage class="h-full w-full {objectFit}" field={item.image} />
 						{:else if item.video_url}	
 							{#if currentSlideIndex === index}						
 								<Video
@@ -86,6 +88,7 @@
 									videoUrl={item.video_url}
 									autoplay={item.autoplay ? true : false}
 									status={currentSlideIndex === index ? true : false}
+									{objectFit}
 								/>
 							{/if}
 						{/if}

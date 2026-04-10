@@ -5,6 +5,7 @@
   export let videoUrl: string;
   export let autoplay: boolean = false; // Video-specific autoplay
   export let status: boolean = false; // External control for play/pause, default false
+  export let objectFit: string = 'object-cover';
 
   // YouTube URL detection
   function getYouTubeId(url: string): string | null {
@@ -144,7 +145,7 @@
         autoplay
         muted
         loop
-        class="w-full h-full object-cover"
+        class="w-full h-full {objectFit}"
         playsinline
     ></video>
     {:else}
@@ -153,7 +154,7 @@
           poster={videoPoster}
           src={isHls ? undefined : videoUrl}
           loop
-          class="w-full h-full object-cover"
+          class="w-full h-full {objectFit}"
           playsinline
           controls
       ></video>
